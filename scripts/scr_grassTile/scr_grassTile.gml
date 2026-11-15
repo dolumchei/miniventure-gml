@@ -59,7 +59,8 @@ function GrassTile(vid) : singleton_Tile(vid, false) constructor
 				{
 					level.setTile(xt, yt, global.Tile.dirt, 0);
 					global.Sound.monsterHurt.play();
-					if (prandom.NextInt(5) == 0)
+					var seed_chance = prandom.NextInt(5);
+					if (seed_chance == 0)
 					{
 						level.add(new ItemEntity(new ResourceItem(global.Resource.seeds), xt * 16 + prandom.NextInt(10) + 3, yt * 16 + prandom.NextInt(10) + 3));
 						return true;
@@ -72,7 +73,8 @@ function GrassTile(vid) : singleton_Tile(vid, false) constructor
 				if (player.payStamina(4 - tool.level))
 				{
 					global.Sound.monsterHurt.play();
-					if (prandom.NextInt(5) == 0)
+					var seed_chance = prandom.NextInt(5);
+					if (seed_chance == 0)
 					{
 						level.add(new ItemEntity(new ResourceItem(global.Resource.seeds), xt * 16 + prandom.NextInt(10) + 3, yt * 16 + prandom.NextInt(10) + 3));
 						return true;

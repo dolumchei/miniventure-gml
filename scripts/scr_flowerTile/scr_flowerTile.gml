@@ -4,10 +4,10 @@ function FlowerTile(vid) : GrassTile(vid) constructor
 	
 	static render = function(screen, level, xx, yy)
 	{
-		grass_render(screen, level, xx, yy);
+		//grass_render(screen, level, xx, yy);
 
 		var data = level.getData(xx, yy);
-		var shape = (data / 16) % 2;
+		var shape = (data div 16) % 2;
 		var flowerCol = global.Color.get(10, level.grassColor, 555, 440);
 
 		if (shape == 0)

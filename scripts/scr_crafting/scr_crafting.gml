@@ -49,7 +49,6 @@ function singleton_Crafting() constructor
 
 	array_push(ovenRecipes, new ResourceRecipe(global.Resource.bread).addCost(global.Resource.wheat, 4));
 	
-
 	array_push(debugRecipes, new ResourceRecipe(global.Resource.wood));
 	array_push(debugRecipes, new ResourceRecipe(global.Resource.stone));
 	array_push(debugRecipes, new ResourceRecipe(global.Resource.flower));
