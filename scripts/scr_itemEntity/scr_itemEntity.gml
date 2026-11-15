@@ -75,4 +75,6 @@ function ItemEntity(item, xv, yv) : Entity() constructor
 		item.onTake(self); 
 		remove(); 
 	}
+	
+	static tile_hurt4 = function(tile, xx, yy, damage) { }
 }
