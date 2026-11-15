@@ -58,4 +58,6 @@ function Furniture(name) : Entity() constructor
 	{
 		shouldTake = player; 
 	}
+	
+	static tile_hurt4 = function(tile, xx, yy, damage) { }
 }

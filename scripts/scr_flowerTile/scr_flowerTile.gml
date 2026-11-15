@@ -4,7 +4,7 @@ function FlowerTile(vid) : GrassTile(vid) constructor
 	
 	static render = function(screen, level, xx, yy)
 	{
-		//grass_render(screen, level, xx, yy);
+		grass_render(screen, level, xx, yy);
 
 		var data = level.getData(xx, yy);
 		var shape = (data div 16) % 2;
