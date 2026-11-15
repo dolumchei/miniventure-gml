@@ -1,0 +1,2 @@
+screen.free();
+lightScreen.free();

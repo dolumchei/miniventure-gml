@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_inventory",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_inventory",
+  "parent":{
+    "name":"Entity",
+    "path":"folders/Scripts/Game/Entity.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

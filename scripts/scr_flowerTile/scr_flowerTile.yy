@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_flowerTile",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_flowerTile",
+  "parent":{
+    "name":"Tile",
+    "path":"folders/Scripts/Game/Level/Tile.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

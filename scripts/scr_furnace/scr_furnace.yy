@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_furnace",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_furnace",
+  "parent":{
+    "name":"Entity",
+    "path":"folders/Scripts/Game/Entity.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

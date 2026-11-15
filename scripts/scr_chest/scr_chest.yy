@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_chest",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_chest",
+  "parent":{
+    "name":"Entity",
+    "path":"folders/Scripts/Game/Entity.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

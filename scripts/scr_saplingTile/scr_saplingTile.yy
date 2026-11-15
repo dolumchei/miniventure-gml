@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_saplingTile",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_saplingTile",
+  "parent":{
+    "name":"Tile",
+    "path":"folders/Scripts/Game/Level/Tile.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

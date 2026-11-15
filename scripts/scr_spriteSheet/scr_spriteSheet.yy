@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_spriteSheet",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_spriteSheet",
+  "parent":{
+    "name":"GFX",
+    "path":"folders/Scripts/Game/GFX.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

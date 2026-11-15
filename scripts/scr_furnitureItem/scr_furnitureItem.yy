@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_furnitureItem",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_furnitureItem",
+  "parent":{
+    "name":"Item",
+    "path":"folders/Scripts/Game/Item.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

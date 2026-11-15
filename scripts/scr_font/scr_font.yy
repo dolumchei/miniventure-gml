@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_font",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_font",
+  "parent":{
+    "name":"GFX",
+    "path":"folders/Scripts/Game/GFX.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

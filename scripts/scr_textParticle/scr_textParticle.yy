@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_textParticle",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_textParticle",
+  "parent":{
+    "name":"Particle",
+    "path":"folders/Scripts/Game/Entity/Particle.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

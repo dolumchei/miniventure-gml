@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_inventoryMenu",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_inventoryMenu",
+  "parent":{
+    "name":"Screen",
+    "path":"folders/Scripts/Game/Screen.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

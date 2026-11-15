@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_crafting",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_crafting",
+  "parent":{
+    "name":"Crafting",
+    "path":"folders/Scripts/Game/Crafting.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

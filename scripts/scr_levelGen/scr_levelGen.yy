@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_levelGen",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_levelGen",
+  "parent":{
+    "name":"LevelGen",
+    "path":"folders/Scripts/Game/Level/LevelGen.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
