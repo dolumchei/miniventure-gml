@@ -4,6 +4,8 @@ function singleton_Crafting() constructor
 	ovenRecipes = [ ];
 	furnaceRecipes = [ ];
 	workbenchRecipes = [ ];
+	
+	debugRecipes = [ ];
 
 	array_push(workbenchRecipes, new FurnitureRecipe(Lantern).addCost(global.Resource.wood, 5).addCost(global.Resource.slime, 10).addCost(global.Resource.glass, 4));
 	array_push(workbenchRecipes, new FurnitureRecipe(Oven).addCost(global.Resource.stone, 15));
@@ -46,4 +48,29 @@ function singleton_Crafting() constructor
 	array_push(furnaceRecipes, new ResourceRecipe(global.Resource.glass).addCost(global.Resource.sand, 4).addCost(global.Resource.coal, 1));
 
 	array_push(ovenRecipes, new ResourceRecipe(global.Resource.bread).addCost(global.Resource.wheat, 4));
+	
+
+	array_push(debugRecipes, new ResourceRecipe(global.Resource.wood));
+	array_push(debugRecipes, new ResourceRecipe(global.Resource.stone));
+	array_push(debugRecipes, new ResourceRecipe(global.Resource.flower));
+	array_push(debugRecipes, new ResourceRecipe(global.Resource.acorn));
+	array_push(debugRecipes, new ResourceRecipe(global.Resource.dirt));
+	array_push(debugRecipes, new ResourceRecipe(global.Resource.sand));
+	array_push(debugRecipes, new ResourceRecipe(global.Resource.cactusFlower));
+	array_push(debugRecipes, new ResourceRecipe(global.Resource.seeds));
+	array_push(debugRecipes, new ResourceRecipe(global.Resource.wheat));
+	array_push(debugRecipes, new ResourceRecipe(global.Resource.bread));
+	array_push(debugRecipes, new ResourceRecipe(global.Resource.apple));
+
+	array_push(debugRecipes, new ResourceRecipe(global.Resource.coal));
+	array_push(debugRecipes, new ResourceRecipe(global.Resource.ironOre));
+	array_push(debugRecipes, new ResourceRecipe(global.Resource.goldOre));
+	array_push(debugRecipes, new ResourceRecipe(global.Resource.ironIngot));
+	array_push(debugRecipes, new ResourceRecipe(global.Resource.goldIngot));
+
+	array_push(debugRecipes, new ResourceRecipe(global.Resource.slime));
+	array_push(debugRecipes, new ResourceRecipe(global.Resource.glass));
+	array_push(debugRecipes, new ResourceRecipe(global.Resource.cloth));
+	array_push(debugRecipes, new ResourceRecipe(global.Resource.cloud));
+	array_push(debugRecipes, new ResourceRecipe(global.Resource.gem));
 }

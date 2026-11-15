@@ -23,3 +23,9 @@ if (global.config_debugKeys)
 		}
 	}
 }
+
+if (keyboard_check_pressed(ord("Z")) && global.config_debugMenu)
+{
+	if (is_undefined(menu) && !is_undefined(player))
+		setMenu(new DebugMenu(player));
+}

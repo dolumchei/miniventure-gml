@@ -57,6 +57,7 @@
     {"id":{"name":"scr_crafting","path":"scripts/scr_crafting/scr_crafting.yy",},},
     {"id":{"name":"scr_craftingMenu","path":"scripts/scr_craftingMenu/scr_craftingMenu.yy",},},
     {"id":{"name":"scr_deadMenu","path":"scripts/scr_deadMenu/scr_deadMenu.yy",},},
+    {"id":{"name":"scr_debugMenu","path":"scripts/scr_debugMenu/scr_debugMenu.yy",},},
     {"id":{"name":"scr_dirtTile","path":"scripts/scr_dirtTile/scr_dirtTile.yy",},},
     {"id":{"name":"scr_entity","path":"scripts/scr_entity/scr_entity.yy",},},
     {"id":{"name":"scr_extraUtility","path":"scripts/scr_extraUtility/scr_extraUtility.yy",},},
