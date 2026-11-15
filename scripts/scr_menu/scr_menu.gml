@@ -34,8 +34,15 @@ function Menu() constructor
 			io = 0; 
 
 		for (var i = i0; i < i1; i++)
-			listItems[i + io].renderInventory(screen, (1 + xo) * 8, (i + 1 + yo) * 8); 
-
+		{
+			try { listItems[i + io].renderInventory(screen, (1 + xo) * 8, (i + 1 + yo) * 8); }
+			catch (exception) // theres a bug here i cant reproduce effectively, so whenever it happens, i have this
+			{
+				print(instanceof(listItems[i + io]));
+				show_error(exception.longMessage, false);	
+			}
+		}
+		
 		if (renderCursor)
 		{
 			var yy = round(selected + 1 - io + yo); 
