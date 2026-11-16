@@ -63,7 +63,7 @@ if (global.config_displayInput)
 	draw_reset();
 }
 
-if (global.config_displayTiming)
+if (global.config_displayFPS)
 {
 	var fpsText = $"fps: {fps}\n";
 	draw_set_alpha(1);

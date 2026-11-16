@@ -1,5 +1,5 @@
 global.config_displayInput = true;
-global.config_displayTiming = false;
+global.config_displayFPS = false;
 global.config_debugKeys = GM_build_type == "run";
 global.config_debugMenu = global.config_debugKeys;
 
