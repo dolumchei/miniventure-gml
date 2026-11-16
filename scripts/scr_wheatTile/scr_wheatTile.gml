@@ -1,15 +1,15 @@
-function WheatTile(vid) : singleton_Tile(vid, false) constructor
+function WheatTile(vid) : Tile(vid, false) constructor
 {
 	render = function(screen, level, xx, yy)
 	{
 		var age = level.getData(xx, yy);
-		var col = global.Color.get(level.dirtColor - 121, level.dirtColor - 11, level.dirtColor, 50);
+		var col = Color.get(level.dirtColor - 121, level.dirtColor - 11, level.dirtColor, 50);
 		var icon = age div 10;
 		if (icon >= 3)
 		{
-			col = global.Color.get(level.dirtColor - 121, level.dirtColor - 11, 50 + (icon) * 100, 40 + (icon - 3) * 2 * 100);
+			col = Color.get(level.dirtColor - 121, level.dirtColor - 11, 50 + (icon) * 100, 40 + (icon - 3) * 2 * 100);
 			if (age == 50)
-				col = global.Color.get(0, 0, 50 + (icon) * 100, 40 + (icon - 3) * 2 * 100);
+				col = Color.get(0, 0, 50 + (icon) * 100, 40 + (icon - 3) * 2 * 100);
 			icon = 3;
 		}
 
@@ -32,11 +32,11 @@ function WheatTile(vid) : singleton_Tile(vid, false) constructor
 		if (is_instanceof(item, ToolItem))
 		{
 			var tool = item;
-			if (tool.type == global.ToolType.shovel)
+			if (tool.type == ToolType.shovel)
 			{
 				if (player.payStamina(4 - tool.level))
 				{
-					level.setTile(xt, yt, global.Tile.dirt, 0);
+					level.setTile(xt, yt, Tile.dirt, 0);
 					return true;
 				}
 			}
@@ -61,7 +61,7 @@ function WheatTile(vid) : singleton_Tile(vid, false) constructor
 
 		var count = prandom.NextInt(2);
 		for (var i = 0; i < count; i++)
-			level.add(new ItemEntity(new ResourceItem(global.Resource.seeds), xx * 16 + prandom.NextInt(10) + 3, yy * 16 + prandom.NextInt(10) + 3));
+			level.add(new ItemEntity(new ResourceItem(Resource.seeds), xx * 16 + prandom.NextInt(10) + 3, yy * 16 + prandom.NextInt(10) + 3));
 
 		count = 0;
 		if (age == 50)
@@ -70,8 +70,8 @@ function WheatTile(vid) : singleton_Tile(vid, false) constructor
 			count = prandom.NextInt(2) + 1;
 
 		for (var i = 0; i < count; i++)
-			level.add(new ItemEntity(new ResourceItem(global.Resource.wheat), xx * 16 + prandom.NextInt(10) + 3, yy * 16 + prandom.NextInt(10) + 3));
+			level.add(new ItemEntity(new ResourceItem(Resource.wheat), xx * 16 + prandom.NextInt(10) + 3, yy * 16 + prandom.NextInt(10) + 3));
 
-		level.setTile(xx, yy, global.Tile.dirt, 0);
+		level.setTile(xx, yy, Tile.dirt, 0);
 	}
 }

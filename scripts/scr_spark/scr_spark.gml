@@ -53,7 +53,7 @@ function Spark(owner, xa, ya) : Entity() constructor
 		var xt = 8;
 		var yt = 13;
 
-		screen.render(x - 4, y - 4 - 2, xt + yt * 32, global.Color.get(-1, 555, 555, 555), prandom.NextInt(4));
-		screen.render(x - 4, y - 4 + 2, xt + yt * 32, global.Color.get(-1, 000, 000, 000), prandom.NextInt(4));
+		screen.render(x - 4, y - 4 - 2, xt + yt * 32, Color.get(-1, 555, 555, 555), prandom.NextInt(4));
+		screen.render(x - 4, y - 4 + 2, xt + yt * 32, Color.get(-1, 000, 000, 000), prandom.NextInt(4));
 	}
 }

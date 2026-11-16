@@ -1,11 +1,11 @@
-function SandTile(vid) : singleton_Tile(vid, false) constructor
+function SandTile(vid) : Tile(vid, false) constructor
 {
 	connectsToSand = true;
 	
 	render = function(screen, level, xx, yy)
 	{
-		var col = global.Color.get(level.sandColor + 2, level.sandColor, level.sandColor - 110, level.sandColor - 110);
-		var transitionColor = global.Color.get(level.sandColor - 110, level.sandColor, level.sandColor - 110, level.dirtColor);
+		var col = Color.get(level.sandColor + 2, level.sandColor, level.sandColor - 110, level.sandColor - 110);
+		var transitionColor = Color.get(level.sandColor - 110, level.sandColor, level.sandColor - 110, level.dirtColor);
 
 		var u = !level.getTile(xx, yy - 1).connectsToSand;
 		var d = !level.getTile(xx, yy + 1).connectsToSand;
@@ -61,13 +61,13 @@ function SandTile(vid) : singleton_Tile(vid, false) constructor
 		if (is_instanceof(item, ToolItem))
 		{
 			var tool = item;
-			if (tool.type == global.ToolType.shovel)
+			if (tool.type == ToolType.shovel)
 			{
 				if (player.payStamina(4 - tool.level))
 				{
-					level.setTile(xt, yt, global.Tile.dirt, 0);
+					level.setTile(xt, yt, Tile.dirt, 0);
 					
-					level.add(new ItemEntity(new ResourceItem(global.Resource.sand), xt * 16 + prandom.NextInt(10) + 3, yt * 16 + prandom.NextInt(10) + 3));
+					level.add(new ItemEntity(new ResourceItem(Resource.sand), xt * 16 + prandom.NextInt(10) + 3, yt * 16 + prandom.NextInt(10) + 3));
 					return true;
 				}
 			}

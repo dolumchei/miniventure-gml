@@ -1,4 +1,4 @@
-function FoodResource(name, sprite, color, heal, staminaCost) : singleton_Resource(name, sprite, color) constructor
+function FoodResource(name, sprite, color, heal, staminaCost) : Resource(name, sprite, color) constructor
 {
 	self.heal = heal;
 	self.staminaCost = staminaCost; 

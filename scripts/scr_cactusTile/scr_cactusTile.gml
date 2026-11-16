@@ -1,10 +1,10 @@
-function CactusTile(vid) : singleton_Tile(vid, false) constructor
+function CactusTile(vid) : Tile(vid, false) constructor
 {
 	connectsToSand = true;
 	
 	render = function(screen, level, xx, yy)
 	{
-		var col = global.Color.get(20, 40, 50, level.sandColor);
+		var col = Color.get(20, 40, 50, level.sandColor);
 		screen.render(xx * 16 + 0, yy * 16 + 0, 8 + 2 * 32, col, 0);
 		screen.render(xx * 16 + 8, yy * 16 + 0, 9 + 2 * 32, col, 0);
 		screen.render(xx * 16 + 0, yy * 16 + 8, 8 + 3 * 32, col, 0);
@@ -18,13 +18,13 @@ function CactusTile(vid) : singleton_Tile(vid, false) constructor
 	{
 		var damage = level.getData(xx, yy) + dmg;
 		level.add(new SmashParticle(xx * 16 + 8, yy * 16 + 8));
-		level.add(new TextParticle(string(dmg), xx * 16 + 8, yy * 16 + 8, global.Color.get(-1, 500, 500, 500)));
+		level.add(new TextParticle(string(dmg), xx * 16 + 8, yy * 16 + 8, Color.get(-1, 500, 500, 500)));
 		if (damage >= 10)
 		{
 			var count = prandom.NextInt(2) + 1;
 			for (var i = 0; i < count; i++)
-				level.add(new ItemEntity(new ResourceItem(global.Resource.cactusFlower), xx * 16 + prandom.NextInt(10) + 3, yy * 16 + prandom.NextInt(10) + 3));
-			level.setTile(xx, yy, global.Tile.sand, 0);
+				level.add(new ItemEntity(new ResourceItem(Resource.cactusFlower), xx * 16 + prandom.NextInt(10) + 3, yy * 16 + prandom.NextInt(10) + 3));
+			level.setTile(xx, yy, Tile.sand, 0);
 		}
 		else
 			level.setData(xx, yy, damage);

@@ -33,7 +33,7 @@ function TextParticle(msg, xx, yy, col) : Entity() constructor
 	}
 	render = function(screen)
 	{
-		global.Font.draw(msg, screen, x - string_length(msg) * 4 + 1, y - round(zz) + 1, global.Color.get(-1, 0, 0, 0)); 
-		global.Font.draw(msg, screen, x - string_length(msg) * 4, y - round(zz), col); 
+		Font.draw(msg, screen, x - string_length(msg) * 4 + 1, y - round(zz) + 1, Color.get(-1, 0, 0, 0)); 
+		Font.draw(msg, screen, x - string_length(msg) * 4, y - round(zz), col); 
 	}
 }

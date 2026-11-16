@@ -12,8 +12,8 @@ function DeadMenu() : Menu() constructor
 
 	render = function(screen)
 	{
-		global.Font.renderFrame(screen, "", 1, 3, 18, 9); 
-		global.Font.draw("You died! Aww!", screen, 2 * 8, 4 * 8, global.Color.get(-1, 555, 555, 555)); 
+		Font.renderFrame(screen, "", 1, 3, 18, 9); 
+		Font.draw("You died! Aww!", screen, 2 * 8, 4 * 8, Color.get(-1, 555, 555, 555)); 
 
 		var seconds = game.gameTime div 60; 
 		var minutes = seconds div 60; 
@@ -27,10 +27,10 @@ function DeadMenu() : Menu() constructor
 		else
 			timeString = string(minutes) + "m " + (seconds < 10 ? "0" : "") + string(seconds) + "s";
 		
-		global.Font.draw("Time:", screen, 2 * 8, 5 * 8, global.Color.get(-1, 555, 555, 555));
-		global.Font.draw(timeString, screen, (2 + 5) * 8, 5 * 8, global.Color.get(-1, 550, 550, 550));
-		global.Font.draw("Score:", screen, 2 * 8, 6 * 8, global.Color.get(-1, 555, 555, 555));
-		global.Font.draw(string(game.player.scoreValue), screen, (2 + 6) * 8, 6 * 8, global.Color.get(-1, 550, 550, 550));
-		global.Font.draw("Press C to lose", screen, 2 * 8, 8 * 8, global.Color.get(-1, 333, 333, 333));
+		Font.draw("Time:", screen, 2 * 8, 5 * 8, Color.get(-1, 555, 555, 555));
+		Font.draw(timeString, screen, (2 + 5) * 8, 5 * 8, Color.get(-1, 550, 550, 550));
+		Font.draw("Score:", screen, 2 * 8, 6 * 8, Color.get(-1, 555, 555, 555));
+		Font.draw(string(game.player.scoreValue), screen, (2 + 6) * 8, 6 * 8, Color.get(-1, 550, 550, 550));
+		Font.draw("Press C to lose", screen, 2 * 8, 8 * 8, Color.get(-1, 333, 333, 333));
 	}
 }

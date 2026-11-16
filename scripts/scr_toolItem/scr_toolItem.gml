@@ -6,11 +6,11 @@ function ToolItem(type, level) : Item() constructor
 	LEVEL_NAMES = [ "Wood", "Rock", "Iron", "Gold", "Gem" ];
 
 	LEVEL_COLORS = [
-		global.Color.get(-1, 100, 321, 431),
-		global.Color.get(-1, 100, 321, 111),
-		global.Color.get(-1, 100, 321, 555),
-		global.Color.get(-1, 100, 321, 550),
-		global.Color.get(-1, 100, 321, 055)
+		Color.get(-1, 100, 321, 431),
+		Color.get(-1, 100, 321, 111),
+		Color.get(-1, 100, 321, 555),
+		Color.get(-1, 100, 321, 550),
+		Color.get(-1, 100, 321, 055)
 	];
 
 	self.type = type;
@@ -35,7 +35,7 @@ function ToolItem(type, level) : Item() constructor
 	renderInventory = function(screen, xx, yy)
 	{
 		screen.render(xx, yy, getSprite(), getColor(), 0);
-		global.Font.draw(getName(), screen, xx + 8, yy, global.Color.get(-1, 555, 555, 555));
+		Font.draw(getName(), screen, xx + 8, yy, Color.get(-1, 555, 555, 555));
 	}
 	getName = function()
 	{
@@ -48,9 +48,9 @@ function ToolItem(type, level) : Item() constructor
 	}
 	getAttackDamageBonus = function(e)
 	{
-		if (type == global.ToolType.axe)
+		if (type == ToolType.axe)
 			return (level + 1) * 2 + prandom.NextInt(4);
-		if (type == global.ToolType.sword)
+		if (type == ToolType.sword)
 			return (level + 1) * 3 + prandom.NextInt(2 + level * level * 2);
 
 		return 1;

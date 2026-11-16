@@ -13,7 +13,7 @@ function HardRockTile(vid) : RockTile(vid) constructor
 		if (is_instanceof(item, ToolItem))
 		{
 			var tool = item;
-			if (tool.type == global.ToolType.pickaxe && tool.level == 4)
+			if (tool.type == ToolType.pickaxe && tool.level == 4)
 			{
 				if (player.payStamina(4 - tool.level))
 				{

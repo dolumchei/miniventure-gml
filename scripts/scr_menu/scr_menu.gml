@@ -46,8 +46,8 @@ function Menu() constructor
 		if (renderCursor)
 		{
 			var yy = round(selected + 1 - io + yo); 
-			global.Font.draw(">", screen, (xo + 0) * 8, yy * 8, global.Color.get(5, 555, 555, 555)); 
-			global.Font.draw("<", screen, (xo + w) * 8, yy * 8, global.Color.get(5, 555, 555, 555)); 
+			Font.draw(">", screen, (xo + 0) * 8, yy * 8, Color.get(5, 555, 555, 555)); 
+			Font.draw("<", screen, (xo + w) * 8, yy * 8, Color.get(5, 555, 555, 555)); 
 		}
 	}
 }

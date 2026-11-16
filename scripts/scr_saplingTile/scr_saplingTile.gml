@@ -1,4 +1,4 @@
-function SaplingTile(vid, onType, growsTo) : singleton_Tile(vid, false) constructor
+function SaplingTile(vid, onType, growsTo) : Tile(vid, false) constructor
 {
 	self.onType = onType;
 	self.growsTo = growsTo;
@@ -10,7 +10,7 @@ function SaplingTile(vid, onType, growsTo) : singleton_Tile(vid, false) construc
 	render = function(screen, level, xx, yy)
 	{
 		onType.render(screen, level, xx, yy);
-		var col = global.Color.get(10, 40, 50, -1);
+		var col = Color.get(10, 40, 50, -1);
 		screen.render(xx * 16 + 4, yy * 16 + 4, 11 + 3 * 32, col, 0);
 	}
 	tick = function(level, xx, yy)

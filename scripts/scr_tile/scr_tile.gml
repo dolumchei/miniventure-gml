@@ -1,4 +1,4 @@
-function singleton_Tile(vid) constructor
+function Tile(vid) constructor
 {
 	prandom = new Random();
 		
@@ -33,21 +33,11 @@ function singleton_Tile(vid) constructor
 	static cloud = new CloudTile(tileId++);
 	static hardRock = new HardRockTile(tileId++);
 		
-	static ironOre = new OreTile(tileId++, singleton_Resource().ironOre);
-	static goldOre = new OreTile(tileId++, singleton_Resource().goldOre);
-	static gemOre = new OreTile(tileId++, singleton_Resource().gem);
-		
-	static cloudCactus = new CloudCactusTile(tileId++);
-		
-	singleton_postInit = function()
-	{
+	static ironOre = undefined; //new OreTile(tileId++, Resource.ironOre);
+	static goldOre = undefined; //new OreTile(tileId++, Resource.goldOre);
+	static gemOre = undefined; //new OreTile(tileId++, Resource.gem);
 	
-	}
-		
-	singleton_tick = function()
-	{
-		tickCount++;
-	}
+	static cloudCactus = new CloudCactusTile(tileId++);
 	
 	static tickCount = 0;
 	

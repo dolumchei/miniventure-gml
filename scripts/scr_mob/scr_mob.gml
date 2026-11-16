@@ -15,11 +15,10 @@ function Mob() : Entity() constructor
 	xr = 4;
 	yr = 3;
 
-	tick = function() { mob_tick(); }
 	mob_tick = function()
 	{
 		tickTime++;
-		if (level.getTile(x >> 4, y >> 4) == global.Tile.lava)
+		if (level.getTile(x >> 4, y >> 4) == Tile.lava)
 			hurt3(self, 4, dir ^ 1);
 
 		if (healthValue <= 0)
@@ -79,7 +78,7 @@ function Mob() : Entity() constructor
 	isSwimming = function()
 	{
 		var tile = level.getTile(x >> 4, y >> 4);
-		return tile == global.Tile.water || tile == global.Tile.lava;
+		return tile == Tile.water || tile == Tile.lava;
 	}
 	blocks = function(e)
 	{
@@ -99,7 +98,7 @@ function Mob() : Entity() constructor
 		if (hurtTime > 0)
 			return;
 
-		level.add(new TextParticle(string(heal), x, y, global.Color.get(-1, 50, 50, 50)));
+		level.add(new TextParticle(string(heal), x, y, Color.get(-1, 50, 50, 50)));
 		healthValue += heal;
 		if (healthValue > maxHealth)
 			healthValue = maxHealth;
@@ -114,9 +113,9 @@ function Mob() : Entity() constructor
 			var xd = level.player.x - x;
 			var yd = level.player.y - y;
 			if (xd * xd + yd * yd < 80 * 80)
-				global.Sound.monsterHurt.play();
+				Sound.monsterHurt.play();
 		}
-		level.add(new TextParticle(string(damage), x, y, global.Color.get(-1, 500, 500, 500)));
+		level.add(new TextParticle(string(damage), x, y, Color.get(-1, 500, 500, 500)));
 		healthValue -= damage;
 		if (attackDir == 0)
 			yKnockback = 6;

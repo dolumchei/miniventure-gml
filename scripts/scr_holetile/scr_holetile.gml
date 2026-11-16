@@ -1,4 +1,4 @@
-function HoleTile(vid) : singleton_Tile(vid, false) constructor
+function HoleTile(vid) : Tile(vid, false) constructor
 {
 	connectsToSand = true;
 	connectsToWater = true;
@@ -6,9 +6,9 @@ function HoleTile(vid) : singleton_Tile(vid, false) constructor
 	
 	render = function(screen, level, xx, yy)
 	{
-		var col = global.Color.get(111, 111, 110, 110);
-		var transitionColor1 = global.Color.get(3, 111, level.dirtColor - 111, level.dirtColor);
-		var transitionColor2 = global.Color.get(3, 111, level.sandColor - 110, level.sandColor);
+		var col = Color.get(111, 111, 110, 110);
+		var transitionColor1 = Color.get(3, 111, level.dirtColor - 111, level.dirtColor);
+		var transitionColor2 = Color.get(3, 111, level.sandColor - 110, level.sandColor);
 
 		var u = !level.getTile(xx, yy - 1).connectsToLiquid();
 		var d = !level.getTile(xx, yy + 1).connectsToLiquid();

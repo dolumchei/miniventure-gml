@@ -102,7 +102,7 @@ function Screen(w, h, sheet) constructor
 		}
 		
 		if (is_array(colors))
-			colors = global.Color.getArray(colors[0], colors[1], colors[2], colors[3]);
+			colors = Color.getArray(colors[0], colors[1], colors[2], colors[3]);
 		
 		surface_set_target(surface);
 		

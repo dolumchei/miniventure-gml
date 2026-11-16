@@ -1,8 +1,8 @@
-function LevelGen(w, h, featureSize, __singleton = false) constructor
+function LevelGen(w, h, featureSize) constructor
 {
-	prandom = new Random();
+	static prandom = new Random();
 	
-	if (!__singleton)
+	if (w != undefined)
 	{
 		self.w = w;
 		self.h = h;
@@ -19,7 +19,7 @@ function LevelGen(w, h, featureSize, __singleton = false) constructor
 		values[(xx & (w - 1)) + (yy & (h - 1)) * w] = value;	
 	}
 	
-	createAndValidateTopMap = function(w, h)
+	static createAndValidateTopMap = function(w, h)
 	{	
 		while (true)
 		{
@@ -30,21 +30,21 @@ function LevelGen(w, h, featureSize, __singleton = false) constructor
 			for (var i = 0; i < w * h; i++)
 				count[result[0][i] & 0xff]++;	
 			
-			if (count[global.Tile.rock.id & 0xff] < 100)
+			if (count[Tile.rock.id & 0xff] < 100)
 				continue;
-			if (count[global.Tile.sand.id & 0xff] < 100)
+			if (count[Tile.sand.id & 0xff] < 100)
 				continue;
-			if (count[global.Tile.grass.id & 0xff] < 100)
+			if (count[Tile.grass.id & 0xff] < 100)
 				continue;
-			if (count[global.Tile.tree.id & 0xff] < 100)
+			if (count[Tile.tree.id & 0xff] < 100)
 				continue;
-			if (count[global.Tile.stairsDown.id & 0xff] < 2) 
+			if (count[Tile.stairsDown.id & 0xff] < 2) 
 				continue;
 			
 			return result;
 		}
 	}
-	createAndValidateUndergroundMap = function(w, h, vdepth)
+	static createAndValidateUndergroundMap = function(w, h, vdepth)
 	{
 		while (true)
 		{
@@ -55,22 +55,22 @@ function LevelGen(w, h, featureSize, __singleton = false) constructor
 			for (var i = 0; i < w * h; i++)
 				count[result[0][i] & 0xff]++;	
 			
-			if (count[global.Tile.rock.id & 0xff] < 100)
+			if (count[Tile.rock.id & 0xff] < 100)
 				continue;
-			if (count[global.Tile.dirt.id & 0xff] < 100)
+			if (count[Tile.dirt.id & 0xff] < 100)
 				continue;
-			if (count[(global.Tile.ironOre.id & 0xff) + vdepth - 1] < 20)
+			if (count[(Tile.ironOre.id & 0xff) + vdepth - 1] < 20)
 				continue;
 			if (vdepth < 3)
 			{
-				if (count[global.Tile.stairsDown.id & 0xff] < 2)
+				if (count[Tile.stairsDown.id & 0xff] < 2)
 					continue;
 			}
 			
 			return result;
 		}
 	}
-	createAndValidateSkyMap = function(w, h)
+	static createAndValidateSkyMap = function(w, h)
 	{
 		while (true)
 		{
@@ -81,17 +81,19 @@ function LevelGen(w, h, featureSize, __singleton = false) constructor
 			for (var i = 0; i < w * h; i++)
 				count[result[0][i] & 0xff]++;	
 			
-			if (count[global.Tile.cloud.id & 0xff] < 2000)
+			if (count[Tile.cloud.id & 0xff] < 2000)
 				continue;
-			if (count[global.Tile.stairsDown.id & 0xff] < 2)
+			if (count[Tile.stairsDown.id & 0xff] < 2)
 				continue;
 			
 			return result;
 		}
 	}
 	
-	createTopMap = function(w, h)
+	static createTopMap = function(w, h)
 	{	
+		prandom = new Random();
+		
 		var mnoise1 = new LevelGen(w, h, 16);
 		var mnoise2 = new LevelGen(w, h, 16);
 		var mnoise3 = new LevelGen(w, h, 16);
@@ -123,11 +125,11 @@ function LevelGen(w, h, featureSize, __singleton = false) constructor
 				dist = dist * dist * dist * dist;
 				val = val + 1 - dist * 20;
 				if (val < -0.5) 
-					map[i] = global.Tile.water.id;
+					map[i] = Tile.water.id;
 				else if (val > 0.5 && mval < -1.5)
-					map[i] = global.Tile.rock.id;
+					map[i] = Tile.rock.id;
 				else
-					map[i] = global.Tile.grass.id;
+					map[i] = Tile.grass.id;
 			}
 		}
 		
@@ -149,8 +151,8 @@ function LevelGen(w, h, featureSize, __singleton = false) constructor
 						{
 							if (xx >= 0 && yy >= 0 && xx < w && yy < h)
 							{
-								if (map[xx + yy * w] == global.Tile.grass.id)
-									map[xx + yy * w] = global.Tile.sand.id;
+								if (map[xx + yy * w] == Tile.grass.id)
+									map[xx + yy * w] = Tile.sand.id;
 							}
 						}
 					}
@@ -168,8 +170,8 @@ function LevelGen(w, h, featureSize, __singleton = false) constructor
 				var yy = yy + prandom.NextInt(15) - prandom.NextInt(15);
 				if (xx >= 0 && yy >= 0 && xx < w && yy < h)
 				{
-					if (map[xx + yy * w] == global.Tile.grass.id)
-						map[xx + yy * w] = global.Tile.tree.id;
+					if (map[xx + yy * w] == Tile.grass.id)
+						map[xx + yy * w] = Tile.tree.id;
 				}
 			}
 		}
@@ -185,9 +187,9 @@ function LevelGen(w, h, featureSize, __singleton = false) constructor
 				var yy = yy + prandom.NextInt(5) - prandom.NextInt(5);
 				if (xx >= 0 && yy >= 0 && xx < w && yy < h)
 				{
-					if (map[xx + yy * w] == global.Tile.grass.id)
+					if (map[xx + yy * w] == Tile.grass.id)
 					{
-						map[xx + yy * w] = global.Tile.flower.id;
+						map[xx + yy * w] = Tile.flower.id;
 						data[xx + yy * w] = (col + prandom.NextInt(4) * 16);
 					}
 				}
@@ -200,8 +202,8 @@ function LevelGen(w, h, featureSize, __singleton = false) constructor
 			var yy = prandom.NextInt(h);
 			if (xx >= 0 && yy >= 0 && xx < w && yy < h)
 			{
-				if (map[xx + yy * w] == global.Tile.sand.id)
-					map[xx + yy * w] = global.Tile.cactus.id;
+				if (map[xx + yy * w] == Tile.sand.id)
+					map[xx + yy * w] = Tile.cactus.id;
 			}
 		}
 
@@ -218,7 +220,7 @@ function LevelGen(w, h, featureSize, __singleton = false) constructor
 		    {
 		        for (var x2 = xx - 1; x2 <= xx + 1; x2++)
 		        {
-		            if (map[x2 + y2 * w] != global.Tile.rock.id)
+		            if (map[x2 + y2 * w] != Tile.rock.id)
 		            {
 		                valid = false;
 		                break;
@@ -232,7 +234,7 @@ function LevelGen(w, h, featureSize, __singleton = false) constructor
 		    if (!valid)
 		        continue;
 
-		    map[xx + yy * w] = global.Tile.stairsDown.id;
+		    map[xx + yy * w] = Tile.stairsDown.id;
 		    count++;
 
 		    if (count == 4)
@@ -241,7 +243,7 @@ function LevelGen(w, h, featureSize, __singleton = false) constructor
 
 		return [ map, data ];
 	}
-	createUndergroundMap = function(w, h, vdepth)
+	static createUndergroundMap = function(w, h, vdepth)
 	{		
 		var mnoise1 = new LevelGen(w, h, 16);
 		var mnoise2 = new LevelGen(w, h, 16);  
@@ -292,14 +294,14 @@ function LevelGen(w, h, featureSize, __singleton = false) constructor
 				if (val > -2 && wval < -2.0 + (vdepth) / 2 * 3)
 				{
 					if (vdepth > 2)
-						map[i] = global.Tile.lava.id;
+						map[i] = Tile.lava.id;
 					else
-						map[i] = global.Tile.water.id;
+						map[i] = Tile.water.id;
 				} 
 				else if (val > -2 && (mval < -1.7 || nval < -1.4))
-					map[i] = global.Tile.dirt.id;
+					map[i] = Tile.dirt.id;
 				else
-					map[i] = global.Tile.rock.id;
+					map[i] = Tile.rock.id;
 			}
 		}
 
@@ -314,8 +316,8 @@ function LevelGen(w, h, featureSize, __singleton = false) constructor
 				var yy = yv + prandom.NextInt(5) - prandom.NextInt(5);
 				if (xx >= r && yy >= r && xx < w - r && yy < h - r)
 				{
-					if (map[xx + yy * w] == global.Tile.rock.id)
-						map[xx + yy * w] = ((global.Tile.ironOre.id & 0xff) + vdepth - 1);
+					if (map[xx + yy * w] == Tile.rock.id)
+						map[xx + yy * w] = ((Tile.ironOre.id & 0xff) + vdepth - 1);
 				}
 			}
 		}
@@ -334,7 +336,7 @@ function LevelGen(w, h, featureSize, __singleton = false) constructor
 				{
 					for (var x2 = xx - 1; x2 <= xx + 1; x2++)
 					{
-						if (map[x2 + y2 * w] != global.Tile.rock.id)
+						if (map[x2 + y2 * w] != Tile.rock.id)
 						{
 							valid = false;
 							break;
@@ -348,7 +350,7 @@ function LevelGen(w, h, featureSize, __singleton = false) constructor
 				if (!valid)
 					continue;
 
-				map[xx + yy * w] = global.Tile.stairsDown.id;
+				map[xx + yy * w] = Tile.stairsDown.id;
 				count++;
 
 				if (count == 4)
@@ -358,7 +360,7 @@ function LevelGen(w, h, featureSize, __singleton = false) constructor
 
 		return [ map, data ];
 	}
-	createSkyMap = function(w, h)
+	static createSkyMap = function(w, h)
 	{
 		var noise1 = new LevelGen(w, h, 8); 
 		var noise2 = new LevelGen(w, h, 8); 
@@ -385,9 +387,9 @@ function LevelGen(w, h, featureSize, __singleton = false) constructor
 				val = val + 1 - dist * 20;
 
 				if (val < -0.25)
-					map[i] = global.Tile.infiniteFall.id;
+					map[i] = Tile.infiniteFall.id;
 				else
-					map[i] = global.Tile.cloud.id;
+					map[i] = Tile.cloud.id;
 			}
 		}
 
@@ -403,7 +405,7 @@ function LevelGen(w, h, featureSize, __singleton = false) constructor
 			{
 				for (var xx = xv - 1; xx <= xv + 1; xx++)
 				{
-					if (map[xx + yy * w] != global.Tile.cloud.id)
+					if (map[xx + yy * w] != Tile.cloud.id)
 					{
 						valid = false;
 						break;
@@ -416,7 +418,7 @@ function LevelGen(w, h, featureSize, __singleton = false) constructor
 			if (!valid)
 				continue;
 
-			map[xv + yv * w] = global.Tile.cloudCactus.id;
+			map[xv + yv * w] = Tile.cloudCactus.id;
 		}
 
 		var count = 0;
@@ -431,7 +433,7 @@ function LevelGen(w, h, featureSize, __singleton = false) constructor
 			{
 				for (var xx = xv - 1; xx <= xv + 1; xx++)
 				{
-					if (map[xx + yy * w] != global.Tile.cloud.id)
+					if (map[xx + yy * w] != Tile.cloud.id)
 					{
 						valid = false;
 						break;
@@ -444,7 +446,7 @@ function LevelGen(w, h, featureSize, __singleton = false) constructor
 			if (!valid)
 				continue;
 
-			map[xv + yv * w] = global.Tile.stairsDown.id;
+			map[xv + yv * w] = Tile.stairsDown.id;
 			count++;
 			if (count == 2)
 				break;
@@ -452,7 +454,7 @@ function LevelGen(w, h, featureSize, __singleton = false) constructor
 		return [ map, data ];
 	}
 	
-	if (!__singleton)
+	if (w != undefined)
 	{
 		for (var yy = 0; yy < w; yy += featureSize)
 		{
@@ -503,3 +505,4 @@ function LevelGen(w, h, featureSize, __singleton = false) constructor
 		}
 	}
 }
+new LevelGen();

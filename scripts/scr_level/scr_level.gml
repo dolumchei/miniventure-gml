@@ -25,63 +25,10 @@ function Level(w, h, level, parentLevel) constructor
 	self.w = w;
 	self.h = h;
 	self.parentLevel = parentLevel;
-	
-	maps = undefined;
-	
-	if (level == 0)
-		maps = global.singleton_LevelGen.createAndValidateTopMap(w, h);
-	else if (level < 0)
-	{
-		maps = global.singleton_LevelGen.createAndValidateUndergroundMap(w, h, -level);
-		monsterDensity = 4;	
-	}
-	else
-	{
-		maps = global.singleton_LevelGen.createAndValidateSkyMap(w, h);
-		monsterDensity = 4;
-	}
-	
-	tiles = maps[0];
-	data = maps[1];
-	
-	if (!is_undefined(parentLevel))
-	{
-		for (var yy = 0; yy < h; yy++)
-		{
-			for (var xx = 0; xx < w; xx++)
-			{
-				if (parentLevel.getTile(xx, yy) == global.Tile.stairsDown)
-				{
-					setTile(xx, yy, global.Tile.stairsUp, 0);
-					
-					var tile = global.Tile.dirt;
-					if (level == 0)
-						tile = global.Tile.hardRock;
-						
-					setTile(xx - 1, yy, tile, 0);
-					setTile(xx + 1, yy, tile, 0);
-					setTile(xx, yy - 1, tile, 0);
-					setTile(xx, yy + 1, tile, 0);
-					setTile(xx - 1, yy - 1, tile, 0);
-					setTile(xx - 1, yy + 1, tile, 0);
-					setTile(xx + 1, yy - 1, tile, 0);
-					setTile(xx + 1, yy + 1, tile, 0);
-				}
-			}
-		}
-	}
-	
+
 	entitiesInTiles = array_create(w * h);
 	for (var i = 0; i < w * h; i++)
 		entitiesInTiles[i] = [ ];
-		
-	if (level == 1)
-	{
-		var aw = new AirWizard();
-		aw.x = w * 8;
-		aw.y = h * 8;
-		add(aw);
-	}
 	
 	renderBackground = function(screen, xScroll, yScroll)
 	{
@@ -185,9 +132,9 @@ function Level(w, h, level, parentLevel) constructor
 	getTile = function(xx, yy)
 	{
 		if (xx < 0 || yy < 0 || xx >= w || yy >= h)
-			return global.Tile.rock;
+			return Tile.rock;
 			
-		return global.Tile.tiles[tiles[xx + yy * w]];
+		return Tile.tiles[tiles[xx + yy * w]];
 	}
 	
 	setTile = function(xx, yy, t, dataVal)
@@ -281,6 +228,57 @@ function Level(w, h, level, parentLevel) constructor
 					add(mob);
 			}
 		}
+	}
+	
+	if (!is_undefined(parentLevel))
+	{
+		for (var yy = 0; yy < h; yy++)
+		{
+			for (var xx = 0; xx < w; xx++)
+			{
+				if (parentLevel.getTile(xx, yy) == Tile.stairsDown)
+				{
+					setTile(xx, yy, Tile.stairsUp, 0);
+					
+					var tile = Tile.dirt;
+					if (level == 0)
+						tile = Tile.hardRock;
+						
+					setTile(xx - 1, yy, tile, 0);
+					setTile(xx + 1, yy, tile, 0);
+					setTile(xx, yy - 1, tile, 0);
+					setTile(xx, yy + 1, tile, 0);
+					setTile(xx - 1, yy - 1, tile, 0);
+					setTile(xx - 1, yy + 1, tile, 0);
+					setTile(xx + 1, yy - 1, tile, 0);
+					setTile(xx + 1, yy + 1, tile, 0);
+				}
+			}
+		}
+	}
+	
+	maps = undefined;
+	
+	if (level == 0)
+		maps = LevelGen.createAndValidateTopMap(w, h);
+	else if (level < 0)
+		maps = LevelGen.createAndValidateUndergroundMap(w, h, -level);
+	else
+		maps = LevelGen.createAndValidateSkyMap(w, h);
+	
+	if (level != 0 || level < 0)
+		monsterDensity = 4;	
+	
+	tiles = maps[0];
+	data = maps[1];
+	
+		
+	if (level == 1)
+	{
+		var aw = new AirWizard();
+		aw.x = w * 8;
+		aw.y = h * 8;
+		add(aw);
 	}
 	
 	t = 0;

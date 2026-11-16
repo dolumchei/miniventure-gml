@@ -1,17 +1,14 @@
-function singleton_Sound(name, __singleton = false) constructor
+function Sound(name) constructor
 {
-	if (__singleton)
-	{
-		playerHurt = new singleton_Sound(sfx_playerhurt);
-		playerDeath = new singleton_Sound(sfx_death);
-		monsterHurt = new singleton_Sound(sfx_monsterhurt);
-		test = new singleton_Sound(sfx_test);
-		pickup = new singleton_Sound(sfx_pickup);
-		bossdeath = new singleton_Sound(sfx_bossdeath);
-		craft = new singleton_Sound(sfx_craft);		
-	}
-	else
-		clip = name;
+	static playerHurt = new Sound(sfx_playerhurt);
+	static playerDeath = new Sound(sfx_death);
+	static monsterHurt = new Sound(sfx_monsterhurt);
+	static test = new Sound(sfx_test);
+	static pickup = new Sound(sfx_pickup);
+	static bossdeath = new Sound(sfx_bossdeath);
+	static craft = new Sound(sfx_craft);		
+	
+	clip = name;
 		
 	play = function()
 	{

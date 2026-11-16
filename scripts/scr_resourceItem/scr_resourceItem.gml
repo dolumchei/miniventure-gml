@@ -18,11 +18,11 @@ function ResourceItem(resource, count = 1) : Item() constructor
 	renderInventory = function(screen, xx, yy)
 	{
 		screen.render(xx, yy, resource.sprite, getColor(), 0);
-		global.Font.draw(resource.name, screen, xx + 32, yy, global.Color.get(-1, 555, 555, 555));
+		Font.draw(resource.name, screen, xx + 32, yy, Color.get(-1, 555, 555, 555));
 		var cc = count;
 		if (cc > 999)
 			cc = 999;
-		global.Font.draw(string(cc), screen, xx + 8, yy, global.Color.get(-1, 444, 444, 444));
+		Font.draw(string(cc), screen, xx + 8, yy, Color.get(-1, 444, 444, 444));
 	}
 	getName = function()
 	{

@@ -67,15 +67,15 @@ function Zombie(lvl) : Mob() constructor
 		var xo = x - 8;
 		var yo = y - 11;
 
-		var col = global.Color.get(-1, 10, 252, 050);
+		var col = Color.get(-1, 10, 252, 050);
 		if (lvl == 2)
-			col = global.Color.get(-1, 100, 522, 050);
+			col = Color.get(-1, 100, 522, 050);
 		if (lvl == 3)
-			col = global.Color.get(-1, 111, 444, 050);
+			col = Color.get(-1, 111, 444, 050);
 		if (lvl == 4) 
-			col = global.Color.get(-1, 000, 111, 020);
+			col = Color.get(-1, 000, 111, 020);
 		if (hurtTime > 0)
-			col = global.Color.get(-1, 555, 555, 555);
+			col = Color.get(-1, 555, 555, 555);
 
 		screen.render(xo + 8 * flip1, yo + 0, xt + yt * 32, col, flip1);
 		screen.render(xo + 8 - 8 * flip1, yo + 0, xt + 1 + yt * 32, col, flip1);
@@ -95,7 +95,7 @@ function Zombie(lvl) : Mob() constructor
 
 		var count = prandom.NextInt(2) + 1;
 		for (var i = 0; i < count; i++)
-			level.add(new ItemEntity(new ResourceItem(global.Resource.cloth), x + prandom.NextInt(11) - 5, y + prandom.NextInt(11) - 5));
+			level.add(new ItemEntity(new ResourceItem(Resource.cloth), x + prandom.NextInt(11) - 5, y + prandom.NextInt(11) - 5));
 
 		if (level.player != undefined)
 			level.player.scoreValue += 50 * lvl;

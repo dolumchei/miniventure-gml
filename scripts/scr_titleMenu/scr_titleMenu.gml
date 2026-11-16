@@ -21,7 +21,7 @@ function TitleMenu() : Menu() constructor
 		{ 
 			if (selected == 0)
 			{ 
-				global.Sound.test.play(); 
+				Sound.test.play(); 
 				game.resetGame(); 
 				game.setMenu(undefined); 
 			}
@@ -37,7 +37,7 @@ function TitleMenu() : Menu() constructor
 		screen.clear(#0A0A0A);
 		var h = 2; 
 		var w = 13; 
-		var titleColor = global.Color.get(0, 010, 131, 551); 
+		var titleColor = Color.get(0, 010, 131, 551); 
 		var xo = (screen.w - w * 8) / 2; 
 		var yo = 24; 
 		for (var yy = 0; yy < h; yy++)
@@ -48,15 +48,15 @@ function TitleMenu() : Menu() constructor
 		for (var i = 0; i < array_length(options); i++)
 		{ 
 			var msg = options[i]; 
-			var col = global.Color.get(0, 222, 222, 222); 
+			var col = Color.get(0, 222, 222, 222); 
 			if (i == selected)
 			{ 
 				msg = "> " + msg + " <"; 
-				col = global.Color.get(0, 555, 555, 555); 
+				col = Color.get(0, 555, 555, 555); 
 			}
-			global.Font.draw(msg, screen, (screen.w - string_length(msg) * 8) / 2, (8 + i) * 8, col); 
+			Font.draw(msg, screen, (screen.w - string_length(msg) * 8) / 2, (8 + i) * 8, col); 
 		}
 
-		global.Font.draw("(Arrow keys,X and C)", screen, 0, screen.h - 8, global.Color.get(0, 111, 111, 111)); 
+		Font.draw("(Arrow keys,X and C)", screen, 0, screen.h - 8, Color.get(0, 111, 111, 111)); 
 	}
 }

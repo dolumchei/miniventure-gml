@@ -1,7 +1,7 @@
 function Chest() : Furniture("Chest") constructor
 {
 	inventory = new Inventory();
-	col = global.Color.get(-1, 110, 331, 552); 
+	col = Color.get(-1, 110, 331, 552); 
 	sprite = 1; 
 
 	use2 = function(player, attackDir)

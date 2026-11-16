@@ -1,11 +1,11 @@
-function OreTile(vid, toDrop) : singleton_Tile(vid, false) constructor
+function OreTile(vid, toDrop) : Tile(vid, false) constructor
 {
 	self.toDrop = toDrop;
 	color = toDrop.color;
 
 	render = function(screen, level, xx, yy)
 	{
-		color = global.Color.get(level.dirtColor, toDrop.color[1], toDrop.color[2], toDrop.color[3]);
+		color = Color.get(level.dirtColor, toDrop.color[1], toDrop.color[2], toDrop.color[3]);
 		
 		screen.render(xx * 16 + 0, yy * 16 + 0, 17 + 1 * 32, color, 0);
 		screen.render(xx * 16 + 8, yy * 16 + 0, 18 + 1 * 32, color, 0);
@@ -25,7 +25,7 @@ function OreTile(vid, toDrop) : singleton_Tile(vid, false) constructor
 		if (is_instanceof(item, ToolItem))
 		{
 			var tool = item;
-			if (tool.type == global.ToolType.pickaxe)
+			if (tool.type == ToolType.pickaxe)
 			{
 				if (player.payStamina(6 - tool.level))
 				{
@@ -40,13 +40,13 @@ function OreTile(vid, toDrop) : singleton_Tile(vid, false) constructor
 	{
 		var damage = level.getData(xx, yy) + 1;
 		level.add(new SmashParticle(xx * 16 + 8, yy * 16 + 8));
-		level.add(new TextParticle(string(dmg), xx * 16 + 8, yy * 16 + 8, global.Color.get(-1, 500, 500, 500)));
+		level.add(new TextParticle(string(dmg), xx * 16 + 8, yy * 16 + 8, Color.get(-1, 500, 500, 500)));
 		if (dmg > 0)
 		{
 			var count = prandom.NextInt(2);
 			if (damage >= prandom.NextInt(10) + 3)
 			{
-				level.setTile(xx, yy, global.Tile.dirt, 0);
+				level.setTile(xx, yy, Tile.dirt, 0);
 				count += 2;
 			} 
 			else

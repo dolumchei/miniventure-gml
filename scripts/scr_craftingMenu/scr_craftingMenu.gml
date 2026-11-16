@@ -45,7 +45,7 @@ function CraftingMenu(recipes, player) : Menu() constructor
 			{ 
 				r.deductCost(player); 
 				r.craft(player); 
-				global.Sound.craft.play(); 
+				Sound.craft.play(); 
 			}
 			for (var i = 0; i < array_length(recipes); i++) 
 				recipes[i].checkCanCraft(player); 
@@ -54,9 +54,9 @@ function CraftingMenu(recipes, player) : Menu() constructor
 
 	render = function(screen)
 	{
-		global.Font.renderFrame(screen, "Have", 12, 1, 19, 3); 
-		global.Font.renderFrame(screen, "Cost", 12, 4, 19, 11); 
-		global.Font.renderFrame(screen, "Crafting", 0, 1, 11, 11); 
+		Font.renderFrame(screen, "Have", 12, 1, 19, 3); 
+		Font.renderFrame(screen, "Cost", 12, 4, 19, 11); 
+		Font.renderFrame(screen, "Crafting", 0, 1, 11, 11); 
 		renderItemList(screen, 0, 1, 11, 11, recipes, selected); 
 
 		if (array_length(recipes) > 0)
@@ -65,7 +65,7 @@ function CraftingMenu(recipes, player) : Menu() constructor
 			var hasResultItems = player.inventory.count(recipe.resultTemplate); 
 			var xo = 13 * 8; 
 			screen.render(xo, 2 * 8, recipe.resultTemplate.getSprite(), recipe.resultTemplate.getColor(), 0); 
-			global.Font.draw(string(hasResultItems), screen, xo + 8, 2 * 8, global.Color.get(-1, 555, 555, 555)); 
+			Font.draw(string(hasResultItems), screen, xo + 8, 2 * 8, Color.get(-1, 555, 555, 555)); 
 
 			var costs = recipe.costs; 
 			for (var i = 0; i < array_length(costs); i++)
@@ -77,12 +77,12 @@ function CraftingMenu(recipes, player) : Menu() constructor
 				if (is_instanceof(item, ResourceItem))
 					requiredAmt = (item).count; 
 				var has = player.inventory.count(item); 
-				var color = global.Color.get(-1, 555, 555, 555); 
+				var color = Color.get(-1, 555, 555, 555); 
 				if (has < requiredAmt)
-					color = global.Color.get(-1, 222, 222, 222); 
+					color = Color.get(-1, 222, 222, 222); 
 				if (has > 99)
 					has = 99; 
-				global.Font.draw(string(requiredAmt) + "/" + string(has), screen, xo + 8, yo, color); 
+				Font.draw(string(requiredAmt) + "/" + string(has), screen, xo + 8, yo, color); 
 			}
 		}
 		

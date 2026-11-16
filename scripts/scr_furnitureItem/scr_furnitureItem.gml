@@ -22,7 +22,7 @@ function FurnitureItem(furniture) : Item() constructor
 	renderInventory = function(screen, xx, yy)
 	{
 		screen.render(xx, yy, getSprite(), getColor(), 0); 
-		global.Font.draw(furniture.name, screen, xx + 8, yy, global.Color.get(-1, 555, 555, 555)); 
+		Font.draw(furniture.name, screen, xx + 8, yy, Color.get(-1, 555, 555, 555)); 
 	}
 	onTake = function(itemEntity) { }
 	canAttack = function()

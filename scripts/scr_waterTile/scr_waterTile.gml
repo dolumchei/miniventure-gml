@@ -1,6 +1,6 @@
 global.waterRandom = array_new_2d(1024, 1024, undefined);
 
-function WaterTile(vid) : singleton_Tile(vid, false) constructor
+function WaterTile(vid) : Tile(vid, false) constructor
 {
 	connectsToSand = true;
 	connectsToWater = true;
@@ -14,9 +14,9 @@ function WaterTile(vid) : singleton_Tile(vid, false) constructor
 		var randValues = global.waterRandom[xx][yy][1];
 		wRandom.SetSeed((tickCount + (xx / 2 - yy) * 4311) / 10 * 54687121 + xx * 3271612 + yy * 3412987161);
 		
-		var col = global.Color.get(005, 005, 115, 115);
-		var transitionColor1 = global.Color.get(3, 005, level.dirtColor - 111, level.dirtColor);
-		var transitionColor2 = global.Color.get(3, 005, level.sandColor - 110, level.sandColor);
+		var col = Color.get(005, 005, 115, 115);
+		var transitionColor1 = Color.get(3, 005, level.dirtColor - 111, level.dirtColor);
+		var transitionColor2 = Color.get(3, 005, level.sandColor - 110, level.sandColor);
 
 		var u = !level.getTile(xx, yy - 1).connectsToWater;
 		var d = !level.getTile(xx, yy + 1).connectsToWater;
@@ -87,7 +87,7 @@ function WaterTile(vid) : singleton_Tile(vid, false) constructor
 		else
 			yn += prandom.NextInt(2) * 2 - 1;
 
-		if (level.getTile(xn, yn) == global.Tile.hole)
+		if (level.getTile(xn, yn) == Tile.hole)
 			level.setTile(xn, yn, self, 0);
 	}
 }

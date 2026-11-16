@@ -1,12 +1,12 @@
-function TreeTile(vid) : singleton_Tile(vid, false) constructor
+function TreeTile(vid) : Tile(vid, false) constructor
 {
 	connectsToGrass = true;
 	
 	render = function(screen, level, xx, yy)
 	{
-		var col = global.Color.get(10, 30, 151, level.grassColor);
-		var barkCol1 = global.Color.get(10, 30, 430, level.grassColor);
-		var barkCol2 = global.Color.get(10, 30, 320, level.grassColor);
+		var col = Color.get(10, 30, 151, level.grassColor);
+		var barkCol1 = Color.get(10, 30, 430, level.grassColor);
+		var barkCol2 = Color.get(10, 30, 320, level.grassColor);
 
 		var u = level.getTile(xx, yy - 1) == self;
 		var l = level.getTile(xx - 1, yy) == self;
@@ -56,7 +56,7 @@ function TreeTile(vid) : singleton_Tile(vid, false) constructor
 		if (is_instanceof(item, ToolItem))
 		{
 			var tool = item;
-			if (tool.type == global.ToolType.axe)
+			if (tool.type == ToolType.axe)
 			{
 				if (player.payStamina(4 - tool.level))
 				{
@@ -71,20 +71,20 @@ function TreeTile(vid) : singleton_Tile(vid, false) constructor
 	{
 		var count = prandom.NextInt(10) == 0 ? 1 : 0;
 		for (var i = 0; i < count; i++)
-			level.add(new ItemEntity(new ResourceItem(global.Resource.apple), xx * 16 + prandom.NextInt(10) + 3, yy * 16 + prandom.NextInt(10) + 3));
+			level.add(new ItemEntity(new ResourceItem(Resource.apple), xx * 16 + prandom.NextInt(10) + 3, yy * 16 + prandom.NextInt(10) + 3));
 
 		var damage = level.getData(xx, yy) + dmg;
 		level.add(new SmashParticle(xx * 16 + 8, yy * 16 + 8));
-		level.add(new TextParticle(string(dmg), xx * 16 + 8, yy * 16 + 8, global.Color.get(-1, 500, 500, 500)));
+		level.add(new TextParticle(string(dmg), xx * 16 + 8, yy * 16 + 8, Color.get(-1, 500, 500, 500)));
 		if (damage >= 20)
 		{
 			var count = prandom.NextInt(2) + 1;
 			for (var i = 0; i < count; i++)
-				level.add(new ItemEntity(new ResourceItem(global.Resource.wood), xx * 16 + prandom.NextInt(10) + 3, yy * 16 + prandom.NextInt(10) + 3));
+				level.add(new ItemEntity(new ResourceItem(Resource.wood), xx * 16 + prandom.NextInt(10) + 3, yy * 16 + prandom.NextInt(10) + 3));
 			count = prandom.NextInt(prandom.NextInt(4) + 1);
 			for (var i = 0; i < count; i++)
-				level.add(new ItemEntity(new ResourceItem(global.Resource.acorn), xx * 16 + prandom.NextInt(10) + 3, yy * 16 + prandom.NextInt(10) + 3));
-			level.setTile(xx, yy, global.Tile.grass, 0);
+				level.add(new ItemEntity(new ResourceItem(Resource.acorn), xx * 16 + prandom.NextInt(10) + 3, yy * 16 + prandom.NextInt(10) + 3));
+			level.setTile(xx, yy, Tile.grass, 0);
 		} 
 		else
 			level.setData(xx, yy, damage);

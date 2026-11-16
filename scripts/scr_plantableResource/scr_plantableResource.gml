@@ -1,4 +1,4 @@
-function PlantableResource(name, sprite, color, targetTile, sourceTiles) : singleton_Resource(name, sprite, color) constructor
+function PlantableResource(name, sprite, color, targetTile, sourceTiles) : Resource(name, sprite, color) constructor
 {
 	self.sourceTiles = sourceTiles;
 	if (!is_array(self.sourceTiles))

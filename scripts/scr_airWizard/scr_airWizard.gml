@@ -123,28 +123,28 @@ function AirWizard() : Mob() constructor
 		var xo = x - 8;
 		var yo = y - 11; 
 
-		var col1 = global.Color.get(-1, 100, 500, 555);
-		var col2 = global.Color.get(-1, 100, 500, 532);
+		var col1 = Color.get(-1, 100, 500, 555);
+		var col2 = Color.get(-1, 100, 500, 532);
 		if (healthValue < 200)
 		{
 			if (tickTime / 3 % 2 == 0)
 			{
-				col1 = global.Color.get(-1, 500, 100, 555);
-				col2 = global.Color.get(-1, 500, 100, 532);
+				col1 = Color.get(-1, 500, 100, 555);
+				col2 = Color.get(-1, 500, 100, 532);
 			}
 		}
 		else if (healthValue < 1000)
 		{
 			if (tickTime / 5 % 4 == 0)
 			{
-				col1 = global.Color.get(-1, 500, 100, 555);
-				col2 = global.Color.get(-1, 500, 100, 532);
+				col1 = Color.get(-1, 500, 100, 555);
+				col2 = Color.get(-1, 500, 100, 532);
 			}
 		}
 		if (hurtTime > 0)
 		{
-			col1 = global.Color.get(-1, 555, 555, 555);
-			col2 = global.Color.get(-1, 555, 555, 555);
+			col1 = Color.get(-1, 555, 555, 555);
+			col2 = Color.get(-1, 555, 555, 555);
 		}
 
 		screen.render(xo + 8 * flip1, yo + 0, xt + yt * 32, col1, flip1);
@@ -166,7 +166,7 @@ function AirWizard() : Mob() constructor
 			level.player.scoreValue += 1000;
 			level.player.gameWon();
 		}
-		global.Sound.bossdeath.play();
+		Sound.bossdeath.play();
 	}
 
 }

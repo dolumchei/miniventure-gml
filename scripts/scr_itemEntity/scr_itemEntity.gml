@@ -60,7 +60,7 @@ function ItemEntity(item, xv, yv) : Entity() constructor
 			if (time / 6 % 2 <= 1)
 				return; 
 		}
-		screen.render(x - 4, y - 4, item.getSprite(), global.Color.get(-1, 0, 0, 0), 0); 
+		screen.render(x - 4, y - 4, item.getSprite(), Color.get(-1, 0, 0, 0), 0); 
 		screen.render(x - 4, y - 4 - round(zz), item.getSprite(), item.getColor(), 0); 
 	}
 	touchedBy = function(entity)
@@ -70,7 +70,7 @@ function ItemEntity(item, xv, yv) : Entity() constructor
 	}
 	take = function(player)
 	{
-		global.Sound.pickup.play(); 
+		Sound.pickup.play(); 
 		player.scoreValue++; 
 		item.onTake(self); 
 		remove(); 

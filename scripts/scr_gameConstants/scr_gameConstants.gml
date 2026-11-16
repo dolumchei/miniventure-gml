@@ -1,17 +1,4 @@
-global.Sound = new singleton_Sound(undefined, true);
-
 global.InputHandler = new singleton_InputHandler();
-global.Color = new singleton_Color();
-global.Font = new singleton_Font();
-global.ToolType = new singleton_ToolType(undefined, undefined, true);
-
-global.Tile = new singleton_Tile(undefined, true);
-global.Resource = new singleton_Resource(undefined, undefined, undefined, true);
-global.singleton_LevelGen = new LevelGen(undefined, undefined, undefined, true);
-
-global.Tile.singleton_postInit();
-
-global.Crafting = new singleton_Crafting();
 
 global.u_PaletteColor = 
 [
@@ -36,3 +23,19 @@ global.config_debugMenu = false;
 
 #macro BIT_MIRROR_X 0x01
 #macro BIT_MIRROR_Y 0x02
+
+new Color();
+new Font();
+
+new Tile();
+new Resource();
+
+Tile.ironOre = new OreTile(Tile.tileId++, Resource.ironOre);
+Tile.goldOre = new OreTile(Tile.tileId++, Resource.goldOre);
+Tile.gemOre = new OreTile(Tile.tileId++, Resource.gem);
+
+new LevelGen();
+new ToolType();
+new Crafting();
+
+new Sound();

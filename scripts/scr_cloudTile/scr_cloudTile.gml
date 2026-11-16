@@ -1,19 +1,19 @@
-function CloudTile(vid) : singleton_Tile(vid, false) constructor
+function CloudTile(vid) : Tile(vid, false) constructor
 {	
 	render = function(screen, level, xx, yy)
 	{
-		var col = global.Color.get(444, 444, 555, 555);
-		var transitionColor = global.Color.get(333, 444, 555, -1);
+		var col = Color.get(444, 444, 555, 555);
+		var transitionColor = Color.get(333, 444, 555, -1);
 
-		var u = level.getTile(xx, yy - 1) == global.Tile.infiniteFall;
-		var d = level.getTile(xx, yy + 1) == global.Tile.infiniteFall;
-		var l = level.getTile(xx - 1, yy) == global.Tile.infiniteFall;
-		var r = level.getTile(xx + 1, yy) == global.Tile.infiniteFall;
+		var u = level.getTile(xx, yy - 1) == Tile.infiniteFall;
+		var d = level.getTile(xx, yy + 1) == Tile.infiniteFall;
+		var l = level.getTile(xx - 1, yy) == Tile.infiniteFall;
+		var r = level.getTile(xx + 1, yy) == Tile.infiniteFall;
 
-		var ul = level.getTile(xx - 1, yy - 1) == global.Tile.infiniteFall;
-		var dl = level.getTile(xx - 1, yy + 1) == global.Tile.infiniteFall;
-		var ur = level.getTile(xx + 1, yy - 1) == global.Tile.infiniteFall;
-		var dr = level.getTile(xx + 1, yy + 1) == global.Tile.infiniteFall;
+		var ul = level.getTile(xx - 1, yy - 1) == Tile.infiniteFall;
+		var dl = level.getTile(xx - 1, yy + 1) == Tile.infiniteFall;
+		var ur = level.getTile(xx + 1, yy - 1) == Tile.infiniteFall;
+		var dr = level.getTile(xx + 1, yy + 1) == Tile.infiniteFall;
 
 		if (!u && !l)
 		{
@@ -62,13 +62,13 @@ function CloudTile(vid) : singleton_Tile(vid, false) constructor
 		if (is_instanceof(item, ToolItem))
 		{
 			var tool = item;
-			if (tool.type == global.ToolType.shovel)
+			if (tool.type == ToolType.shovel)
 			{
 				if (player.payStamina(5))
 				{
 					var count = irandom(2) + 1;
 					for (var i = 0; i < count; i++)
-						level.add(new ItemEntity(new ResourceItem(global.Resource.cloud), xt * 16 + irandom(10) + 3, yt * 16 + irandom(10) + 3));
+						level.add(new ItemEntity(new ResourceItem(Resource.cloud), xt * 16 + irandom(10) + 3, yt * 16 + irandom(10) + 3));
 					return true;
 				}
 			}

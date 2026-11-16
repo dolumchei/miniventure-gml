@@ -129,7 +129,7 @@ tick = function()
 			
 			if (!is_undefined(level))
 				level.tick();
-			global.Tile.singleton_tick();
+			Tile.tickCount++;
 		}
 	}
 }
@@ -178,7 +178,7 @@ render = function()
 	{
 		if (currentLevel > 3)
 		{
-			var col = global.Color.get(20, 20, 121, 121);
+			var col = Color.get(20, 20, 121, 121);
 			for (var yy = 0; yy < 14 * 2; yy++)
 			{
 				for (var xx = 0; xx < 24 * 2; xx++)
@@ -208,7 +208,7 @@ renderGui = function()
 	for (var py = 0; py < 2; py++)
 	{
 		for (var px = 0; px < 20; px++) 
-			screen.render(px * 8, screen.h - 16 + py * 8, 0 + 12 * 32, global.Color.get(000, 000, 000, 000), 0);
+			screen.render(px * 8, screen.h - 16 + py * 8, 0 + 12 * 32, Color.get(000, 000, 000, 000), 0);
 	}
 
 	if (player != undefined)
@@ -216,23 +216,23 @@ renderGui = function()
 		for (var i = 0; i < 10; i++)
 		{
 			if (i < player.healthValue)
-				screen.render(i * 8, screen.h - 16, 0 + 12 * 32, global.Color.get(000, 200, 500, 533), 0);
+				screen.render(i * 8, screen.h - 16, 0 + 12 * 32, Color.get(000, 200, 500, 533), 0);
 			else
-				screen.render(i * 8, screen.h - 16, 0 + 12 * 32, global.Color.get(000, 100, 000, 000), 0);
+				screen.render(i * 8, screen.h - 16, 0 + 12 * 32, Color.get(000, 100, 000, 000), 0);
 
 			if (player.staminaRechargeDelay > 0)
 			{
 				if (player.staminaRechargeDelay / 4 % 2 <= 1)
-					screen.render(i * 8, screen.h - 8, 1 + 12 * 32, global.Color.get(000, 555, 000, 000), 0);
+					screen.render(i * 8, screen.h - 8, 1 + 12 * 32, Color.get(000, 555, 000, 000), 0);
 				else
-					screen.render(i * 8, screen.h - 8, 1 + 12 * 32, global.Color.get(000, 110, 000, 000), 0);
+					screen.render(i * 8, screen.h - 8, 1 + 12 * 32, Color.get(000, 110, 000, 000), 0);
 			}
 			else
 			{
 				if (i < player.stamina)
-					screen.render(i * 8, screen.h - 8, 1 + 12 * 32, global.Color.get(000, 220, 550, 553), 0);
+					screen.render(i * 8, screen.h - 8, 1 + 12 * 32, Color.get(000, 220, 550, 553), 0);
 				else
-					screen.render(i * 8, screen.h - 8, 1 + 12 * 32, global.Color.get(000, 110, 000, 000), 0);
+					screen.render(i * 8, screen.h - 8, 1 + 12 * 32, Color.get(000, 110, 000, 000), 0);
 			}
 		}
 		if (player.activeItem != undefined)
@@ -254,25 +254,25 @@ renderFocusRequester = function()
 	var w = string_length(msg);
 	var h = 1;
 
-	screen.render(xx - 8, yy - 8, 0 + 13 * 32, global.Color.get(-1, 1, 5, 445), 0);
-	screen.render(xx + w * 8, yy - 8, 0 + 13 * 32, global.Color.get(-1, 1, 5, 445), 1);
-	screen.render(xx - 8, yy + 8, 0 + 13 * 32, global.Color.get(-1, 1, 5, 445), 2);
-	screen.render(xx + w * 8, yy + 8, 0 + 13 * 32, global.Color.get(-1, 1, 5, 445), 3);
+	screen.render(xx - 8, yy - 8, 0 + 13 * 32, Color.get(-1, 1, 5, 445), 0);
+	screen.render(xx + w * 8, yy - 8, 0 + 13 * 32, Color.get(-1, 1, 5, 445), 1);
+	screen.render(xx - 8, yy + 8, 0 + 13 * 32, Color.get(-1, 1, 5, 445), 2);
+	screen.render(xx + w * 8, yy + 8, 0 + 13 * 32, Color.get(-1, 1, 5, 445), 3);
 	for (var xp = 0; xp < w; xp++)
 	{
-		screen.render(xx + xp * 8, yy - 8, 1 + 13 * 32, global.Color.get(-1, 1, 5, 445), 0);
-		screen.render(xx + xp * 8, yy + 8, 1 + 13 * 32, global.Color.get(-1, 1, 5, 445), 2);
+		screen.render(xx + xp * 8, yy - 8, 1 + 13 * 32, Color.get(-1, 1, 5, 445), 0);
+		screen.render(xx + xp * 8, yy + 8, 1 + 13 * 32, Color.get(-1, 1, 5, 445), 2);
 	}
 	for (var yp = 0; yp < h; yp++)
 	{
-		screen.render(xx - 8, yy + yp * 8, 2 + 13 * 32, global.Color.get(-1, 1, 5, 445), 0);
-		screen.render(xx + w * 8, yy + yp * 8, 2 + 13 * 32, global.Color.get(-1, 1, 5, 445), 1);
+		screen.render(xx - 8, yy + yp * 8, 2 + 13 * 32, Color.get(-1, 1, 5, 445), 0);
+		screen.render(xx + w * 8, yy + yp * 8, 2 + 13 * 32, Color.get(-1, 1, 5, 445), 1);
 	}
 
 	if ((tickCount / 20) % 2 <= 1)
-		global.Font.draw(msg, screen, xx, yy, global.Color.get(5, 333, 333, 333));
+		Font.draw(msg, screen, xx, yy, Color.get(5, 333, 333, 333));
 	else
-		global.Font.draw(msg, screen, xx, yy, global.Color.get(5, 555, 555, 555));
+		Font.draw(msg, screen, xx, yy, Color.get(5, 555, 555, 555));
 }
 
 run();

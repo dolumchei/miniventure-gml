@@ -1,4 +1,4 @@
-function InfiniteFallTile(vid) : singleton_Tile(vid, false) constructor
+function InfiniteFallTile(vid) : Tile(vid, false) constructor
 {
 	render = function(screen, level, xx, yy) { }	
 	tick = function(level, xt, yt) { }

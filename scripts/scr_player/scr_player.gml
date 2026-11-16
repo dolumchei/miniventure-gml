@@ -29,11 +29,11 @@ function Player(game, input) : Mob() constructor
 			invulnerableTime--; 
 		var onTile = level.getTile(x >> 4, y >> 4); 
 		
-		if (onTile == global.Tile.stairsDown || onTile == global.Tile.stairsUp)
+		if (onTile == Tile.stairsDown || onTile == Tile.stairsUp)
 		{ 
 			if (onStairDelay == 0)
 			{ 
-				changeLevel((onTile == global.Tile.stairsUp) ? 1 : -1); 
+				changeLevel((onTile == Tile.stairsUp) ? 1 : -1); 
 				onStairDelay = 10; 
 				return; 
 			}
@@ -270,23 +270,23 @@ function Player(game, input) : Mob() constructor
 		if (isSwimming())
 		{ 
 			yo += 4; 
-			var waterColor = global.Color.get(-1, -1, 115, 335); 
+			var waterColor = Color.get(-1, -1, 115, 335); 
 			if (tickTime / 8 % 2 <= 1)
-				waterColor = global.Color.get(-1, 335, 5, 115); 
+				waterColor = Color.get(-1, 335, 5, 115); 
 			screen.render(xo + 0, yo + 3, 5 + 13 * 32, waterColor, 0); 
 			screen.render(xo + 8, yo + 3, 5 + 13 * 32, waterColor, 1); 
 		}
 
 		if (attackTime > 0 && attackDir == 1)
 		{ 
-			screen.render(xo + 0, yo - 4, 6 + 13 * 32, global.Color.get(-1, 555, 555, 555), 0); 
-			screen.render(xo + 8, yo - 4, 6 + 13 * 32, global.Color.get(-1, 555, 555, 555), 1); 
+			screen.render(xo + 0, yo - 4, 6 + 13 * 32, Color.get(-1, 555, 555, 555), 0); 
+			screen.render(xo + 8, yo - 4, 6 + 13 * 32, Color.get(-1, 555, 555, 555), 1); 
 			if (attackItem != undefined) 
 				attackItem.renderIcon(screen, xo + 4, yo - 4); 
 		}
-		var col = global.Color.get(-1, 100, 220, 532); 
+		var col = Color.get(-1, 100, 220, 532); 
 		if (hurtTime > 0)
-			col = global.Color.get(-1, 555, 555, 555); 
+			col = Color.get(-1, 555, 555, 555); 
 
 		if (is_instanceof(activeItem, FurnitureItem))
 			yt += 2; 
@@ -301,22 +301,22 @@ function Player(game, input) : Mob() constructor
 
 		if (attackTime > 0 && attackDir == 2)
 		{ 
-			screen.render(xo - 4, yo, 7 + 13 * 32, global.Color.get(-1, 555, 555, 555), 1); 
-			screen.render(xo - 4, yo + 8, 7 + 13 * 32, global.Color.get(-1, 555, 555, 555), 3); 
+			screen.render(xo - 4, yo, 7 + 13 * 32, Color.get(-1, 555, 555, 555), 1); 
+			screen.render(xo - 4, yo + 8, 7 + 13 * 32, Color.get(-1, 555, 555, 555), 3); 
 			if (attackItem != undefined) 
 				attackItem.renderIcon(screen, xo - 4, yo + 4); 
 		}
 		if (attackTime > 0 && attackDir == 3)
 		{ 
-			screen.render(xo + 8 + 4, yo, 7 + 13 * 32, global.Color.get(-1, 555, 555, 555), 0); 
-			screen.render(xo + 8 + 4, yo + 8, 7 + 13 * 32, global.Color.get(-1, 555, 555, 555), 2); 
+			screen.render(xo + 8 + 4, yo, 7 + 13 * 32, Color.get(-1, 555, 555, 555), 0); 
+			screen.render(xo + 8 + 4, yo + 8, 7 + 13 * 32, Color.get(-1, 555, 555, 555), 2); 
 			if (attackItem != undefined)
 				attackItem.renderIcon(screen, xo + 8 + 4, yo + 4); 
 		}
 		if (attackTime > 0 && attackDir == 0)
 		{
-			screen.render(xo + 0, yo + 8 + 4, 6 + 13 * 32, global.Color.get(-1, 555, 555, 555), 2); 
-			screen.render(xo + 8, yo + 8 + 4, 6 + 13 * 32, global.Color.get(-1, 555, 555, 555), 3); 
+			screen.render(xo + 0, yo + 8 + 4, 6 + 13 * 32, Color.get(-1, 555, 555, 555), 2); 
+			screen.render(xo + 8, yo + 8 + 4, 6 + 13 * 32, Color.get(-1, 555, 555, 555), 3); 
 			if (attackItem != undefined) 
 				attackItem.renderIcon(screen, xo + 4, yo + 8 + 4); 
 		}
@@ -344,7 +344,7 @@ function Player(game, input) : Mob() constructor
 		{ 
 			var px = prandom.NextInt(level.w); 
 			var py = prandom.NextInt(level.h); 
-			if (level.getTile(px, py) == global.Tile.grass)
+			if (level.getTile(px, py) == Tile.grass)
 			{ 
 				self.x = px * 16 + 8; 
 				self.y = py * 16 + 8; 
@@ -380,7 +380,7 @@ function Player(game, input) : Mob() constructor
 	die = function()
 	{
 		mob_die(); 
-		global.Sound.playerDeath.play(); 
+		Sound.playerDeath.play(); 
 	}
 	touchedBy = function(entity)
 	{
@@ -392,8 +392,8 @@ function Player(game, input) : Mob() constructor
 		if (hurtTime > 0 || invulnerableTime > 0)
 			return; 
 
-		global.Sound.playerHurt.play(); 
-		level.add(new TextParticle(string(damage), x, y, global.Color.get(-1, 504, 504, 504))); 
+		Sound.playerHurt.play(); 
+		level.add(new TextParticle(string(damage), x, y, Color.get(-1, 504, 504, 504))); 
 		
 		healthValue -= damage; 
 		

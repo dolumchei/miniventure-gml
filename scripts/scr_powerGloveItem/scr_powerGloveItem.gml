@@ -2,7 +2,7 @@ function PowerGloveItem() : Item() constructor
 {
 	getColor = function()
 	{
-		return global.Color.get(-1, 100, 320, 430);
+		return Color.get(-1, 100, 320, 430);
 	}
 	getSprite = function()
 	{
@@ -15,7 +15,7 @@ function PowerGloveItem() : Item() constructor
 	renderInventory = function(screen, xx, yy)
 	{
 		screen.render(xx, yy, getSprite(), getColor(), 0);	
-		global.Font.draw(getName(), screen, xx + 8, yy, global.Color.get(-1, 555, 555, 555));
+		Font.draw(getName(), screen, xx + 8, yy, Color.get(-1, 555, 555, 555));
 	}
 	getName = function()
 	{

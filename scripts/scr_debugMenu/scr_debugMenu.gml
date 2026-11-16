@@ -6,11 +6,11 @@ function DebugMenu(player) : Menu() constructor
 	self.recipes = [ ];
 	self.recipeMenus = [ ];
 	
-	array_push(recipeMenus, [ global.Crafting.debugRecipes, "Item" ]);
-	array_push(recipeMenus, [ global.Crafting.workbenchRecipes, "Workbench" ]);
-	array_push(recipeMenus, [ global.Crafting.ovenRecipes, "Oven" ]);
-	array_push(recipeMenus, [ global.Crafting.furnaceRecipes, "Furnace" ]);
-	array_push(recipeMenus, [ global.Crafting.anvilRecipes, "Anvil" ]);
+	array_push(recipeMenus, [ Crafting.debugRecipes, "Item" ]);
+	array_push(recipeMenus, [ Crafting.workbenchRecipes, "Workbench" ]);
+	array_push(recipeMenus, [ Crafting.ovenRecipes, "Oven" ]);
+	array_push(recipeMenus, [ Crafting.furnaceRecipes, "Furnace" ]);
+	array_push(recipeMenus, [ Crafting.anvilRecipes, "Anvil" ]);
 	
 	self.recipes = recipeMenus[selected_2][0];
 	
@@ -65,15 +65,15 @@ function DebugMenu(player) : Menu() constructor
 		{
 			var r = recipes[selected]; 
 			r.craft(player); 
-			global.Sound.craft.play(); 
+			Sound.craft.play(); 
 		}
 	}
 
 	render = function(screen)
 	{
-		global.Font.renderFrame(screen, "Have", 12, 1, 19, 3); 
-		global.Font.renderFrame(screen, "Cost", 12, 4, 19, 11); 
-		global.Font.renderFrame(screen, recipeMenus[selected_2][1], 0, 1, 11, 11); 
+		Font.renderFrame(screen, "Have", 12, 1, 19, 3); 
+		Font.renderFrame(screen, "Cost", 12, 4, 19, 11); 
+		Font.renderFrame(screen, recipeMenus[selected_2][1], 0, 1, 11, 11); 
 		renderItemList(screen, 0, 1, 11, 11, recipes, selected); 
 
 		if (array_length(recipes) > 0)
@@ -82,7 +82,7 @@ function DebugMenu(player) : Menu() constructor
 			var hasResultItems = player.inventory.count(recipe.resultTemplate); 
 			var xo = 13 * 8; 
 			screen.render(xo, 2 * 8, recipe.resultTemplate.getSprite(), recipe.resultTemplate.getColor(), 0); 
-			global.Font.draw(string(hasResultItems), screen, xo + 8, 2 * 8, global.Color.get(-1, 555, 555, 555)); 
+			Font.draw(string(hasResultItems), screen, xo + 8, 2 * 8, Color.get(-1, 555, 555, 555)); 
 
 			var costs = recipe.costs; 
 			for (var i = 0; i < array_length(costs); i++)
@@ -96,7 +96,7 @@ function DebugMenu(player) : Menu() constructor
 				var has = player.inventory.count(item); 
 				if (has > 99)
 					has = 99; 
-				global.Font.draw(string(requiredAmt) + "/" + string(has), screen, xo + 8, yo, global.Color.get(-1, 555, 555, 555)); 
+				Font.draw(string(requiredAmt) + "/" + string(has), screen, xo + 8, yo, Color.get(-1, 555, 555, 555)); 
 			}
 		}
 		

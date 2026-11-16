@@ -63,7 +63,7 @@ function Slime(lvl) : Mob() constructor
 
 		var count = prandom.NextInt(2) + 1;
 		for (var i = 0; i < count; i++)
-			level.add(new ItemEntity(new ResourceItem(global.Resource.slime), x + prandom.NextInt(11) - 5, y + prandom.NextInt(11) - 5));
+			level.add(new ItemEntity(new ResourceItem(Resource.slime), x + prandom.NextInt(11) - 5, y + prandom.NextInt(11) - 5));
 
 		if (level.player != undefined)
 			level.player.scoreValue += 25 * lvl;
@@ -84,16 +84,16 @@ function Slime(lvl) : Mob() constructor
 			yo -= 4;
 		}
 
-		var col = global.Color.get(-1, 10, 252, 555);
+		var col = Color.get(-1, 10, 252, 555);
 		if (lvl == 2)
-			col = global.Color.get(-1, 100, 522, 555);
+			col = Color.get(-1, 100, 522, 555);
 		if (lvl == 3)
-			col = global.Color.get(-1, 111, 444, 555);
+			col = Color.get(-1, 111, 444, 555);
 		if (lvl == 4)
-			col = global.Color.get(-1, 000, 111, 224);
+			col = Color.get(-1, 000, 111, 224);
 
 		if (hurtTime > 0)
-			col = global.Color.get(-1, 555, 555, 555);
+			col = Color.get(-1, 555, 555, 555);
 
 		screen.render(xo + 0, yo + 0, xt + yt * 32, col, 0);
 		screen.render(xo + 8, yo + 0, xt + 1 + yt * 32, col, 0);

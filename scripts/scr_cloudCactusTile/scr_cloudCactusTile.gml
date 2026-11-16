@@ -1,8 +1,8 @@
-function CloudCactusTile(vid) : singleton_Tile(vid, false) constructor
+function CloudCactusTile(vid) : Tile(vid, false) constructor
 {
 	render = function(screen, level, xx, yy)
 	{
-		var color = global.Color.get(444, 111, 333, 555); 
+		var color = Color.get(444, 111, 333, 555); 
 		screen.render(xx * 16 + 0, yy * 16 + 0, 17 + 1 * 32, color, 0);
 		screen.render(xx * 16 + 8, yy * 16 + 0, 18 + 1 * 32, color, 0);
 		screen.render(xx * 16 + 0, yy * 16 + 8, 17 + 2 * 32, color, 0);
@@ -23,7 +23,7 @@ function CloudCactusTile(vid) : singleton_Tile(vid, false) constructor
 		if (is_instanceof(item, ToolItem))
 		{
 			var tool = item;
-			if (tool.type == global.ToolType.pickaxe)
+			if (tool.type == ToolType.pickaxe)
 			{
 				if (player.payStamina(6 - tool.level))
 				{
@@ -38,11 +38,11 @@ function CloudCactusTile(vid) : singleton_Tile(vid, false) constructor
 	{
 		var damage = level.getData(xx, yy) + 1;
 		level.add(new SmashParticle(xx * 16 + 8, yy * 16 + 8));
-		level.add(new TextParticle(string(dmg), xx * 16 + 8, yy * 16 + 8, global.Color.get(-1, 500, 500, 500)));
+		level.add(new TextParticle(string(dmg), xx * 16 + 8, yy * 16 + 8, Color.get(-1, 500, 500, 500)));
 		if (dmg > 0)
 		{
 			if (damage >= 10)
-				level.setTile(xx, yy, global.Tile.cloud, 0);
+				level.setTile(xx, yy, Tile.cloud, 0);
 			else
 				level.setData(xx, yy, damage);
 		}

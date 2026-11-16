@@ -41,8 +41,8 @@ function Recipe(aresultTemplate) : ListItem() constructor
 	renderInventory = function(screen, xx, yy)
 	{
 		screen.render(xx, yy, resultTemplate.getSprite(), resultTemplate.getColor(), 0); 
-		var textColor = canCraft ? global.Color.get(-1, 555, 555, 555) : global.Color.get(-1, 222, 222, 222); 
-		global.Font.draw(resultTemplate.getName(), screen, xx + 8, yy, textColor); 
+		var textColor = canCraft ? Color.get(-1, 555, 555, 555) : Color.get(-1, 222, 222, 222); 
+		Font.draw(resultTemplate.getName(), screen, xx + 8, yy, textColor); 
 	}
 	craft = function(player) { }
 	deductCost = function(player)

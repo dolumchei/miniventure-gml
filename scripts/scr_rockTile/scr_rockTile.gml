@@ -1,4 +1,4 @@
-function RockTile(vid) : singleton_Tile(vid, false) constructor
+function RockTile(vid) : Tile(vid, false) constructor
 {	
 	t = self;
 	mainColor = 444;
@@ -6,8 +6,8 @@ function RockTile(vid) : singleton_Tile(vid, false) constructor
 
 	render = function(screen, level, xx, yy)
 	{
-		var col = global.Color.get(mainColor, mainColor, mainColor - 111, mainColor - 111);
-		var transitionColor = global.Color.get(darkColor, mainColor, mainColor + 111, level.dirtColor);
+		var col = Color.get(mainColor, mainColor, mainColor - 111, mainColor - 111);
+		var transitionColor = Color.get(darkColor, mainColor, mainColor + 111, level.dirtColor);
 
 		var u = level.getTile(xx, yy - 1) != t;
 		var d = level.getTile(xx, yy + 1) != t;
@@ -71,7 +71,7 @@ function RockTile(vid) : singleton_Tile(vid, false) constructor
 		if (is_instanceof(item, ToolItem))
 		{
 			var tool = item;
-			if (tool.type == global.ToolType.pickaxe) 
+			if (tool.type == ToolType.pickaxe) 
 			{
 				if (player.payStamina(4 - tool.level))
 				{
@@ -86,16 +86,16 @@ function RockTile(vid) : singleton_Tile(vid, false) constructor
 	{
 		var damage = level.getData(xx, yy) + dmg;
 		level.add(new SmashParticle(xx * 16 + 8, yy * 16 + 8));
-		level.add(new TextParticle(string(dmg), xx * 16 + 8, yy * 16 + 8, global.Color.get(-1, 500, 500, 500)));
+		level.add(new TextParticle(string(dmg), xx * 16 + 8, yy * 16 + 8, Color.get(-1, 500, 500, 500)));
 		if (damage >= 50)
 		{
 			var count = prandom.NextInt(4) + 1;
 			for (var i = 0; i < count; i++)	
-				level.add(new ItemEntity(new ResourceItem(global.Resource.stone), xx * 16 + prandom.NextInt(10) + 3, yy * 16 + prandom.NextInt(10) + 3));
+				level.add(new ItemEntity(new ResourceItem(Resource.stone), xx * 16 + prandom.NextInt(10) + 3, yy * 16 + prandom.NextInt(10) + 3));
 			count = prandom.NextInt(2);
 			for (var i = 0; i < count; i++)
-				level.add(new ItemEntity(new ResourceItem(global.Resource.coal), xx * 16 + prandom.NextInt(10) + 3, yy * 16 + prandom.NextInt(10) + 3));
-			level.setTile(xx, yy, global.Tile.dirt, 0);
+				level.add(new ItemEntity(new ResourceItem(Resource.coal), xx * 16 + prandom.NextInt(10) + 3, yy * 16 + prandom.NextInt(10) + 3));
+			level.setTile(xx, yy, Tile.dirt, 0);
 		}
 		else
 			level.setData(xx, yy, damage);
