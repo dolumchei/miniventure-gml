@@ -14,9 +14,9 @@ function LevelTransitionMenu(dir) : Menu() constructor
 	
 	static render = function(screen)
 	{
-		for (var xv = 0; xv < (WIDTH / 3); xv++)
+		for (var xv = 0; xv < (GAME_WIDTH / 3); xv++)
 		{ 
-			for (var yv = 0; yv < (HEIGHT / 3); yv++)
+			for (var yv = 0; yv < (GAME_HEIGHT / 3); yv++)
 			{ 
 				var dd = (yv + xv % 2 * 2 + xv / 3) - time; 
 				if (dd < 0 && dd > -30)

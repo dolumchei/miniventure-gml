@@ -21,7 +21,6 @@
     {"name":"Sprites","order":2,"path":"folders/Sprites.yy",},
   ],
   "ResourceOrderSettings":[
-    {"name":"rom_game","order":1,"path":"rooms/rom_game/rom_game.yy",},
     {"name":"scr_aboutMenu","order":2,"path":"scripts/scr_aboutMenu/scr_aboutMenu.yy",},
     {"name":"scr_airWizard","order":13,"path":"scripts/scr_airWizard/scr_airWizard.yy",},
     {"name":"scr_anvil","order":8,"path":"scripts/scr_anvil/scr_anvil.yy",},
@@ -42,6 +41,7 @@
     {"name":"scr_furniture","order":6,"path":"scripts/scr_furniture/scr_furniture.yy",},
     {"name":"scr_furnitureItem","order":6,"path":"scripts/scr_furnitureItem/scr_furnitureItem.yy",},
     {"name":"scr_FurnitureRecipe","order":4,"path":"scripts/scr_FurnitureRecipe/scr_FurnitureRecipe.yy",},
+    {"name":"scr_gameConstants","order":3,"path":"scripts/scr_gameConstants/scr_gameConstants.yy",},
     {"name":"scr_grassTile","order":1,"path":"scripts/scr_grassTile/scr_grassTile.yy",},
     {"name":"scr_hardRockTile","order":12,"path":"scripts/scr_hardRockTile/scr_hardRockTile.yy",},
     {"name":"scr_holetile","order":8,"path":"scripts/scr_holetile/scr_holetile.yy",},

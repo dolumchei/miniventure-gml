@@ -95,9 +95,9 @@ function Level(w, h, level, parentLevel) constructor
 			for (var xx = xo; xx <= wv + xo; xx++)
 			{
 				var tile = getTile(xx, yy);
-				if (xx - 8 > WIDTH || xx + 8 < 0)
+				if (xx - 8 > GAME_WIDTH || xx + 8 < 0)
 					continue;
-				if (yy - 8 > HEIGHT || yy + 8 < 0)
+				if (yy - 8 > GAME_HEIGHT || yy + 8 < 0)
 					continue;
 				
 				tile.render(screen, self, xx, yy);
@@ -124,9 +124,9 @@ function Level(w, h, level, parentLevel) constructor
 			{
 				if (xx < 0 || yy < 0 || xx >= self.w || yy >= self.h)
 					continue;
-				if (xx - 8 > WIDTH || xx + 8 < 0)
+				if (xx - 8 > GAME_WIDTH || xx + 8 < 0)
 					continue;
-				if (yy - 8 > HEIGHT || yy + 8 < 0)
+				if (yy - 8 > GAME_HEIGHT || yy + 8 < 0)
 					continue;
 					
 				array_push_array(rowSprites, entitiesInTiles[xx + yy * self.w]);
@@ -153,9 +153,9 @@ function Level(w, h, level, parentLevel) constructor
 			{
 				if (xp < 0 || yp < 0 || xp >= self.w || yp >= self.h)
 					continue; 
-				if (xp - 8 > WIDTH || xp + 8 < 0)
+				if (xp - 8 > GAME_WIDTH || xp + 8 < 0)
 					continue;
-				if (yp - 8 > HEIGHT || yp + 8 < 0)
+				if (yp - 8 > GAME_HEIGHT || yp + 8 < 0)
 					continue;
 					
 				var entities = entitiesInTiles[xp + yp * self.w]; 

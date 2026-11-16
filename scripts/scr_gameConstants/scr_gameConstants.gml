@@ -27,4 +27,12 @@ global.u_DitherOffset = shader_get_uniform(shd_dither, "u_ditherOffset");
 global.u_LightCenter = shader_get_uniform(shd_light, "u_lightCenter");
 global.u_LightRadius = shader_get_uniform(shd_light, "u_lightRadius");
 
-instance_create_layer(0, 0, layer_get_id("lyr_instances"), obj_gameHandler);
+global.config_displayInput = true;
+global.config_displayFPS = false;
+global.config_debugMenu = false;
+
+#macro GAME_WIDTH 267
+#macro GAME_HEIGHT 200
+
+#macro BIT_MIRROR_X 0x01
+#macro BIT_MIRROR_Y 0x02

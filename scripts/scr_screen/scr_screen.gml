@@ -95,9 +95,9 @@ function Screen(w, h, sheet) constructor
 			
 		if (!drawRegardless)
 		{
-			if (xp2 - 8 > WIDTH || xp2 + 8 < 0)
+			if (xp2 - 8 > GAME_WIDTH || xp2 + 8 < 0)
 				return;
-			if (yp2 - 8 > HEIGHT || yp2 + 8 < 0)
+			if (yp2 - 8 > GAME_HEIGHT || yp2 + 8 < 0)
 				return;
 		}
 		
@@ -112,7 +112,7 @@ function Screen(w, h, sheet) constructor
 		shader_set_uniform_f(global.u_PaletteColor[2], colors[2][0], colors[2][1], colors[2][2], colors[2][3]);
 		shader_set_uniform_f(global.u_PaletteColor[3], colors[3][0], colors[3][1], colors[3][2], colors[3][3]);
 		
-		draw_sprite_part_ext(sheet.image, 0, xTile * 8, yTile * 8, 8, 8, floor(xp2), yp2, mirrorX ? -1 : 1, mirrorY ? -1 : 1, c_white, 1)
+		draw_sprite_part_ext(sheet, 0, xTile * 8, yTile * 8, 8, 8, floor(xp2), yp2, mirrorX ? -1 : 1, mirrorY ? -1 : 1, c_white, 1)
 
 		shader_reset();
 		
@@ -181,6 +181,3 @@ function Screen(w, h, sheet) constructor
 	    light = oldSurface;
 	}
 }
-
-#macro BIT_MIRROR_X 0x01
-#macro BIT_MIRROR_Y 0x02

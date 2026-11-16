@@ -1,10 +1,3 @@
-global.config_displayInput = true;
-global.config_displayFPS = false;
-global.config_debugMenu = false;
-
-#macro WIDTH 267
-#macro HEIGHT 200
-
 randomize();
 
 screen = undefined;
@@ -72,8 +65,8 @@ init = function()
 {
 	try 
 	{
-		screen = new Screen(WIDTH, HEIGHT, new SpriteSheet(spr_icons));
-		lightScreen = new Screen(WIDTH, HEIGHT, new SpriteSheet(spr_icons));
+		screen = new Screen(GAME_WIDTH, GAME_HEIGHT, spr_icons);
+		lightScreen = new Screen(GAME_WIDTH, GAME_HEIGHT, spr_icons);
 	}
 	catch (e) 
 	{ print(e.longMessage); }
@@ -256,8 +249,8 @@ renderFocusRequester = function()
 		return;
 	
 	var msg = "Click to focus!";
-	var xx = (WIDTH - string_length(msg) * 8) / 2;
-	var yy = (HEIGHT - 8) / 2;
+	var xx = (GAME_WIDTH - string_length(msg) * 8) / 2;
+	var yy = (GAME_HEIGHT - 8) / 2;
 	var w = string_length(msg);
 	var h = 1;
 

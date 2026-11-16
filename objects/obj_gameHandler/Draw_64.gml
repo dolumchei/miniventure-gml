@@ -6,7 +6,7 @@ if (global.config_displayInput)
 		height: display_get_gui_height()
 	};
 	
-	display_set_gui_size(WIDTH, HEIGHT);
+	display_set_gui_size(GAME_WIDTH, GAME_HEIGHT);
 	
 	var inputDisplayX = 267 - 34;
 	var inputDisplayY = 200 - 9

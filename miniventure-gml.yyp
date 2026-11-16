@@ -44,7 +44,6 @@
     {"id":{"name":"fnt_default","path":"fonts/fnt_default/fnt_default.yy",},},
     {"id":{"name":"obj_gameHandler","path":"objects/obj_gameHandler/obj_gameHandler.yy",},},
     {"id":{"name":"rom_game","path":"rooms/rom_game/rom_game.yy",},},
-    {"id":{"name":"rom_init","path":"rooms/rom_init/rom_init.yy",},},
     {"id":{"name":"scr_aboutMenu","path":"scripts/scr_aboutMenu/scr_aboutMenu.yy",},},
     {"id":{"name":"scr_airWizard","path":"scripts/scr_airWizard/scr_airWizard.yy",},},
     {"id":{"name":"scr_anvil","path":"scripts/scr_anvil/scr_anvil.yy",},},
@@ -69,6 +68,7 @@
     {"id":{"name":"scr_furniture","path":"scripts/scr_furniture/scr_furniture.yy",},},
     {"id":{"name":"scr_furnitureItem","path":"scripts/scr_furnitureItem/scr_furnitureItem.yy",},},
     {"id":{"name":"scr_FurnitureRecipe","path":"scripts/scr_FurnitureRecipe/scr_FurnitureRecipe.yy",},},
+    {"id":{"name":"scr_gameConstants","path":"scripts/scr_gameConstants/scr_gameConstants.yy",},},
     {"id":{"name":"scr_grassTile","path":"scripts/scr_grassTile/scr_grassTile.yy",},},
     {"id":{"name":"scr_hardRockTile","path":"scripts/scr_hardRockTile/scr_hardRockTile.yy",},},
     {"id":{"name":"scr_holetile","path":"scripts/scr_holetile/scr_holetile.yy",},},
@@ -136,7 +136,6 @@
   "resourceType":"GMProject",
   "resourceVersion":"2.0",
   "RoomOrderNodes":[
-    {"roomId":{"name":"rom_init","path":"rooms/rom_init/rom_init.yy",},},
     {"roomId":{"name":"rom_game","path":"rooms/rom_game/rom_game.yy",},},
   ],
   "templateType":"game",
