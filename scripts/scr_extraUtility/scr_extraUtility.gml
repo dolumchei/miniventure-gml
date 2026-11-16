@@ -1,3 +1,22 @@
+function string_save(str, fname)
+{
+	var buffer = buffer_create(string_byte_length(str), buffer_fixed, 1);
+	buffer_write(buffer, buffer_text, str);
+	buffer_save(buffer, fname);
+	buffer_delete(buffer);
+}
+function string_load(fname)
+{
+	if (!file_exists(fname))
+		return;
+
+	var buffer = buffer_load(fname);
+	var file_content = buffer_read(buffer, buffer_string);
+	buffer_delete(buffer);
+
+	return file_content;
+}
+
 function keyboard_check_combo(master_key, sub_key)
 {
 	if (!is_array(master_key))

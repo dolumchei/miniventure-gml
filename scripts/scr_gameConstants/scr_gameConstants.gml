@@ -1,5 +1,3 @@
-global.InputHandler = new singleton_InputHandler();
-
 global.u_PaletteColor = 
 [
 	shader_get_uniform(shd_palette, "u_paletteColor1"),

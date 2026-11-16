@@ -1,4 +1,4 @@
-function singleton_InputHandler() constructor
+function InputHandler() constructor
 {
 	Key = function(keycode, keyname) constructor
 	{

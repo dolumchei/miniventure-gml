@@ -18,14 +18,14 @@ if (global.config_displayInput)
 	
 	var inputArray =
 	[ 
-		global.InputHandler.up,
-		global.InputHandler.down,
-		global.InputHandler.left,
-		global.InputHandler.right,
+		input.up,
+		input.down,
+		input.left,
+		input.right,
 		undefined, // select
 		undefined, // start
-		global.InputHandler.menu,
-		global.InputHandler.attack
+		input.menu,
+		input.attack
 	];
 	
 	draw_set_alpha(colorAlpha);

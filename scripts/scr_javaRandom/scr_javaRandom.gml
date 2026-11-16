@@ -3,12 +3,11 @@ function Random(seed = undefined) constructor
     seed_hi = 0;
     seed_lo = 0;
 
-    BASE = 16777216;
-    MASK = 16777215;
+    static BASE = 16777216;
 
-    MULT_HI = 0x5DE;
-    MULT_LO = 0xECE66D;
-    ADDEND = 0xB;
+    static MULT_HI = 0x5DE;
+    static MULT_LO = 0xECE66D;
+    static ADDEND = 0xB;
 
 	self.seed = seed;
     if (is_undefined(seed))
@@ -30,16 +29,6 @@ function Random(seed = undefined) constructor
 
 	SetSeed(self.seed);
 
-    Advance = function()
-    {
-        var v = seed_lo * MULT_LO + ADDEND;
-
-        var carry = floor(v / BASE);
-        seed_lo = v - carry * BASE;
-
-        seed_hi = (seed_hi * MULT_LO + seed_lo * 0 + carry) % BASE;
-    }
-
     Next = function(bits)
     {
         var old_lo = seed_lo;
@@ -47,16 +36,15 @@ function Random(seed = undefined) constructor
 
         var v = old_lo * MULT_LO + ADDEND;
 
-        var carry = floor(v / BASE);
+        var carry = v div BASE;
         seed_lo = v - carry * BASE;
 
         seed_hi = (old_hi * MULT_LO + old_lo * MULT_HI + carry) % BASE;
 
-        if (bits <= 24) {
-            return floor(seed_hi / power(2, 24 - bits));
-        }
+        if (bits <= 24)
+            return seed_hi div power(2, 24 - bits);
 
-        var result = seed_hi * power(2, bits - 24) + floor(seed_lo / power(2, 48 - bits));
+        var result = seed_hi * power(2, bits - 24) + seed_lo div power(2, 48 - bits);
 
         if (bits == 32 && result >= 2147483648)
             result -= 4294967296;
@@ -79,10 +67,10 @@ function Random(seed = undefined) constructor
 		{
             bits = Next(31);
 
-            var q = floor(bits / 65536);
+            var q = floor(bits div 65536);
             var r = bits - q * 65536;
 
-            return floor((q * n) / 32768 + (r * n) / 2147483648);
+            return (q * n) div 32768 + (r * n) div 2147483648;
         }
 
         do
@@ -125,7 +113,7 @@ function Random(seed = undefined) constructor
             repeat (n)
             {
                 bytes[i] = rnd & 255;
-                rnd = floor(rnd / 256);
+                rnd = rnd div 256;
                 i++;
             }
         }
