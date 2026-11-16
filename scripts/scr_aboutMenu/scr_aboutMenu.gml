@@ -72,13 +72,17 @@ function Port_AboutMenu(parent) : Menu() constructor
 	static render = function(screen)
 	{
 		screen.clear(#0A0A0A); 
-		global.Font.draw("Ported to GameMaker", screen, 2 * 0 + 4, 2 * 8, global.Color.get(0, 555, 555, 555)); 
-		global.Font.draw("By Shelby Foltz", screen, 0 * 8 + 4, 3 * 8, global.Color.get(0, 333, 333, 333)); 
 		
-		global.Font.draw("Credits:", screen, 0 * 8 + 4, 5 * 8, global.Color.get(0, 555, 555, 555)); 
-		global.Font.draw("github.com/shylor/miniventure", screen, 0 * 8 + 4, 6 * 8, global.Color.get(0, 333, 333, 333)); 
-		global.Font.draw("gmshaders.com", screen, 0 * 8 + 4, 7 * 8, global.Color.get(0, 333, 333, 333)); 
-		global.Font.draw("Markus Persson", screen, 0 * 8 + 4, 8 * 8, global.Color.get(0, 333, 333, 333)); 
+		var text_y = 2;
+		global.Font.draw("Ported to GameMaker", screen, 2 * 0 + 4, text_y++ * 8, global.Color.get(0, 555, 555, 555)); 
+		global.Font.draw("By Shelby Foltz", screen, 0 * 8 + 4, text_y++ * 8, global.Color.get(0, 333, 333, 333)); 
+		
+		text_y++;
+		global.Font.draw("Credits:", screen, 0 * 8 + 4, text_y++ * 8, global.Color.get(0, 555, 555, 555)); 
+		global.Font.draw("shylor/miniventure", screen, 0 * 8 + 4, text_y++ * 8, global.Color.get(0, 333, 333, 333)); 
+		global.Font.draw("Phyyl/miniventure-sharp", screen, 0 * 8 + 4, text_y++ * 8, global.Color.get(0, 333, 333, 333)); 
+		global.Font.draw("gmshaders.com", screen, 0 * 8 + 4, text_y++ * 8, global.Color.get(0, 333, 333, 333)); 
+		global.Font.draw("Markus Persson", screen, 0 * 8 + 4, text_y++ * 8, global.Color.get(0, 333, 333, 333)); 
 	}
 }
 
