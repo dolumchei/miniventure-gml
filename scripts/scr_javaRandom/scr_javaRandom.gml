@@ -12,8 +12,11 @@ function Random(seed = undefined) constructor
 
 	self.seed = seed;
     if (is_undefined(seed))
-        self.seed = irandom(2147483647);
-
+	{
+		randomize();
+        self.seed = random_get_seed();
+	}
+	
 	SetSeed = function(value)
     {
         var s = ((value % 281474976710656) + 281474976710656) % 281474976710656;
