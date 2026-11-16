@@ -71,7 +71,6 @@
     {"name":"scr_slime","order":15,"path":"scripts/scr_slime/scr_slime.yy",},
     {"name":"scr_smashParticle","order":2,"path":"scripts/scr_smashParticle/scr_smashParticle.yy",},
     {"name":"scr_spark","order":14,"path":"scripts/scr_spark/scr_spark.yy",},
-    {"name":"scr_spriteSheet","order":3,"path":"scripts/scr_spriteSheet/scr_spriteSheet.yy",},
     {"name":"scr_stairsTile","order":15,"path":"scripts/scr_stairsTile/scr_stairsTile.yy",},
     {"name":"scr_textParticle","order":1,"path":"scripts/scr_textParticle/scr_textParticle.yy",},
     {"name":"scr_titleMenu","order":6,"path":"scripts/scr_titleMenu/scr_titleMenu.yy",},

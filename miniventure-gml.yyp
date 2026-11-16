@@ -105,7 +105,6 @@
     {"id":{"name":"scr_smashParticle","path":"scripts/scr_smashParticle/scr_smashParticle.yy",},},
     {"id":{"name":"scr_sound","path":"scripts/scr_sound/scr_sound.yy",},},
     {"id":{"name":"scr_spark","path":"scripts/scr_spark/scr_spark.yy",},},
-    {"id":{"name":"scr_spriteSheet","path":"scripts/scr_spriteSheet/scr_spriteSheet.yy",},},
     {"id":{"name":"scr_stairsTile","path":"scripts/scr_stairsTile/scr_stairsTile.yy",},},
     {"id":{"name":"scr_textParticle","path":"scripts/scr_textParticle/scr_textParticle.yy",},},
     {"id":{"name":"scr_tile","path":"scripts/scr_tile/scr_tile.yy",},},
