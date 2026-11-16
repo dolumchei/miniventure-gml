@@ -2,7 +2,7 @@ function TreeTile(vid) : singleton_Tile(vid, false) constructor
 {
 	connectsToGrass = true;
 	
-	static render = function(screen, level, xx, yy)
+	render = function(screen, level, xx, yy)
 	{
 		var col = global.Color.get(10, 30, 151, level.grassColor);
 		var barkCol1 = global.Color.get(10, 30, 430, level.grassColor);
@@ -37,21 +37,21 @@ function TreeTile(vid) : singleton_Tile(vid, false) constructor
 		else
 			screen.render(xx * 16 + 8, yy * 16 + 8, 10 + 3 * 32, barkCol2, 0);
 	}
-	static tick = function(level, xt, yt)
+	tick = function(level, xt, yt)
 	{
 		var damage = level.getData(xt, yt);
 		if (damage > 0)
 			level.setData(xt, yt, damage - 1);	
 	}
-	static mayPass = function(level, xx, yy, e)
+	mayPass = function(level, xx, yy, e)
 	{
 		return false;
 	}
-	static hurt6 = function(level, xx, yy, source, dmg, attackDir)
+	hurt6 = function(level, xx, yy, source, dmg, attackDir)
 	{
 		hurt4(level, xx, yy, dmg);
 	}
-	static interact = function(level, xt, yt, player, item, attackDir)
+	interact = function(level, xt, yt, player, item, attackDir)
 	{
 		if (is_instanceof(item, ToolItem))
 		{
@@ -67,7 +67,7 @@ function TreeTile(vid) : singleton_Tile(vid, false) constructor
 		}
 		return false;
 	}
-	static hurt4 = function(level, xx, yy, dmg)
+	hurt4 = function(level, xx, yy, dmg)
 	{
 		var count = prandom.NextInt(10) == 0 ? 1 : 0;
 		for (var i = 0; i < count; i++)

@@ -1,6 +1,6 @@
 function singleton_InputHandler() constructor
 {
-	static Key = function(keycode, keyname) constructor
+	Key = function(keycode, keyname) constructor
 	{
 		var keycodeTemp = keycode;
 		if (!is_array(keycodeTemp))
@@ -107,12 +107,12 @@ function singleton_InputHandler() constructor
 	
 	keys = [ up, down, left, right ];
 	
-	static update = function()
+	update = function()
 	{
 		for (var keyItr = 0; keyItr < array_length(keys); keyItr++)
 			keys[keyItr].update();
 	}
-	static releaseAll = function()
+	releaseAll = function()
 	{
 		for (var keyItr = 0; keyItr < array_length(keys); keyItr++)
 			keys[keyItr].releaseAll();

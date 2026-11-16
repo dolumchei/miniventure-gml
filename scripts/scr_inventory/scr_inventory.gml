@@ -2,7 +2,7 @@ function Inventory() constructor
 {
 	items = []; 
 
-	static add = function(a, b)
+	add = function(a, b)
 	{
 		if (!is_undefined(a) && !is_undefined(b))
 			return add2(a, b);
@@ -10,11 +10,11 @@ function Inventory() constructor
 			return add1(a);
 	}
 
-	static add1 = function(item)
+	add1 = function(item)
 	{
 		add(array_length(items), item); 
 	}
-	static add2 = function(slot, item)
+	add2 = function(slot, item)
 	{
 		if (is_instanceof(item, ResourceItem))
 		{
@@ -28,7 +28,7 @@ function Inventory() constructor
 		else
 			array_insert(items, slot, item); 
 	}
-	static findResource = function(resource)
+	findResource = function(resource)
 	{
 		for (var i= 0; i < array_length(items); i++)
 		{ 
@@ -41,14 +41,14 @@ function Inventory() constructor
 		}
 		return undefined; 
 	}
-	static hasResources = function(r, count)
+	hasResources = function(r, count)
 	{
 		var ri = findResource(r); 
 		if (ri == undefined)
 			return false; 
 		return ri.count >= count; 
 	}
-	static removeResource = function(r, count)
+	removeResource = function(r, count)
 	{
 		var ri = findResource(r); 
 		if (ri == undefined)
@@ -60,7 +60,7 @@ function Inventory() constructor
 			array_delete_item(items, ri); 
 		return true;
 	}
-	static count = function(item)
+	count = function(item)
 	{
 		if (is_instanceof(item, ResourceItem))
 		{ 

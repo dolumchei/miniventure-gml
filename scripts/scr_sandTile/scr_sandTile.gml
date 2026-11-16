@@ -2,7 +2,7 @@ function SandTile(vid) : singleton_Tile(vid, false) constructor
 {
 	connectsToSand = true;
 	
-	static render = function(screen, level, xx, yy)
+	render = function(screen, level, xx, yy)
 	{
 		var col = global.Color.get(level.sandColor + 2, level.sandColor, level.sandColor - 110, level.sandColor - 110);
 		var transitionColor = global.Color.get(level.sandColor - 110, level.sandColor, level.sandColor - 110, level.dirtColor);
@@ -45,18 +45,18 @@ function SandTile(vid) : singleton_Tile(vid, false) constructor
 		else
 			screen.render(xx * 16 + 8, yy * 16 + 8, (r ? 13 : 12) + (d ? 2 : 1) * 32, transitionColor, 0);
 	}
-	static tick = function(level, xx, yy)
+	tick = function(level, xx, yy)
 	{
 		var d = level.getData(xx, yy);
 		if (d > 0) 
 			level.setData(xx, yy, d - 1);
 	}
-	static steppedOn = function(level, xx, yy, entity)
+	steppedOn = function(level, xx, yy, entity)
 	{
 		if (is_instanceof(entity, Mob))
 			level.setData(xx, yy, 10);
 	}	
-	static interact = function(level, xt, yt, player, item, attackDir)
+	interact = function(level, xt, yt, player, item, attackDir)
 	{
 		if (is_instanceof(item, ToolItem))
 		{

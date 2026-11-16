@@ -1,7 +1,7 @@
 function StairsTile(vid, leadsUp) : singleton_Tile(vid, false) constructor {
 	self.leadsUp = leadsUp;
 
-	static render = function(screen, level, xx, yy)
+	render = function(screen, level, xx, yy)
 	{
 		var color = global.Color.get(level.dirtColor, 000, 333, 444);
 		var xt = 0;

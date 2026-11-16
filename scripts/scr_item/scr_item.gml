@@ -1,38 +1,38 @@
 function Item() : ListItem() constructor
 {
-	static getColor = function()
+	getColor = function()
 	{
 		return 0;	
 	}
-	static getSprite = function()
+	getSprite = function()
 	{
 		return 0;	
 	}
-	static onTake = function(itemEntity) { };
-	static renderInventory = function(screen, xx, yy) { }
-	static interact = function(player, entity, attackDir)
+	onTake = function(itemEntity) { };
+	renderInventory = function(screen, xx, yy) { }
+	interact = function(player, entity, attackDir)
 	{
 		return false;	
 	}
-	static renderIcon = function(screen, xx, yy) { };
-	static interactOn = function(tile, level, xt, yt, player, attackDir) { }
-	static isDepleted = function()
+	renderIcon = function(screen, xx, yy) { };
+	interactOn = function(tile, level, xt, yt, player, attackDir) { }
+	isDepleted = function()
 	{
 		return false;
 	}
-	static canAttack = function()
+	canAttack = function()
 	{
 		return false;	
 	}
-	static getAttackDamageBonus = function(e)
+	getAttackDamageBonus = function(e)
 	{
 		return 0;
 	}
-	static getName = function()
+	getName = function()
 	{
 		return "";
 	}
-	static matches = function(item)
+	matches = function(item)
 	{
 		return typeof(item) == instanceof(self);	
 	}

@@ -11,7 +11,7 @@ function Furniture(name) : Entity() constructor
 		
 	shouldTake = undefined; 
 
-	static tick = function()
+	tick = function()
 	{
 		if (shouldTake != undefined)
 		{ 
@@ -35,18 +35,18 @@ function Furniture(name) : Entity() constructor
 		if (pushTime > 0)
 			pushTime--; 
 	}
-	static render = function(screen)
+	render = function(screen)
 	{
 		screen.render(x - 8, y - 8 - 4, sprite * 2 + 8 * 32, col, 0); 
 		screen.render(x - 0, y - 8 - 4, sprite * 2 + 8 * 32 + 1, col, 0); 
 		screen.render(x - 8, y - 0 - 4, sprite * 2 + 8 * 32 + 32, col, 0); 
 		screen.render(x - 0, y - 0 - 4, sprite * 2 + 8 * 32 + 33, col, 0); 
 	}
-	static blocks = function(e)
+	blocks = function(e)
 	{
 		return true; 
 	}
-	static touchedBy = function(entity)
+	touchedBy = function(entity)
 	{
 		if (is_instanceof(entity, Player) && pushTime == 0)
 		{ 
@@ -54,10 +54,10 @@ function Furniture(name) : Entity() constructor
 			pushTime = 10; 
 		}
 	}
-	static take = function(player)
+	take = function(player)
 	{
 		shouldTake = player; 
 	}
 	
-	static tile_hurt4 = function(tile, xx, yy, damage) { }
+	tile_hurt4 = function(tile, xx, yy, damage) { }
 }

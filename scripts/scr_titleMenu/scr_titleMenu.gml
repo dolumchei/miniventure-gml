@@ -4,7 +4,7 @@ function TitleMenu() : Menu() constructor
 	
 	options = [ "Start game", "How to play", "About" ]; 
 
-	static tick = function()
+	tick = function()
 	{
 		if (input.up.check())
 			selected--; 
@@ -32,7 +32,7 @@ function TitleMenu() : Menu() constructor
 		}
 	}
 
-	static render = function(screen)
+	render = function(screen)
 	{
 		screen.clear(#0A0A0A);
 		var h = 2; 

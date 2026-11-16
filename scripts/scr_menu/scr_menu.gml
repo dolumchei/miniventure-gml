@@ -3,17 +3,17 @@ function Menu() constructor
 	game = undefined;
 	input = undefined; 
 	
-	static init = function(game, input)
+	init = function(game, input)
 	{
 		self.game = game; 
 		self.input = input; 
 	}
 	
-	static tick = function() { }
+	tick = function() { }
 
-	static render = function(screen) { }
+	render = function(screen) { }
 
-	static renderItemList = function(screen, xo, yo, x1, y1, listItems, selected)
+	renderItemList = function(screen, xo, yo, x1, y1, listItems, selected)
 	{
 		var renderCursor = true;
 		if (selected < 0)

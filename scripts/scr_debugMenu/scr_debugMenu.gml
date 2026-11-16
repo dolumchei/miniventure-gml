@@ -22,7 +22,7 @@ function DebugMenu(player) : Menu() constructor
 	
 	self.player = player; 
 
-	static tick = function()
+	tick = function()
 	{
 		if (input.menu.pressed())
 			game.setMenu(undefined); 
@@ -69,7 +69,7 @@ function DebugMenu(player) : Menu() constructor
 		}
 	}
 
-	static render = function(screen)
+	render = function(screen)
 	{
 		global.Font.renderFrame(screen, "Have", 12, 1, 19, 3); 
 		global.Font.renderFrame(screen, "Cost", 12, 4, 19, 11); 

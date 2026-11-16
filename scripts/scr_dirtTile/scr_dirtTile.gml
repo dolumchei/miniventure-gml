@@ -1,6 +1,6 @@
 function DirtTile(vid) : singleton_Tile(vid, false) constructor
 {
-	static render = function(screen, level, xx, yy)
+	render = function(screen, level, xx, yy)
 	{
 		var col = global.Color.get(level.dirtColor, level.dirtColor, level.dirtColor - 111, level.dirtColor - 111);
 		screen.render(xx * 16 + 0, yy * 16 + 0, 0, col, 0);
@@ -8,7 +8,7 @@ function DirtTile(vid) : singleton_Tile(vid, false) constructor
 		screen.render(xx * 16 + 0, yy * 16 + 8, 2, col, 0);
 		screen.render(xx * 16 + 8, yy * 16 + 8, 3, col, 0);
 	}
-	static interact = function(level, xt, yt, player, item, attackDir)
+	interact = function(level, xt, yt, player, item, attackDir)
 	{
 		if (is_instanceof(item, ToolItem))
 		{

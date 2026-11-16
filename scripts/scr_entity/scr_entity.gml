@@ -8,31 +8,31 @@ function Entity() constructor
 	removed = false;
 	level = undefined; 
 
-	static render = function(screen) { }
-	static tick = function() { }
-	static remove = function()
+	render = function(screen) { }
+	tick = function() { }
+	remove = function()
 	{
 		removed = true; 
 	}
-	static init = function(level)
+	init = function(level)
 	{
 		self.level = level; 
 	}
-	static intersects = function(x0, y0, x1, y1)
+	intersects = function(x0, y0, x1, y1)
 	{
 		return !(x + xr < x0 || y + yr < y0 || x - xr > x1 || y - yr > y1); 
 	}
-	static blocks = function(e)
+	blocks = function(e)
 	{
 		return false;
 	}
-	static hurt3 = function(mob, dmg, attackDir) { }
-	static hurt4 = function(tile, xv, yv, dmg) { }
+	hurt3 = function(mob, dmg, attackDir) { }
+	hurt4 = function(tile, xv, yv, dmg) { }
 
-	static move = function(xa, ya) { return entity_move(xa, ya); }
-	static move2 = function(xa, ya) { return entity_move2(xa, ya); }
+	move = function(xa, ya) { return entity_move(xa, ya); }
+	move2 = function(xa, ya) { return entity_move2(xa, ya); }
 
-	static entity_move = function(xa, ya)
+	entity_move = function(xa, ya)
 	{
 		if (xa != 0 || ya != 0)
 		{ 
@@ -51,7 +51,7 @@ function Entity() constructor
 		}
 		return true; 
 	}
-	static entity_move2 = function(xa, ya)
+	entity_move2 = function(xa, ya)
 	{
 		if (xa != 0 && ya != 0)
 			throw ("Move2 can only move along one axis at a time!");
@@ -111,25 +111,25 @@ function Entity() constructor
 		y += ya; 
 		return true; 
 	}
-	static touchedBy = function(entity) { }
-	static isBlockableBy = function(mob)
+	touchedBy = function(entity) { }
+	isBlockableBy = function(mob)
 	{
 		return true; 
 	}
-	static touchItem = function(itemEntity) { }
-	static canSwim = function()
+	touchItem = function(itemEntity) { }
+	canSwim = function()
 	{
 		return false;
 	}
-	static interact3 = function(player, item, attackDir)
+	interact3 = function(player, item, attackDir)
 	{
 		return item.interact(player, self, attackDir); 
 	}
-	static use2 = function(player, attackDir)
+	use2 = function(player, attackDir)
 	{
 		return false;
 	}
-	static getLightRadius = function()
+	getLightRadius = function()
 	{
 		return 0;
 	}

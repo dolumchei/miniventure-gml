@@ -1,6 +1,6 @@
 function FarmTile(vid) : singleton_Tile(vid, false) constructor
 {
-	static render = function(screen, level, xx, yy)
+	render = function(screen, level, xx, yy)
 	{
 		var col = global.Color.get(level.dirtColor - 121, level.dirtColor - 11, level.dirtColor, level.dirtColor + 111);
 		screen.render(xx * 16 + 0, yy * 16 + 0, 2 + 32, col, 1);
@@ -8,7 +8,7 @@ function FarmTile(vid) : singleton_Tile(vid, false) constructor
 		screen.render(xx * 16 + 0, yy * 16 + 8, 2 + 32, col, 0);
 		screen.render(xx * 16 + 8, yy * 16 + 8, 2 + 32, col, 1);
 	}
-	static interact = function(level, xt, yt, player, item, attackDir)
+	interact = function(level, xt, yt, player, item, attackDir)
 	{
 		if (is_instanceof(item, ToolItem))
 		{
@@ -24,13 +24,13 @@ function FarmTile(vid) : singleton_Tile(vid, false) constructor
 		}
 		return false;
 	}
-	static tick = function(level, xt, yt)
+	tick = function(level, xt, yt)
 	{
 		var age = level.getData(xt, yt);
 		if (age < 5)
 			level.setData(xt, yt, age + 1);
 	}
-	static steppedOn = function(level, xt, yt, entity)
+	steppedOn = function(level, xt, yt, entity)
 	{
 		if (prandom.NextInt(60) != 0)
 			return;

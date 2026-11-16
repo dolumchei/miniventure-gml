@@ -6,7 +6,7 @@ function AboutMenu(parent) : Menu() constructor
 	
 	options = [ "About Port", "About Game" ]; 
 
-	static tick = function()
+	tick = function()
 	{
 		if (input.up.check())
 			selected--; 
@@ -30,7 +30,7 @@ function AboutMenu(parent) : Menu() constructor
 			game.setMenu(parent)
 	}
 	
-	static render = function(screen)
+	render = function(screen)
 	{
 		screen.clear(#0A0A0A);
 		var h = 2; 
@@ -63,13 +63,13 @@ function Port_AboutMenu(parent) : Menu() constructor
 {
 	self.parent = parent;
 
-	static tick = function()
+	tick = function()
 	{
 		if (input.attack.pressed() || input.menu.pressed())
 			game.setMenu(parent); 
 	}
 
-	static render = function(screen)
+	render = function(screen)
 	{
 		screen.clear(#0A0A0A); 
 		
@@ -90,13 +90,13 @@ function Original_AboutMenu(parent) : Menu() constructor
 {
 	self.parent = parent;
 
-	static tick = function()
+	tick = function()
 	{
 		if (input.attack.pressed() || input.menu.pressed())
 			game.setMenu(parent); 
 	}
 
-	static render = function(screen)
+	render = function(screen)
 	{
 		screen.clear(#0A0A0A); 
 		global.Font.draw("About Minicraft", screen, 2 * 8 + 4, 2 * 8, global.Color.get(0, 555, 555, 555)); 

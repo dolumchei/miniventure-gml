@@ -3,7 +3,7 @@ function LevelTransitionMenu(dir) : Menu() constructor
 	self.dir = dir; 
 	time = 0; 
 
-	static tick = function()
+	tick = function()
 	{
 		time += 2; 
 		if (time == 30)
@@ -12,7 +12,7 @@ function LevelTransitionMenu(dir) : Menu() constructor
 			game.setMenu(undefined); 
 	}
 	
-	static render = function(screen)
+	render = function(screen)
 	{
 		for (var xv = 0; xv < (GAME_WIDTH / 3); xv++)
 		{ 

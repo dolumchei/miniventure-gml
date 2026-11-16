@@ -13,7 +13,7 @@ function singleton_Sound(name, __singleton = false) constructor
 	else
 		clip = name;
 		
-	static play = function()
+	play = function()
 	{
 		audio_play_sound(clip, 0, false, audio_sound_get_gain(clip));
 	}

@@ -3,12 +3,12 @@ function Random(seed = undefined) constructor
     seed_hi = 0;
     seed_lo = 0;
 
-    static BASE = 16777216;
-    static MASK = 16777215;
+    BASE = 16777216;
+    MASK = 16777215;
 
-    static MULT_HI = 0x5DE;
-    static MULT_LO = 0xECE66D;
-    static ADDEND = 0xB;
+    MULT_HI = 0x5DE;
+    MULT_LO = 0xECE66D;
+    ADDEND = 0xB;
 
 	self.seed = seed;
     if (is_undefined(seed))

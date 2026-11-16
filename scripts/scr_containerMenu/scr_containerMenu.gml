@@ -7,7 +7,7 @@ function ContainerMenu(player, title, container) : Menu() constructor
 	oSelected = 0; 
 	window = 0; 
 
-	static tick = function()
+	tick = function()
 	{
 		if (input.menu.pressed())
 			game.setMenu(undefined); 
@@ -53,7 +53,7 @@ function ContainerMenu(player, title, container) : Menu() constructor
 		}
 	}
 
-	static render = function(screen)
+	render = function(screen)
 	{
 		if (window == 1)
 			screen.setOffset(6 * 8, 0); 

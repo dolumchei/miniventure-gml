@@ -12,7 +12,7 @@ function AirWizard() : Mob() constructor
 	maxHealth = 2000;
 	healthValue = maxHealth;
 	
-	static tick = function()
+	tick = function()
 	{
 		mob_tick();
 		
@@ -101,7 +101,7 @@ function AirWizard() : Mob() constructor
 			}
 		}
 	}
-	static render = function(screen)
+	render = function(screen)
 	{
 		var xt = 8;
 		var yt = 14;
@@ -153,12 +153,12 @@ function AirWizard() : Mob() constructor
 		screen.render(xo + 8 - 8 * flip2, yo + 8, xt + 1 + (yt + 1) * 32, col2, flip2);
 	}
 
-	static touchedBy = function(entity)
+	touchedBy = function(entity)
 	{
 		if (is_instanceof(entity, Player))
 			entity.hurt3(self, 3, dir);
 	}
-	static die = function()
+	die = function()
 	{
 		mob_die();
 		if (level.player != undefined)

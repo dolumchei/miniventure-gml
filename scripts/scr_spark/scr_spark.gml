@@ -18,7 +18,7 @@ function Spark(owner, xa, ya) : Entity() constructor
 
 	lifeTime = 60 * 10 + prandom.NextInt(30);
 	
-	static tick = function()
+	tick = function()
 	{
 		time++;
 		if (time >= lifeTime)
@@ -38,11 +38,11 @@ function Spark(owner, xa, ya) : Entity() constructor
 				e.hurt3(owner, 1, (e).dir ^ 1);
 		}
 	}
-	static isBlockableBy = function(mob)
+	isBlockableBy = function(mob)
 	{
 		return false;
 	}
-	static render = function(screen)
+	render = function(screen)
 	{
 		if (time >= lifeTime - 6 * 20)
 		{

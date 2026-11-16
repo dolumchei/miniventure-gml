@@ -8,7 +8,7 @@ function InventoryMenu(player) : Menu() constructor
 	}
 	selected = 0; 
 
-	static tick = function()
+	tick = function()
 	{
 		if (input.menu.pressed())
 			game.setMenu(undefined); 
@@ -36,7 +36,7 @@ function InventoryMenu(player) : Menu() constructor
 		}
 	}
 
-	static render = function(screen)
+	render = function(screen)
 	{
 		global.Font.renderFrame(screen, "inventory", 1, 1, 12, 11); 
 		renderItemList(screen, 1, 1, 12, 11, player.inventory.items, selected); 

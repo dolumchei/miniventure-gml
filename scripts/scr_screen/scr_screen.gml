@@ -12,7 +12,7 @@ function Screen(w, h, sheet) constructor
 	
 	light = -1;
 	
-	static light_ensure = function()
+	light_ensure = function()
 	{
 	    if (removed)
 	        return;
@@ -26,7 +26,7 @@ function Screen(w, h, sheet) constructor
 	        surface_reset_target();
 	    }
 	}
-	static surface_ensure = function()
+	surface_ensure = function()
 	{
 		if (removed)
 			return;
@@ -35,7 +35,7 @@ function Screen(w, h, sheet) constructor
 			surface = surface_create(w, h);		
 	}
 	
-	static free = function()
+	free = function()
 	{
 		if (removed)
 			return;
@@ -53,7 +53,7 @@ function Screen(w, h, sheet) constructor
 		}
 	}
 	
-	static clear = function(color)
+	clear = function(color)
 	{
 	    if (removed)
 	        return;
@@ -70,7 +70,7 @@ function Screen(w, h, sheet) constructor
 		surface_reset_target();
 	}
 	
-	static render = function(xp, yp, tile, colors, bits, drawRegardless = false)
+	render = function(xp, yp, tile, colors, bits, drawRegardless = false)
 	{
 		if (removed)
 			return;
@@ -119,13 +119,13 @@ function Screen(w, h, sheet) constructor
 		surface_reset_target();
 	}
 	
-	static setOffset = function(xOffset, yOffset)
+	setOffset = function(xOffset, yOffset)
 	{
 		self.xOffset = xOffset;
 		self.yOffset = yOffset;
 	}
 
-	static overlay = function(screen2, xa, ya)
+	overlay = function(screen2, xa, ya)
 	{		
 		if (removed || screen2.removed)
 		    return;
@@ -149,7 +149,7 @@ function Screen(w, h, sheet) constructor
 		surface_reset_target();
 	}
 	
-	static renderLight = function(xp, yp, r)
+	renderLight = function(xp, yp, r)
 	{
 	    if (removed || r <= 0)
 	        return;

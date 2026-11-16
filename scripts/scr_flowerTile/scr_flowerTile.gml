@@ -2,7 +2,7 @@ function FlowerTile(vid) : GrassTile(vid) constructor
 {
 	connectsToGrass = true;
 	
-	static render = function(screen, level, xx, yy)
+	render = function(screen, level, xx, yy)
 	{
 		grass_render(screen, level, xx, yy);
 
@@ -19,7 +19,7 @@ function FlowerTile(vid) : GrassTile(vid) constructor
 		if (shape == 0)
 			screen.render(xx * 16 + 8, yy * 16 + 8, 1 + 1 * 32, flowerCol, 0);
 	}
-	static interact = function(level, xx, yy, player, item, attackDir)
+	interact = function(level, xx, yy, player, item, attackDir)
 	{
 		if (is_instanceof(item, ToolItem))
 		{
@@ -37,7 +37,7 @@ function FlowerTile(vid) : GrassTile(vid) constructor
 		}
 		return false;
 	}
-	static hurt6 = function(level, xx, yy, source, dmg, attackDir)
+	hurt6 = function(level, xx, yy, source, dmg, attackDir)
 	{
 		var count = prandom.NextInt(2) + 1;
 		for (var i = 0; i < count; i++)

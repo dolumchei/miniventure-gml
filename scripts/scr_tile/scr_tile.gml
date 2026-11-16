@@ -1,89 +1,79 @@
-function singleton_Tile(vid, __singleton = false) constructor
+function singleton_Tile(vid) constructor
 {
-	if (!__singleton)
-	{
-		prandom = new Random();
+	prandom = new Random();
 		
+	static tiles = array_create(256, undefined);
+		
+	if (!is_undefined(vid))
+	{
 		self.id = vid;
-		if (!is_undefined(global.Tile.tiles[id]))
+		if (!is_undefined(tiles[id]))
 			throw ($"Duplicate tile ids! {vid} {id}");
-		global.Tile.tiles[id] = self;
-	}
-	else
-	{
-		tiles = array_create(256, undefined);
-		global.Tile = self;
-		
-		tileId = 0;
-		grass = new GrassTile(tileId++);
-		rock = new RockTile(tileId++);
-		water = new WaterTile(tileId++);
-		flower = new FlowerTile(tileId++);
-		tree = new TreeTile(tileId++);
-		dirt = new DirtTile(tileId++);
-		sand = new SandTile(tileId++);
-		cactus = new CactusTile(tileId++);
-		hole = new HoleTile(tileId++);
-		treeSapling = new SaplingTile(tileId++, grass, tree);
-		cactusSapling = new SaplingTile(tileId++, sand, cactus);
-		farmland = new FarmTile(tileId++);
-		wheat = new WheatTile(tileId++);
-		lava = new LavaTile(tileId++);
-		stairsDown = new StairsTile(tileId++, false);
-		stairsUp = new StairsTile(tileId++, true);
-		infiniteFall = new InfiniteFallTile(tileId++);
-		cloud = new CloudTile(tileId++);
-		hardRock = new HardRockTile(tileId++);
-		
-		ironOre = undefined;
-		goldOre = undefined;
-		gemOre = undefined;
-		
-		cloudCactus = new CloudCactusTile(tileId++);
-		
-		static singleton_postInit = function()
-		{
-			ironOre = new OreTile(tileId++, global.Resource.ironOre);
-			goldOre = new OreTile(tileId++, global.Resource.goldOre);
-			gemOre = new OreTile(tileId++, global.Resource.gem);	
-		}
-		
-		static singleton_tick = function()
-		{
-			tickCount++;
-			for (var i = 0; i < array_length(tiles); i++)
-			{
-				if (tiles[i] != undefined)
-					tiles[i].tickCount = tickCount;
-			}
-		}
+		tiles[id] = self;
 	}
 	
-	tickCount = 0;
+	static tileId = 0;
+	static grass = new GrassTile(tileId++);
+	static rock = new RockTile(tileId++);
+	static water = new WaterTile(tileId++);
+	static flower = new FlowerTile(tileId++);
+	static tree = new TreeTile(tileId++);
+	static dirt = new DirtTile(tileId++);
+	static sand = new SandTile(tileId++);
+	static cactus = new CactusTile(tileId++);
+	static hole = new HoleTile(tileId++);
+	static treeSapling = new SaplingTile(tileId++, grass, tree);
+	static cactusSapling = new SaplingTile(tileId++, sand, cactus);
+	static farmland = new FarmTile(tileId++);
+	static wheat = new WheatTile(tileId++);
+	static lava = new LavaTile(tileId++);
+	static stairsDown = new StairsTile(tileId++, false);
+	static stairsUp = new StairsTile(tileId++, true);
+	static infiniteFall = new InfiniteFallTile(tileId++);
+	static cloud = new CloudTile(tileId++);
+	static hardRock = new HardRockTile(tileId++);
+		
+	static ironOre = new OreTile(tileId++, singleton_Resource().ironOre);
+	static goldOre = new OreTile(tileId++, singleton_Resource().goldOre);
+	static gemOre = new OreTile(tileId++, singleton_Resource().gem);
+		
+	static cloudCactus = new CloudCactusTile(tileId++);
+		
+	singleton_postInit = function()
+	{
+	
+	}
+		
+	singleton_tick = function()
+	{
+		tickCount++;
+	}
+	
+	static tickCount = 0;
 	
 	connectsToGrass = false;
 	connectsToSand = false;
 	connectsToLava = false;
 	connectsToWater = false;
 	
-	static render = function(screen, level, xx, yy) { }
-	static mayPass = function(level, xx, yy, e)
+	render = function(screen, level, xx, yy) { }
+	mayPass = function(level, xx, yy, e)
 	{
 		return true;
 	}
-	static getLightRadius = function(level, xx, yy)
+	getLightRadius = function(level, xx, yy)
 	{
 		return 0;
 	}
-	static hurt6 = function(level, xx, yy, source, dmg, attackDir) { }
-	static bumpedInto = function(level, xt, yt, entity) { }
-	static tick = function(level, xt, yt) { }
-	static steppedOn = function(level, xt, yt, entity) { }
-	static interact = function(level, xt, yt, player, item, attackDir)
+	hurt6 = function(level, xx, yy, source, dmg, attackDir) { }
+	bumpedInto = function(level, xt, yt, entity) { }
+	tick = function(level, xt, yt) { }
+	steppedOn = function(level, xt, yt, entity) { }
+	interact = function(level, xt, yt, player, item, attackDir)
 	{
 		return false;
 	}
-	static connectsToLiquid = function()
+	connectsToLiquid = function()
 	{
 		return connectsToWater || connectsToLava;
 	}

@@ -2,7 +2,7 @@ function WonMenu() : Menu() constructor
 {
 	inputDelay = 60; 
 
-	static tick = function()
+	tick = function()
 	{
 		if (inputDelay > 0) 
 			inputDelay--; 
@@ -10,7 +10,7 @@ function WonMenu() : Menu() constructor
 			game.setMenu(new TitleMenu()); 
 	}
 
-	static render = function(screen)
+	render = function(screen)
 	{
 		global.Font.renderFrame(screen, "", 1, 3, 18, 9); 
 		global.Font.draw("You won! Yay!", screen, 2 * 8, 4 * 8, global.Color.get(-1, 555, 555, 555)); 

@@ -2,9 +2,9 @@ function GrassTile(vid) : singleton_Tile(vid, false) constructor
 {
 	connectsToGrass = true;
 	
-	static render = function(screen, level, xx, yy)
+	render = function(screen, level, xx, yy)
 	{ grass_render(screen, level, xx, yy); }
-	static grass_render = function(screen, level, xx, yy)
+	grass_render = function(screen, level, xx, yy)
 	{
 		var col = global.Color.get(level.grassColor, level.grassColor, level.grassColor + 111, level.grassColor + 111);
 		var transitionColor = global.Color.get(level.grassColor - 111, level.grassColor, level.grassColor + 111, level.dirtColor);
@@ -34,7 +34,7 @@ function GrassTile(vid) : singleton_Tile(vid, false) constructor
 		else
 			screen.render(xx * 16 + 8, yy * 16 + 8, (r ? 13 : 12) + (d ? 2 : 1) * 32, transitionColor, 0);
 	}
-	static tick = function(level, xt, yt)
+	tick = function(level, xt, yt)
 	{
 		var xn = xt;
 		var yn = yt;
@@ -47,7 +47,7 @@ function GrassTile(vid) : singleton_Tile(vid, false) constructor
 		if (level.getTile(xn, yn) == global.Tile.dirt)
 			level.setTile(xn, yn, self, 0);
 	}
-	static interact = function(level, xt, yt, player, item, attackDir)
+	interact = function(level, xt, yt, player, item, attackDir)
 	{
 		if (is_instanceof(item, ToolItem))
 		{

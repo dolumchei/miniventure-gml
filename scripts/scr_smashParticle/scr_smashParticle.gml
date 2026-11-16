@@ -5,13 +5,13 @@ function SmashParticle(xx, yy) : Entity() constructor
 	self.y = yy; 
 	global.Sound.monsterHurt.play(); 
 
-	static tick = function()
+	tick = function()
 	{
 		time++; 
 		if (time > 10)
 			remove(); 
 	}
-	static render = function(screen)
+	render = function(screen)
 	{
 		var col = global.Color.get(-1, 555, 555, 555);
 		screen.render(x - 8, y - 8, 5 + 12 * 32, col, 2); 

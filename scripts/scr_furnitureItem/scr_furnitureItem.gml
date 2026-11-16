@@ -3,33 +3,33 @@ function FurnitureItem(furniture) : Item() constructor
 	self.furniture = furniture; 
 	placed = false; 
 
-	static getColor = function()
+	getColor = function()
 	{
 		return furniture.col;
 	}
-	static getColor = function()
+	getColor = function()
 	{
 		return furniture.col;
 	}
-	static getSprite = function()
+	getSprite = function()
 	{
 		return furniture.sprite + 10 * 32;
 	}
-	static renderIcon = function(screen, xx, yy)
+	renderIcon = function(screen, xx, yy)
 	{
 		screen.render(xx, yy, getSprite(), getColor(), 0); 
 	}
-	static renderInventory = function(screen, xx, yy)
+	renderInventory = function(screen, xx, yy)
 	{
 		screen.render(xx, yy, getSprite(), getColor(), 0); 
 		global.Font.draw(furniture.name, screen, xx + 8, yy, global.Color.get(-1, 555, 555, 555)); 
 	}
-	static onTake = function(itemEntity) { }
-	static canAttack = function()
+	onTake = function(itemEntity) { }
+	canAttack = function()
 	{
 		return false;
 	}
-	static interactOn = function(tile, level, xt, yt, player, attackDir)
+	interactOn = function(tile, level, xt, yt, player, attackDir)
 	{
 		if (tile.mayPass(level, xt, yt, furniture))
 		{ 
@@ -41,11 +41,11 @@ function FurnitureItem(furniture) : Item() constructor
 		}
 		return false;
 	}
-	static isDepleted = function()
+	isDepleted = function()
 	{
 		return placed;
 	}
-	static getName = function()
+	getName = function()
 	{
 		return furniture.name;
 	}

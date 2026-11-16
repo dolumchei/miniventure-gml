@@ -7,7 +7,7 @@ function singleton_Color() constructor
 {
 	precomputedColor = PrecomputedColors();
 	
-	static get = function(a, b, c, d)
+	get = function(a, b, c, d)
 	{
 		return [ a, b, c, d ];
 		
@@ -20,7 +20,7 @@ function singleton_Color() constructor
 		}
 	}
 	
-	static getArray = function(a, b, c, d)
+	getArray = function(a, b, c, d)
 	{
 	    var color_a = getComponent(a);
 	    var color_b = getComponent(b);
@@ -37,15 +37,13 @@ function singleton_Color() constructor
 		
 		return color_array;
 	}
-	static getComponent = function(d)
+	getComponent = function(d)
 	{
 	    if (d < 0) 
 			return [ 1, 1, 1, 0 ];
 		if (precomputedColor[d] != undefined)
 			return precomputedColor[d];
-		
-		print("precomputing new color: ", d);
-		
+			
 	    var r = floor(d / 100) % 10;
 	    var g = floor(d / 10) % 10;
 	    var b = d % 10;
@@ -63,7 +61,7 @@ function singleton_Color() constructor
 	
 	    return precomputedColor[d];
 	}	
-	static seperateBit = function(v)
+	seperateBit = function(v)
 	{
 		var a = (v >> 24) & 0xFF;
 		var b = (v & 0x00_FF_00_00) >> 16;
@@ -73,12 +71,12 @@ function singleton_Color() constructor
 		return [ a, b, c, d ];
 	}	
 	
-	static getSingle = function(a, b, c, d)
+	getSingle = function(a, b, c, d)
 	{
 		return (getSingleComponent(d) << 24) + (getSingleComponent(c) << 16) + (getSingleComponent(b) << 8) + (getSingleComponent(a));
 	}
 
-	static getSingleComponent = function(d)
+	getSingleComponent = function(d)
 	{
 		if (d < 0)
 			return 255;

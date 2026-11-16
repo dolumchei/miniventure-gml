@@ -73,11 +73,11 @@ function WaterTile(vid) : singleton_Tile(vid, false) constructor
 			screen.render(xx * 16 + 8, yy * 16 + 8, (r ? 16 : 15) + (d ? 2 : 1) * 32, (sd || sr) ? transitionColor2 : transitionColor1, 0);	
 	}	
 	
-	static mayPass = function(level, xx, yy, e)
+	mayPass = function(level, xx, yy, e)
 	{
 		return e.canSwim();
 	}
-	static tick = function(level, xt, yt)
+	tick = function(level, xt, yt)
 	{
 		var xn = xt;
 		var yn = yt;

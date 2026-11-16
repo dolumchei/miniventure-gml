@@ -5,7 +5,7 @@ function Anvil() : Furniture("Anvil") constructor
 	xr = 3; 
 	yr = 2; 
 
-	static use2 = function(player, attackDir)
+	use2 = function(player, attackDir)
 	{
 		player.game.setMenu(new CraftingMenu(global.Crafting.anvilRecipes, player)); 
 		return true;

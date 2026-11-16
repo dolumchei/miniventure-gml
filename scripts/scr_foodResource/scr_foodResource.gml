@@ -3,7 +3,7 @@ function FoodResource(name, sprite, color, heal, staminaCost) : singleton_Resour
 	self.heal = heal;
 	self.staminaCost = staminaCost; 
 
-	static interactOn = function(tile, level, xt, yt, player, attackDir)
+	interactOn = function(tile, level, xt, yt, player, attackDir)
 	{
 		if (player.healthValue < player.maxHealth && player.payStamina(staminaCost))
 		{ 

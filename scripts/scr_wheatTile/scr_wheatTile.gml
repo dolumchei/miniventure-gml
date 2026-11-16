@@ -1,6 +1,6 @@
 function WheatTile(vid) : singleton_Tile(vid, false) constructor
 {
-	static render = function(screen, level, xx, yy)
+	render = function(screen, level, xx, yy)
 	{
 		var age = level.getData(xx, yy);
 		var col = global.Color.get(level.dirtColor - 121, level.dirtColor - 11, level.dirtColor, 50);
@@ -18,7 +18,7 @@ function WheatTile(vid) : singleton_Tile(vid, false) constructor
 		screen.render(xx * 16 + 0, yy * 16 + 8, 4 + 3 * 32 + icon, col, 1);
 		screen.render(xx * 16 + 8, yy * 16 + 8, 4 + 3 * 32 + icon, col, 1);
 	}
-	static tick = function(level, xt, yt)
+	tick = function(level, xt, yt)
 	{
 		if (prandom.NextBoolean() == false)
 			return;
@@ -27,7 +27,7 @@ function WheatTile(vid) : singleton_Tile(vid, false) constructor
 		if (age < 50)
 		level.setData(xt, yt, age + 1);
 	}
-	static interact = function(level, xt, yt, player, item, attackDir)
+	interact = function(level, xt, yt, player, item, attackDir)
 	{
 		if (is_instanceof(item, ToolItem))
 		{
@@ -43,7 +43,7 @@ function WheatTile(vid) : singleton_Tile(vid, false) constructor
 		}
 		return false;
 	}
-	static steppedOn = function(level, xt, yt, entity)
+	steppedOn = function(level, xt, yt, entity)
 	{
 		if (prandom.NextInt(60) != 0)
 			return;
@@ -51,11 +51,11 @@ function WheatTile(vid) : singleton_Tile(vid, false) constructor
 			return;
 		harvest(level, xt, yt);
 	}
-	static hurt6 = function(level, xx, yy, source, dmg, attackDir)
+	hurt6 = function(level, xx, yy, source, dmg, attackDir)
 	{
 		harvest(level, xx, yy);
 	}
-	static harvest = function(level, xx, yy)
+	harvest = function(level, xx, yy)
 	{
 		var age = level.getData(xx, yy);
 

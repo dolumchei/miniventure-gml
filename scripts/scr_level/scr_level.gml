@@ -1,6 +1,6 @@
 function Level(w, h, level, parentLevel) constructor
 {
-	static prandom = new Random();
+	prandom = new Random();
 	
 	entities = [ ];
 	static spriteSorter = function(e0, e1)
@@ -83,7 +83,7 @@ function Level(w, h, level, parentLevel) constructor
 		add(aw);
 	}
 	
-	static renderBackground = function(screen, xScroll, yScroll)
+	renderBackground = function(screen, xScroll, yScroll)
 	{
 		var xo = xScroll >> 4;
 		var yo = yScroll >> 4;
@@ -110,7 +110,7 @@ function Level(w, h, level, parentLevel) constructor
 	
 	player = undefined;
 	
-	static renderSprites = function(screen, xScroll, yScroll)
+	renderSprites = function(screen, xScroll, yScroll)
 	{
 		var xo = xScroll >> 4;
 		var yo = yScroll >> 4;
@@ -138,7 +138,7 @@ function Level(w, h, level, parentLevel) constructor
 		screen.setOffset(0, 0);	
 	}
 	
-	static renderLight = function(screen, xScroll, yScroll)
+	renderLight = function(screen, xScroll, yScroll)
 	{
 		var xo = xScroll >> 4; 
 		var yo = yScroll >> 4; 
@@ -175,14 +175,14 @@ function Level(w, h, level, parentLevel) constructor
 	}
 
 	
-	static sortAndRender = function(screen, list)
+	sortAndRender = function(screen, list)
 	{
 		array_sort(list, spriteSorter);	
 		for (var i = 0; i < array_length(list); i++)
 			list[i].render(screen);
 	}
 	
-	static getTile = function(xx, yy)
+	getTile = function(xx, yy)
 	{
 		if (xx < 0 || yy < 0 || xx >= w || yy >= h)
 			return global.Tile.rock;
@@ -190,7 +190,7 @@ function Level(w, h, level, parentLevel) constructor
 		return global.Tile.tiles[tiles[xx + yy * w]];
 	}
 	
-	static setTile = function(xx, yy, t, dataVal)
+	setTile = function(xx, yy, t, dataVal)
 	{
 		if (xx < 0 || yy < 0 || xx >= w || yy >= h)
 			return;
@@ -199,7 +199,7 @@ function Level(w, h, level, parentLevel) constructor
 		data[xx + yy * w] = dataVal;
 	}
 	
-	static getData = function(xx, yy)
+	getData = function(xx, yy)
 	{
 		if (xx < 0 || yy < 0 || xx >= w || yy >= h)
 			return 0;
@@ -207,7 +207,7 @@ function Level(w, h, level, parentLevel) constructor
 		return data[xx + yy * w] & 0xff;
 	}
 	
-	static setData = function(xx, yy, val)
+	setData = function(xx, yy, val)
 	{
 		if (xx < 0 || yy < 0 || xx >= w || yy >= h)
 			return;
@@ -215,7 +215,7 @@ function Level(w, h, level, parentLevel) constructor
 		data[xx + yy * w] = val;
 	}
 	
-	static add = function(entity)
+	add = function(entity)
 	{
 		if (is_instanceof(entity, Player))
 			player = entity;
@@ -227,7 +227,7 @@ function Level(w, h, level, parentLevel) constructor
 		insertEntity(entity.x >> 4, entity.y >> 4, entity);
 	}
 	
-	static remove = function(e)
+	remove = function(e)
 	{
 		array_delete_item(entities, e);
 		var xto = e.x >> 4;
@@ -235,7 +235,7 @@ function Level(w, h, level, parentLevel) constructor
 		removeEntity(xto, yto, e);
 	}
 	
-	static insertEntity = function(xx, yy, e)
+	insertEntity = function(xx, yy, e)
 	{
 		if (xx < 0 || yy < 0 || xx >= w || yy >= h)
 			return;
@@ -243,7 +243,7 @@ function Level(w, h, level, parentLevel) constructor
 		array_push(entitiesInTiles[xx + yy * w], e);
 	}
 	
-	static removeEntity = function(xx, yy, e)
+	removeEntity = function(xx, yy, e)
 	{
 		if (xx < 0 || yy < 0 || xx >= w || yy >= h)
 			return;
@@ -252,7 +252,7 @@ function Level(w, h, level, parentLevel) constructor
 		array_delete(array, array_indexof(array, e), 1);
 	}
 	
-	static trySpawn = function(count)
+	trySpawn = function(count)
 	{
 		for (var i = 0; i < count; i++)
 		{
@@ -284,7 +284,7 @@ function Level(w, h, level, parentLevel) constructor
 	}
 	
 	t = 0;
-	static tick = function()
+	tick = function()
 	{		
 		trySpawn(1);
 		
@@ -321,7 +321,7 @@ function Level(w, h, level, parentLevel) constructor
 		}		
 	}
 	
-	static getEntities = function(x0, y0, x1, y1)
+	getEntities = function(x0, y0, x1, y1)
 	{
 		var result = [ ]
 		var xt0 = (x0 >> 4) - 1; 

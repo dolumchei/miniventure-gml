@@ -3,7 +3,7 @@ function OreTile(vid, toDrop) : singleton_Tile(vid, false) constructor
 	self.toDrop = toDrop;
 	color = toDrop.color;
 
-	static render = function(screen, level, xx, yy)
+	render = function(screen, level, xx, yy)
 	{
 		color = global.Color.get(level.dirtColor, toDrop.color[1], toDrop.color[2], toDrop.color[3]);
 		
@@ -12,15 +12,15 @@ function OreTile(vid, toDrop) : singleton_Tile(vid, false) constructor
 		screen.render(xx * 16 + 0, yy * 16 + 8, 17 + 2 * 32, color, 0);
 		screen.render(xx * 16 + 8, yy * 16 + 8, 18 + 2 * 32, color, 0);
 	}	
-	static mayPass = function(level, xx, yy, e)
+	mayPass = function(level, xx, yy, e)
 	{
 		return false;
 	}
-	static hurt6 = function(level, xx, yy, source, dmg, attackDir)
+	hurt6 = function(level, xx, yy, source, dmg, attackDir)
 	{
 		hurt4(level, xx, yy, 0);
 	}
-	static interact = function(level, xt, yt, player, item, attackDir)
+	interact = function(level, xt, yt, player, item, attackDir)
 	{
 		if (is_instanceof(item, ToolItem))
 		{
@@ -36,7 +36,7 @@ function OreTile(vid, toDrop) : singleton_Tile(vid, false) constructor
 		}
 		return false;
 	}
-	static hurt4 = function(level, xx, yy, dmg)
+	hurt4 = function(level, xx, yy, dmg)
 	{
 		var damage = level.getData(xx, yy) + 1;
 		level.add(new SmashParticle(xx * 16 + 8, yy * 16 + 8));
@@ -55,7 +55,7 @@ function OreTile(vid, toDrop) : singleton_Tile(vid, false) constructor
 				level.add(new ItemEntity(new ResourceItem(toDrop), xx * 16 + prandom.NextInt(10) + 3, yy * 16 + prandom.NextInt(10) + 3));
 		}
 	}
-	static bumpedInto = function(level, xx, yy, entity)
+	bumpedInto = function(level, xx, yy, entity)
 	{
 		if (entity != undefined)
 			entity.tile_hurt4(self, xx, yy, 3);

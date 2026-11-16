@@ -1,6 +1,6 @@
 function CloudCactusTile(vid) : singleton_Tile(vid, false) constructor
 {
-	static render = function(screen, level, xx, yy)
+	render = function(screen, level, xx, yy)
 	{
 		var color = global.Color.get(444, 111, 333, 555); 
 		screen.render(xx * 16 + 0, yy * 16 + 0, 17 + 1 * 32, color, 0);
@@ -8,17 +8,17 @@ function CloudCactusTile(vid) : singleton_Tile(vid, false) constructor
 		screen.render(xx * 16 + 0, yy * 16 + 8, 17 + 2 * 32, color, 0);
 		screen.render(xx * 16 + 8, yy * 16 + 8, 18 + 2 * 32, color, 0);
 	}
-	static mayPass = function(level, xx, yy, e)
+	mayPass = function(level, xx, yy, e)
 	{
 		if (is_instanceof(e, AirWizard))
 			return true;
 		return false;
 	}
-	static hurt6 = function(level, xx, yy, source, dmg, attackDir)
+	hurt6 = function(level, xx, yy, source, dmg, attackDir)
 	{
 		hurt4(level, xx, yy, 0);
 	}
-	static interact = function(level, xt, yt, player, item, attackDir)
+	interact = function(level, xt, yt, player, item, attackDir)
 	{
 		if (is_instanceof(item, ToolItem))
 		{
@@ -34,7 +34,7 @@ function CloudCactusTile(vid) : singleton_Tile(vid, false) constructor
 		}
 		return false;
 	}
-	static hurt4 = function(level, xx, yy, dmg)
+	hurt4 = function(level, xx, yy, dmg)
 	{
 		var damage = level.getData(xx, yy) + 1;
 		level.add(new SmashParticle(xx * 16 + 8, yy * 16 + 8));
@@ -47,7 +47,7 @@ function CloudCactusTile(vid) : singleton_Tile(vid, false) constructor
 				level.setData(xx, yy, damage);
 		}
 	}
-	static bumpedInto = function(level, xx, yy, entity)
+	bumpedInto = function(level, xx, yy, entity)
 	{
 		if (is_undefined(entity))
 			return;

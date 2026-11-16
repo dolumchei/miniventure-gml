@@ -1,4 +1,4 @@
 function ListItem() constructor
 {
-	static renderInventory = function(screen, i, j) { };
+	renderInventory = function(screen, i, j) { };
 }

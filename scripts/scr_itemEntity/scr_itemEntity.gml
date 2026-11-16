@@ -18,7 +18,7 @@ function ItemEntity(item, xv, yv) : Entity() constructor
 	lifeTime = 60 * 10 + prandom.NextInt(60); 
 	time = 0; 
 
-	static tick = function()
+	tick = function()
 	{
 		time++; 
 		if (time >= lifeTime)
@@ -49,11 +49,11 @@ function ItemEntity(item, xv, yv) : Entity() constructor
 		xx += gotx - expectedx; 
 		yy += goty - expectedy; 
 	}
-	static isBlockableBy = function(mob)
+	isBlockableBy = function(mob)
 	{
 		return false; 
 	}
-	static render = function(screen)
+	render = function(screen)
 	{
 		if (time >= lifeTime - 6 * 20)
 		{ 
@@ -63,12 +63,12 @@ function ItemEntity(item, xv, yv) : Entity() constructor
 		screen.render(x - 4, y - 4, item.getSprite(), global.Color.get(-1, 0, 0, 0), 0); 
 		screen.render(x - 4, y - 4 - round(zz), item.getSprite(), item.getColor(), 0); 
 	}
-	static touchedBy = function(entity)
+	touchedBy = function(entity)
 	{
 		if (time > 30) 
 			entity.touchItem(self); 
 	}
-	static take = function(player)
+	take = function(player)
 	{
 		global.Sound.pickup.play(); 
 		player.scoreValue++; 
@@ -76,5 +76,5 @@ function ItemEntity(item, xv, yv) : Entity() constructor
 		remove(); 
 	}
 	
-	static tile_hurt4 = function(tile, xx, yy, damage) { }
+	tile_hurt4 = function(tile, xx, yy, damage) { }
 }

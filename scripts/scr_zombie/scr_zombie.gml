@@ -10,7 +10,7 @@ function Zombie(lvl) : Mob() constructor
 	maxHealth = lvl * lvl * 10;
 	healthValue = maxHealth;
 
-	static tick = function()
+	tick = function()
 	{
 		mob_tick();
 
@@ -44,7 +44,7 @@ function Zombie(lvl) : Mob() constructor
 			randomWalkTime--;
 	}
 
-	static render = function(screen)
+	render = function(screen)
 	{
 		var xt = 0;
 		var yt = 14;
@@ -83,13 +83,13 @@ function Zombie(lvl) : Mob() constructor
 		screen.render(xo + 8 - 8 * flip2, yo + 8, xt + 1 + (yt + 1) * 32, col, flip2);
 	}
 
-	static touchedBy = function(entity)
+	touchedBy = function(entity)
 	{
 		if (is_instanceof(entity, Player))
 			entity.hurt3(self, lvl + 1, dir);
 	}
 
-	static die = function()
+	die = function()
 	{
 		mob_die();
 

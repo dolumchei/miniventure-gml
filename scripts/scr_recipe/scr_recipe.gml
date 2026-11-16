@@ -16,12 +16,12 @@ function Recipe(aresultTemplate) : ListItem() constructor
 	canCraft = false; 
 	self.resultTemplate = res; 
 
-	static addCost = function(resource, count)
+	addCost = function(resource, count)
 	{
 		array_push(costs, new ResourceItem(resource, count)); 
 		return self;
 	}
-	static checkCanCraft = function(player)
+	checkCanCraft = function(player)
 	{
 		for (var i = 0; i < array_length(costs); i++)
 		{ 
@@ -38,14 +38,14 @@ function Recipe(aresultTemplate) : ListItem() constructor
 		}
 		canCraft = true;
 	}
-	static renderInventory = function(screen, xx, yy)
+	renderInventory = function(screen, xx, yy)
 	{
 		screen.render(xx, yy, resultTemplate.getSprite(), resultTemplate.getColor(), 0); 
 		var textColor = canCraft ? global.Color.get(-1, 555, 555, 555) : global.Color.get(-1, 222, 222, 222); 
 		global.Font.draw(resultTemplate.getName(), screen, xx + 8, yy, textColor); 
 	}
-	static craft = function(player) { }
-	static deductCost = function(player)
+	craft = function(player) { }
+	deductCost = function(player)
 	{
 		for (var i = 0; i < array_length(costs); i++)
 		{

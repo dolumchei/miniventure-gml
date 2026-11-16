@@ -10,7 +10,7 @@ function Slime(lvl) : Mob() constructor
 	maxHealth = lvl * lvl * 5;
 	healthValue = maxHealth;
 
-	static tick = function()
+	tick = function()
 	{
 		mob_tick();
 
@@ -57,7 +57,7 @@ function Slime(lvl) : Mob() constructor
 		};
 	}
 
-	static die = function()
+	die = function()
 	{
 		mob_die();
 
@@ -70,7 +70,7 @@ function Slime(lvl) : Mob() constructor
 		
 	}
 
-	static render = function(screen)
+	render = function(screen)
 	{
 		var xt = 0;
 		var yt = 18;
@@ -101,7 +101,7 @@ function Slime(lvl) : Mob() constructor
 		screen.render(xo + 8, yo + 8, xt + 1 + (yt + 1) * 32, col, 0);
 	}
 
-	static touchedBy = function(entity)
+	touchedBy = function(entity)
 	{
 		if (is_instanceof(entity, Player))
 			entity.hurt3(self, lvl, dir);

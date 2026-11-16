@@ -1,6 +1,6 @@
 function LevelGen(w, h, featureSize, __singleton = false) constructor
 {
-	static prandom = new Random();
+	prandom = new Random();
 	
 	if (!__singleton)
 	{
@@ -10,16 +10,16 @@ function LevelGen(w, h, featureSize, __singleton = false) constructor
 		values = array_create(w * h);
 	}
 	
-	static sample = function(xx, yy)
+	sample = function(xx, yy)
 	{
 		return values[(xx & (w - 1)) + (yy & (h - 1)) * w];
 	}
-	static setSample = function(xx, yy, value)
+	setSample = function(xx, yy, value)
 	{
 		values[(xx & (w - 1)) + (yy & (h - 1)) * w] = value;	
 	}
 	
-	static createAndValidateTopMap = function(w, h)
+	createAndValidateTopMap = function(w, h)
 	{	
 		while (true)
 		{
@@ -44,7 +44,7 @@ function LevelGen(w, h, featureSize, __singleton = false) constructor
 			return result;
 		}
 	}
-	static createAndValidateUndergroundMap = function(w, h, vdepth)
+	createAndValidateUndergroundMap = function(w, h, vdepth)
 	{
 		while (true)
 		{
@@ -70,7 +70,7 @@ function LevelGen(w, h, featureSize, __singleton = false) constructor
 			return result;
 		}
 	}
-	static createAndValidateSkyMap = function(w, h)
+	createAndValidateSkyMap = function(w, h)
 	{
 		while (true)
 		{
@@ -90,7 +90,7 @@ function LevelGen(w, h, featureSize, __singleton = false) constructor
 		}
 	}
 	
-	static createTopMap = function(w, h)
+	createTopMap = function(w, h)
 	{	
 		var mnoise1 = new LevelGen(w, h, 16);
 		var mnoise2 = new LevelGen(w, h, 16);
@@ -241,7 +241,7 @@ function LevelGen(w, h, featureSize, __singleton = false) constructor
 
 		return [ map, data ];
 	}
-	static createUndergroundMap = function(w, h, vdepth)
+	createUndergroundMap = function(w, h, vdepth)
 	{		
 		var mnoise1 = new LevelGen(w, h, 16);
 		var mnoise2 = new LevelGen(w, h, 16);  
@@ -358,7 +358,7 @@ function LevelGen(w, h, featureSize, __singleton = false) constructor
 
 		return [ map, data ];
 	}
-	static createSkyMap = function(w, h)
+	createSkyMap = function(w, h)
 	{
 		var noise1 = new LevelGen(w, h, 8); 
 		var noise2 = new LevelGen(w, h, 8); 

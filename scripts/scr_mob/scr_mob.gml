@@ -15,8 +15,8 @@ function Mob() : Entity() constructor
 	xr = 4;
 	yr = 3;
 
-	static tick = function() { mob_tick(); }
-	static mob_tick = function()
+	tick = function() { mob_tick(); }
+	mob_tick = function()
 	{
 		tickTime++;
 		if (level.getTile(x >> 4, y >> 4) == global.Tile.lava)
@@ -28,12 +28,12 @@ function Mob() : Entity() constructor
 		if (hurtTime > 0)
 			hurtTime--;
 	}
-	static die = function() { mob_die(); }
-	static mob_die = function()
+	die = function() { mob_die(); }
+	mob_die = function()
 	{
 		remove();
 	}
-	static move = function(xa, ya)
+	move = function(xa, ya)
 	{
 		if (isSwimming())
 		{
@@ -76,25 +76,25 @@ function Mob() : Entity() constructor
 		}
 		return entity_move(xa, ya);
 	}
-	static isSwimming = function()
+	isSwimming = function()
 	{
 		var tile = level.getTile(x >> 4, y >> 4);
 		return tile == global.Tile.water || tile == global.Tile.lava;
 	}
-	static blocks = function(e)
+	blocks = function(e)
 	{
 		return e.isBlockableBy(self);
 	}
-	static tile_hurt4 = function(tile, xx, yy, damage)
+	tile_hurt4 = function(tile, xx, yy, damage)
 	{
 		var attackDir = dir ^ 1;
 		doHurt(damage, attackDir);
 	}
-	static hurt3 = function(mob, damage, attackDir)
+	hurt3 = function(mob, damage, attackDir)
 	{
 		doHurt(damage, attackDir);
 	}
-	static heal = function(heal)
+	heal = function(heal)
 	{
 		if (hurtTime > 0)
 			return;
@@ -104,7 +104,7 @@ function Mob() : Entity() constructor
 		if (healthValue > maxHealth)
 			healthValue = maxHealth;
 	}
-	static doHurt = function(damage, attackDir)
+	doHurt = function(damage, attackDir)
 	{
 		if (hurtTime > 0)
 			return;
@@ -128,7 +128,7 @@ function Mob() : Entity() constructor
 			xKnockback = 6;
 		hurtTime = 10;
 	}
-	static findStartPos = function(level)
+	findStartPos = function(level)
 	{
 		var vx = prandom.NextInt(level.w);
 		var vy = prandom.NextInt(level.h);

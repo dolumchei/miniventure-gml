@@ -4,7 +4,7 @@ function HoleTile(vid) : singleton_Tile(vid, false) constructor
 	connectsToWater = true;
 	connectsToLava = true;
 	
-	static render = function(screen, level, xx, yy)
+	render = function(screen, level, xx, yy)
 	{
 		var col = global.Color.get(111, 111, 110, 110);
 		var transitionColor1 = global.Color.get(3, 111, level.dirtColor - 111, level.dirtColor);
@@ -40,7 +40,7 @@ function HoleTile(vid) : singleton_Tile(vid, false) constructor
 		else	
 			screen.render(xx * 16 + 8, yy * 16 + 8, (r ? 16 : 15) + (d ? 2 : 1) * 32, (sd || sr) ? transitionColor2 : transitionColor1, 0);
 	}
-	static mayPass = function(level, xx, yy, e)
+	mayPass = function(level, xx, yy, e)
 	{
 		return e.canSwim();
 	}

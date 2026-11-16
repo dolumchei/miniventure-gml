@@ -1,6 +1,6 @@
 function CloudTile(vid) : singleton_Tile(vid, false) constructor
 {	
-	static render = function(screen, level, xx, yy)
+	render = function(screen, level, xx, yy)
 	{
 		var col = global.Color.get(444, 444, 555, 555);
 		var transitionColor = global.Color.get(333, 444, 555, -1);
@@ -53,11 +53,11 @@ function CloudTile(vid) : singleton_Tile(vid, false) constructor
 		else
 			screen.render(xx * 16 + 8, yy * 16 + 8, (r ? 4 : 5) + (d ? 0 : 1) * 32, transitionColor, 3);
 	}
-	static mayPass = function(level, xx, yy, e)
+	mayPass = function(level, xx, yy, e)
 	{
 		return true;
 	}
-	static interact = function(level, xt, yt, player, item, attackDir)
+	interact = function(level, xt, yt, player, item, attackDir)
 	{
 		if (is_instanceof(item, ToolItem))
 		{

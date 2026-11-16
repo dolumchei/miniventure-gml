@@ -5,7 +5,7 @@ function Lantern() : Furniture("Lantern") constructor
 	xr = 3; 
 	yr = 2; 
 
-	static getLightRadius = function()
+	getLightRadius = function()
 	{
 		return 8;
 	}

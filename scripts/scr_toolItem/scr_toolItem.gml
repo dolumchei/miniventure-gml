@@ -16,37 +16,37 @@ function ToolItem(type, level) : Item() constructor
 	self.type = type;
 	self.level = level;
 
-	static getColor = function()
+	getColor = function()
 	{
 		return LEVEL_COLORS[level];
 	}
-	static getColor = function()
+	getColor = function()
 	{
 		return LEVEL_COLORS[level];
 	}
-	static getSprite = function()
+	getSprite = function()
 	{
 		return type.sprite + 5 * 32;
 	}
-	static renderIcon = function(screen, xx, yy)
+	renderIcon = function(screen, xx, yy)
 	{
 		screen.render(xx, yy, getSprite(), getColor(), 0);
 	}
-	static renderInventory = function(screen, xx, yy)
+	renderInventory = function(screen, xx, yy)
 	{
 		screen.render(xx, yy, getSprite(), getColor(), 0);
 		global.Font.draw(getName(), screen, xx + 8, yy, global.Color.get(-1, 555, 555, 555));
 	}
-	static getName = function()
+	getName = function()
 	{
 		return LEVEL_NAMES[level] + " " + type.name;
 	}
-	static onTake = function (itemEntity) { }
-	static canAttack = function()
+	onTake = function (itemEntity) { }
+	canAttack = function()
 	{
 		return true; 
 	}
-	static getAttackDamageBonus = function(e)
+	getAttackDamageBonus = function(e)
 	{
 		if (type == global.ToolType.axe)
 			return (level + 1) * 2 + prandom.NextInt(4);
@@ -55,7 +55,7 @@ function ToolItem(type, level) : Item() constructor
 
 		return 1;
 	}
-	static matches = function(item)
+	matches = function(item)
 	{
 		if (is_instanceof(item, ToolItem))
 		{

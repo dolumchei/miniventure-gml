@@ -4,11 +4,11 @@ function HardRockTile(vid) : RockTile(vid) constructor
 	darkColor = 001;
 	t = self;
 	
-	static hurt6 = function(level, xx, yy, source, dmg, attackDir)
+	hurt6 = function(level, xx, yy, source, dmg, attackDir)
 	{
 		hurt4(level, xx, yy, 0);
 	}
-	static interact = function(level, xt, yt, player, item, attackDir)
+	interact = function(level, xt, yt, player, item, attackDir)
 	{
 		if (is_instanceof(item, ToolItem))
 		{

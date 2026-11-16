@@ -5,7 +5,7 @@ function PlantableResource(name, sprite, color, targetTile, sourceTiles) : singl
 		self.sourceTiles = [ sourceTiles ];
 	self.targetTile = targetTile; 
 
-	static interactOn = function(tile, level, xt, yt, player, attackDir)
+	interactOn = function(tile, level, xt, yt, player, attackDir)
 	{
 		if (array_contains(sourceTiles, tile))
 		{ 

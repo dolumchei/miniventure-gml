@@ -2,13 +2,13 @@ function InstructionsMenu(parent) : Menu() constructor
 {
 	self.parent = parent;
 	
-	static tick = function()
+	tick = function()
 	{
 		if (input.attack.pressed() || input.menu.pressed())
 			game.setMenu(parent);  
 	}
 
-	static render = function(screen)
+	render = function(screen)
 	{
 		screen.clear(#0A0A0A); 
 		global.Font.draw("HOW TO PLAY", screen, 4 * 8 + 4, 1 * 8, global.Color.get(0, 555, 555, 555)); 

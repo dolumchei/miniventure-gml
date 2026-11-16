@@ -2,7 +2,7 @@ function singleton_Font() constructor
 {
 	chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ      0123456789.,!?'\"-+=/\\%()<>:;     ";
 	
-	static draw = function(msg, screen, xx, yy, col)
+	draw = function(msg, screen, xx, yy, col)
 	{
 		msg = string_upper(msg);
 		for (var i1 = 1; i1 < string_length(msg) + 1; i1++)
@@ -14,7 +14,7 @@ function singleton_Font() constructor
 		}
 	}
 	
-	static renderFrame = function(screen, title, x0, y0, x1, y1)
+	renderFrame = function(screen, title, x0, y0, x1, y1)
 	{
 		for (var yy = y0; yy <= y1; yy++)
 		{

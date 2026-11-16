@@ -22,7 +22,7 @@ function Player(game, input) : Mob() constructor
 	inventory.add(new FurnitureItem(new Workbench())); 
 	inventory.add(new PowerGloveItem()); 
 	
-	static tick = function()
+	tick = function()
 	{
 		mob_tick(); 
 		if (invulnerableTime > 0)
@@ -107,7 +107,7 @@ function Player(game, input) : Mob() constructor
 			attackTime--; 
 
 	}
-	static use0 = function()
+	use0 = function()
 	{
 		if (dir == 0 && use4(x - 8, y + 4 - 2, x + 8, y + 12 - 2))
 			return true; 
@@ -119,7 +119,7 @@ function Player(game, input) : Mob() constructor
 			return true; 
 		return false;
 	}
-	static attack = function()
+	attack = function()
 	{
 		walkDist += 8; 
 		attackDir = dir; 
@@ -201,7 +201,7 @@ function Player(game, input) : Mob() constructor
 				level.getTile(xt, yt).hurt6(level, xt, yt, self, prandom.NextInt(3) + 1, attackDir); 
 		}
 	}
-	static use4 = function(x0, y0, x1, y1)
+	use4 = function(x0, y0, x1, y1)
 	{
 		var entities = level.getEntities(x0, y0, x1, y1); 
 		for (var i = 0; i < array_length(entities); i++)
@@ -215,7 +215,7 @@ function Player(game, input) : Mob() constructor
 		}
 		return false;
 	}
-	static interact4 = function(x0, y0, x1, y1)
+	interact4 = function(x0, y0, x1, y1)
 	{
 		var entities = level.getEntities(x0, y0, x1, y1); 
 		for (var i = 0; i < array_length(entities); i++)
@@ -229,7 +229,7 @@ function Player(game, input) : Mob() constructor
 		}
 		return false;
 	}
-	static hurt4 = function(x0, y0, x1, y1)
+	hurt4 = function(x0, y0, x1, y1)
 	{
 		var entities = level.getEntities(x0, y0, x1, y1); 
 		for (var i = 0; i < array_length(entities); i++)
@@ -239,14 +239,14 @@ function Player(game, input) : Mob() constructor
 				e.hurt3(self, getAttackDamage(e), attackDir); 
 		}
 	}
-	static getAttackDamage = function(e)
+	getAttackDamage = function(e)
 	{
 		var dmg = prandom.NextInt(3) + 1; 
 		if (attackItem != undefined)
 			dmg += attackItem.getAttackDamageBonus(e); 
 		return dmg;
 	}
-	static render = function(screen)
+	render = function(screen)
 	{
 		var xt = 0; 
 		var yt = 14; 
@@ -329,16 +329,16 @@ function Player(game, input) : Mob() constructor
 			furniture.render(screen);
 		}
 	}
-	static touchItem = function(itemEntity)
+	touchItem = function(itemEntity)
 	{
 		itemEntity.take(self); 
 		inventory.add(itemEntity.item); 
 	}
-	static canSwim = function()
+	canSwim = function()
 	{
 		return true; 
 	}
-	static findStartPos = function(level)
+	findStartPos = function(level)
 	{
 		while (true)
 		{ 
@@ -352,18 +352,18 @@ function Player(game, input) : Mob() constructor
 			}
 		}
 	}
-	static payStamina = function(cost)
+	payStamina = function(cost)
 	{
 		if (cost > stamina)
 			return false; 
 		stamina -= cost; 
 		return true; 
 	}
-	static changeLevel = function(dir)
+	changeLevel = function(dir)
 	{
 		game.scheduleLevelChange(dir); 
 	}
-	static getLightRadius = function()
+	getLightRadius = function()
 	{
 		var r = 2; 
 		if (activeItem != undefined)
@@ -377,17 +377,17 @@ function Player(game, input) : Mob() constructor
 		}
 		return r; 
 	}
-	static die = function()
+	die = function()
 	{
 		mob_die(); 
 		global.Sound.playerDeath.play(); 
 	}
-	static touchedBy = function(entity)
+	touchedBy = function(entity)
 	{
 		if (!is_instanceof(entity, Player))
 			entity.touchedBy(self); 
 	}
-	static doHurt = function(damage, attackDir)
+	doHurt = function(damage, attackDir)
 	{
 		if (hurtTime > 0 || invulnerableTime > 0)
 			return; 
@@ -408,7 +408,7 @@ function Player(game, input) : Mob() constructor
 		hurtTime = 10; 
 		invulnerableTime = 30; 
 	}
-	static gameWon = function()
+	gameWon = function()
 	{
 		level.player.invulnerableTime = 60 * 5; 
 		game.won(); 

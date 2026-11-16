@@ -4,7 +4,7 @@ function RockTile(vid) : singleton_Tile(vid, false) constructor
 	mainColor = 444;
 	darkColor = 111;
 
-	static render = function(screen, level, xx, yy)
+	render = function(screen, level, xx, yy)
 	{
 		var col = global.Color.get(mainColor, mainColor, mainColor - 111, mainColor - 111);
 		var transitionColor = global.Color.get(darkColor, mainColor, mainColor + 111, level.dirtColor);
@@ -58,15 +58,15 @@ function RockTile(vid) : singleton_Tile(vid, false) constructor
 		else
 			screen.render(xx * 16 + 8, yy * 16 + 8, (r ? 4 : 5) + (d ? 0 : 1) * 32, transitionColor, 3);
 	}
-	static mayPass = function(level, xx, yy, e)
+	mayPass = function(level, xx, yy, e)
 	{
 		return false;
 	}
-	static hurt6 = function(level, xx, yy, source, dmg, attackDir)
+	hurt6 = function(level, xx, yy, source, dmg, attackDir)
 	{
 		hurt4(level, xx, yy, dmg);
 	}
-	static interact = function(level, xt, yt, player, item, attackDir)
+	interact = function(level, xt, yt, player, item, attackDir)
 	{
 		if (is_instanceof(item, ToolItem))
 		{
@@ -82,7 +82,7 @@ function RockTile(vid) : singleton_Tile(vid, false) constructor
 		}
 		return false;
 	}
-	static hurt4 = function(level, xx, yy, dmg)
+	hurt4 = function(level, xx, yy, dmg)
 	{
 		var damage = level.getData(xx, yy) + dmg;
 		level.add(new SmashParticle(xx * 16 + 8, yy * 16 + 8));
@@ -100,7 +100,7 @@ function RockTile(vid) : singleton_Tile(vid, false) constructor
 		else
 			level.setData(xx, yy, damage);
 	}
-	static tick = function(level, xt, yt)
+	tick = function(level, xt, yt)
 	{
 		var damage = level.getData(xt, yt);
 		if (damage > 0)

@@ -5,7 +5,7 @@ function LavaTile(vid) : singleton_Tile(vid, false) constructor
 	connectsToSand = true;
 	connectsToLava = true;
 	
-	static render = function(screen, level, xx, yy)
+	render = function(screen, level, xx, yy)
 	{
 		if (global.lavaRandom[xx][yy] == undefined)
 			global.lavaRandom[xx][yy] = [ new Random(), [ 0, 0, 0, 0, 0, 0, 0, 0 ] ];
@@ -73,11 +73,11 @@ function LavaTile(vid) : singleton_Tile(vid, false) constructor
 		else
 			screen.render(xx * 16 + 8, yy * 16 + 8, (r ? 16 : 15) + (d ? 2 : 1) * 32, (sd || sr) ? transitionColor2 : transitionColor1, 0);
 	}
-	static mayPass = function(level, xx, yy, e)
+	mayPass = function(level, xx, yy, e)
 	{
 		return e.canSwim();
 	}
-	static tick = function(level, xt, yt)
+	tick = function(level, xt, yt)
 	{
 		var xn = xt;
 		var yn = yt;
@@ -90,7 +90,7 @@ function LavaTile(vid) : singleton_Tile(vid, false) constructor
 		if (level.getTile(xn, yn) == global.Tile.hole)
 			level.setTile(xn, yn, self, 0);
 	}
-	static getLightRadius = function(level, xx, yy)
+	getLightRadius = function(level, xx, yy)
 	{
 		return 6;
 	}
