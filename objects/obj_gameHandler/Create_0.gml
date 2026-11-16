@@ -1,7 +1,6 @@
 global.config_displayInput = true;
 global.config_displayFPS = false;
-global.config_debugKeys = GM_build_type == "run";
-global.config_debugMenu = global.config_debugKeys;
+global.config_debugMenu = false;
 
 #macro WIDTH 267
 #macro HEIGHT 200
