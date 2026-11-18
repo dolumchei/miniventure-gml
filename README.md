@@ -1,7 +1,7 @@
 # miniventure-gml
 Minicraft port to Gamemaker based on [shylor/miniventure](https://github.com/shylor/miniventure).
 
-### main (this branch)
+### main
 the base port
 ### main-objects
 porting every class to a respective object and replacing things with gamemaker builtins
