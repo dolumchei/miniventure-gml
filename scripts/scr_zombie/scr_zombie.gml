@@ -16,8 +16,8 @@ function Zombie(lvl) : Mob() constructor
 
 		if (level.player != undefined && randomWalkTime == 0)
 		{
-			var xd = level.player.x - x;
-			var yd = level.player.y - y;
+			var xd = floor(level.player.x - x);
+			var yd = floor(level.player.y - y);
 			if (xd * xd + yd * yd < 50 * 50)
 			{
 				xa = 0;
@@ -32,6 +32,9 @@ function Zombie(lvl) : Mob() constructor
 					ya = 1;
 			}
 		}
+		
+		xa = floor(xa);
+		ya = floor(ya);
 
 		var speedValue = tickTime & 1;
 		if (!move(xa * speedValue, ya * speedValue) || prandom.nextInt(200) == 0)
