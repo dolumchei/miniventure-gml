@@ -230,6 +230,21 @@ function Level(w, h, level, parentLevel) constructor
 		}
 	}
 	
+	maps = undefined;
+	
+	if (level == 0)
+		maps = LevelGen.createAndValidateTopMap(w, h);
+	else if (level < 0)
+		maps = LevelGen.createAndValidateUndergroundMap(w, h, -level);
+	else
+		maps = LevelGen.createAndValidateSkyMap(w, h);
+	
+	if (level != 0 || level < 0)
+		monsterDensity = 4;	
+	
+	tiles = maps[0];
+	data = maps[1];
+	
 	if (!is_undefined(parentLevel))
 	{
 		for (var yy = 0; yy < h; yy++)
@@ -256,22 +271,6 @@ function Level(w, h, level, parentLevel) constructor
 			}
 		}
 	}
-	
-	maps = undefined;
-	
-	if (level == 0)
-		maps = LevelGen.createAndValidateTopMap(w, h);
-	else if (level < 0)
-		maps = LevelGen.createAndValidateUndergroundMap(w, h, -level);
-	else
-		maps = LevelGen.createAndValidateSkyMap(w, h);
-
-	if (level != 0 || level < 0)
-		monsterDensity = 4;	
-	
-	tiles = maps[0];
-	data = maps[1];
-	
 		
 	if (level == 1)
 	{

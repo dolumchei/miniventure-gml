@@ -5,7 +5,7 @@ function Crafting() constructor
 	static furnaceRecipes = [ ];
 	static workbenchRecipes = [ ];
 	
-	debugRecipes = [ ];
+	static debugRecipes = [ ];
 
 	array_push(workbenchRecipes, new FurnitureRecipe(Lantern).addCost(Resource.wood, 5).addCost(Resource.slime, 10).addCost(Resource.glass, 4));
 	array_push(workbenchRecipes, new FurnitureRecipe(Oven).addCost(Resource.stone, 15));

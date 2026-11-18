@@ -78,7 +78,10 @@ function Player(game, input) : Mob() constructor
 		if (isSwimming() && tickTime % 60 == 0)
 		{
 			if (stamina > 0)
-				stamina--; 
+			{
+				if (!global.config_fullStamina)
+					stamina--; 
+			}
 			else
 				hurt3(self, 1, dir ^ 1); 
 		}
@@ -91,7 +94,8 @@ function Player(game, input) : Mob() constructor
 			if (stamina == 0) { }
 			else	
 			{
-				stamina--; 
+				if (!global.config_fullStamina)
+					stamina--; 
 				staminaRecharge = 0; 
 				attack(); 
 			}
@@ -356,7 +360,8 @@ function Player(game, input) : Mob() constructor
 	{
 		if (cost > stamina)
 			return false; 
-		stamina -= cost; 
+		if (!global.config_fullStamina)
+			stamina -= cost; 
 		return true; 
 	}
 	changeLevel = function(dir)
@@ -395,7 +400,8 @@ function Player(game, input) : Mob() constructor
 		Sound.playerHurt.play(); 
 		level.add(new TextParticle(string(damage), x, y, Color.get(-1, 504, 504, 504))); 
 		
-		healthValue -= damage; 
+		if (!global.config_noDamage)
+			healthValue -= damage; 
 		
 		if (attackDir == 0)
 			yKnockback = 6; 

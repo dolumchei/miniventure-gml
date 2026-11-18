@@ -15,6 +15,9 @@ global.u_LightRadius = shader_get_uniform(shd_light, "u_lightRadius");
 global.config_displayInput = true;
 global.config_displayFPS = false;
 global.config_debugMenu = false;
+global.config_noDamage = false;
+global.config_fullBright = false;
+global.config_fullStamina = false;
 
 #macro GAME_WIDTH 267
 #macro GAME_HEIGHT 200

@@ -1,19 +1,18 @@
-if (keyboard_check_pressed(vk_space))
-{
-	var level_width = get_integer("level width", w) ?? w;
-	var level_height = get_integer("level height", h) ?? h;
-	var level_type = get_integer("level map", m) ?? m;
+if (keyboard_check_pressed(vk_up))
+	map--;
+if (keyboard_check_pressed(vk_down))
+	map++;
 	
-	level_type = clamp(level_type, 0, 2);
+if (map > array_length(maps) - 1)
+	map = 0;
+if (map < 0)
+	map = array_length(maps) - 1;
 	
-	generate(level_width, level_height, level_type);
-}
 if (keyboard_check_pressed(vk_enter))
 	generate(w, h, m);
-
 	
-if (!surface_exists(surface) && buffer_exists(buffer))
+if (!surface_exists(surfaces[map]) && buffer_exists(buffers[map]))
 {
 	data_ensure();
-	buffer_set_surface(buffer, surface, 0);
+	surface_generate();
 }

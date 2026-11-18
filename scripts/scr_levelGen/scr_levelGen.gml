@@ -28,17 +28,17 @@ function LevelGen(w, h, featureSize) constructor
 			var count = array_create(256);
 			
 			for (var i = 0; i < w * h; i++)
-				count[result[0][i]]++;	
+				count[result[0][i] & 0xFF]++;	
 			
-			if (count[Tile.rock.id] < 100)
+			if (count[Tile.rock.id & 0xFF] < 100)
 				continue;
-			if (count[Tile.sand.id] < 100)
+			if (count[Tile.sand.id & 0xFF] < 100)
 				continue;
-			if (count[Tile.grass.id] < 100)
+			if (count[Tile.grass.id & 0xFF] < 100)
 				continue;
-			if (count[Tile.tree.id] < 100)
+			if (count[Tile.tree.id & 0xFF] < 100)
 				continue;
-			if (count[Tile.stairsDown.id] < 2) 
+			if (count[Tile.stairsDown.id & 0xFF] < 2) 
 				continue;
 			
 			return result;
@@ -53,17 +53,17 @@ function LevelGen(w, h, featureSize) constructor
 			var count = array_create(256);
 			
 			for (var i = 0; i < w * h; i++)
-				count[result[0][i]]++;	
+				count[result[0][i] & 0xFF]++;	
 			
-			if (count[Tile.rock.id] < 100)
+			if (count[Tile.rock.id & 0xFF] < 100)
 				continue;
-			if (count[Tile.dirt.id] < 100)
+			if (count[Tile.dirt.id & 0xFF] < 100)
 				continue;
-			if (count[(Tile.ironOre.id) + vdepth - 1] < 20)
+			if (count[(Tile.ironOre.id & 0xFF) + vdepth - 1] < 20)
 				continue;
 			if (vdepth < 3)
 			{
-				if (count[Tile.stairsDown.id] < 2)
+				if (count[Tile.stairsDown.id & 0xFF] < 2)
 					continue;
 			}
 			
@@ -79,11 +79,11 @@ function LevelGen(w, h, featureSize) constructor
 			var count = array_create(256);
 			
 			for (var i = 0; i < w * h; i++)
-				count[result[0][i]]++;	
+				count[result[0][i] & 0xFF]++;	
 			
-			if (count[Tile.cloud.id] < 2000)
+			if (count[Tile.cloud.id & 0xFF] < 2000)
 				continue;
-			if (count[Tile.stairsDown.id] < 2)
+			if (count[Tile.stairsDown.id & 0xFF] < 2)
 				continue;
 			
 			return result;
@@ -206,7 +206,7 @@ function LevelGen(w, h, featureSize) constructor
 		}
 
 		var count = 0;
-		for (var i = 0; i < w * h / 100; i++)
+		for (var i = 0; i < w * h div 100; i++)
 		{
 			var xp = prandom.nextInt(w - 2) + 1;
 			var yp = prandom.nextInt(h - 2) + 1;
@@ -222,9 +222,13 @@ function LevelGen(w, h, featureSize) constructor
 						break;
 					}
 				}
+				
 				if (!stairsLoop)
-					continue;
+					break;
 			}
+			
+			if (!stairsLoop)
+				continue;
 			
 			map[xp + yp * w] = Tile.stairsDown.id;
 			count++;
@@ -331,9 +335,13 @@ function LevelGen(w, h, featureSize) constructor
 							break;
 						}
 					}
+					
 					if (!stairsLoop)
-						continue;
+						break;
 				}
+				
+				if (!stairsLoop)
+					continue;
 
 				map[xp + yp * w] = Tile.stairsDown.id;
 				count++;
@@ -399,6 +407,9 @@ function LevelGen(w, h, featureSize) constructor
 				if (!cactusLoop)
 					break;
 			}
+			
+			if (!cactusLoop)
+				continue;
 
 			map[xp + yp * w] = Tile.cloudCactus.id;
 		}
@@ -424,6 +435,9 @@ function LevelGen(w, h, featureSize) constructor
 				if (!stairsLoop)
 					break;
 			}
+			
+			if (!stairsLoop)
+				continue;
 
 			map[xp + yp * w] = Tile.stairsDown.id;
 			count++;

@@ -45,7 +45,7 @@ if (!is_undefined(level))
 	level.renderBackground(screen, xScroll, yScroll);
 	level.renderSprites(screen, xScroll, yScroll);
 	
-	if (currentLevel < 3)
+	if (currentLevel < 3 && !global.config_fullBright)
 	{
 		lightScreen.clear(0);
 		level.renderLight(lightScreen, xScroll, yScroll);
