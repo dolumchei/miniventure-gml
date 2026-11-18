@@ -131,7 +131,6 @@
     {"id":{"name":"sfx_playerhurt","path":"sounds/sfx_playerhurt/sfx_playerhurt.yy",},},
     {"id":{"name":"sfx_test","path":"sounds/sfx_test/sfx_test.yy",},},
     {"id":{"name":"spr_icons","path":"sprites/spr_icons/spr_icons.yy",},},
-    {"id":{"name":"spr_icons2","path":"sprites/spr_icons2/spr_icons2.yy",},},
     {"id":{"name":"spr_inputDisplay","path":"sprites/spr_inputDisplay/spr_inputDisplay.yy",},},
   ],
   "resourceType":"GMProject",

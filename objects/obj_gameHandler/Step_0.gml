@@ -11,6 +11,7 @@ else
 	}
 		
 	input.update();
+	Sound.updateAll();
 		
 	if (!is_undefined(menu))
 		menu.tick();

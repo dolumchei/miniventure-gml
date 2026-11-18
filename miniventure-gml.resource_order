@@ -93,7 +93,6 @@
     {"name":"sfx_pickup","order":4,"path":"sounds/sfx_pickup/sfx_pickup.yy",},
     {"name":"sfx_playerhurt","order":5,"path":"sounds/sfx_playerhurt/sfx_playerhurt.yy",},
     {"name":"sfx_test","order":6,"path":"sounds/sfx_test/sfx_test.yy",},
-    {"name":"spr_icons2","order":1,"path":"sprites/spr_icons2/spr_icons2.yy",},
     {"name":"spr_inputDisplay","order":2,"path":"sprites/spr_inputDisplay/spr_inputDisplay.yy",},
   ],
 }
