@@ -10,7 +10,7 @@ if (keyboard_check_pressed(vk_space))
 }
 if (keyboard_check_pressed(vk_enter))
 	generate(w, h, m);
-	
+
 	
 if (!surface_exists(surface) && buffer_exists(buffer))
 {

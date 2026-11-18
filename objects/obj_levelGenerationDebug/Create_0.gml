@@ -96,3 +96,5 @@ generate = function(w = 128, h = 128, m)
 	
 	buffer_set_surface(buffer, surface, 0);
 }
+
+generate(w, h, m);

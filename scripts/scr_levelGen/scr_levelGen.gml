@@ -4,7 +4,7 @@ function LevelGen(w, h, featureSize) constructor
 	if (prandom == undefined)
 	{
 		print("new prandom");
-		prandom = new Random(1);	
+		prandom = new Random();	
 	}
 	
 	if (w != undefined)
