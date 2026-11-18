@@ -105,7 +105,7 @@ function InputHandler() constructor
 	attack = new Key([ vk_space, vk_control, vk_numpad0, vk_insert, "C" ], "Attack");
 	menu = new Key([ vk_tab, vk_alt, vk_enter, "X" ], "Menu");
 	
-	keys = [ up, down, left, right ];
+	keys = [ up, down, left, right, attack, menu ];
 	
 	update = function()
 	{

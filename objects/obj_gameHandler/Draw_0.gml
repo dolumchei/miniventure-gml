@@ -94,35 +94,34 @@ if (menu != undefined)
 // renderFocusRequester
 if (!window_has_focus())
 {
-	if (is_undefined(level))
-		return;
-	
-	var msg = "Click to focus!";
-	var xx = (GAME_WIDTH - string_length(msg) * 8) / 2;
-	var yy = (GAME_HEIGHT - 8) / 2;
-	var w = string_length(msg);
-	var h = 1;
-
-	screen.render(xx - 8, yy - 8, 0 + 13 * 32, Color.get(-1, 1, 5, 445), 0);
-	screen.render(xx + w * 8, yy - 8, 0 + 13 * 32, Color.get(-1, 1, 5, 445), 1);
-	screen.render(xx - 8, yy + 8, 0 + 13 * 32, Color.get(-1, 1, 5, 445), 2);
-	screen.render(xx + w * 8, yy + 8, 0 + 13 * 32, Color.get(-1, 1, 5, 445), 3);
-	for (var xp = 0; xp < w; xp++)
+	if (!is_undefined(level))
 	{
-		screen.render(xx + xp * 8, yy - 8, 1 + 13 * 32, Color.get(-1, 1, 5, 445), 0);
-		screen.render(xx + xp * 8, yy + 8, 1 + 13 * 32, Color.get(-1, 1, 5, 445), 2);
-	}
-	for (var yp = 0; yp < h; yp++)
-	{
-		screen.render(xx - 8, yy + yp * 8, 2 + 13 * 32, Color.get(-1, 1, 5, 445), 0);
-		screen.render(xx + w * 8, yy + yp * 8, 2 + 13 * 32, Color.get(-1, 1, 5, 445), 1);
-	}
+		var msg = "Click to focus!";
+		var xx = (GAME_WIDTH - string_length(msg) * 8) / 2;
+		var yy = (GAME_HEIGHT - 8) / 2;
+		var w = string_length(msg);
+		var h = 1;
 
-	if ((tickCount / 20) % 2 <= 1)
-		Font.draw(msg, screen, xx, yy, Color.get(5, 333, 333, 333));
-	else
-		Font.draw(msg, screen, xx, yy, Color.get(5, 555, 555, 555));
-	
+		screen.render(xx - 8, yy - 8, 0 + 13 * 32, Color.get(-1, 1, 5, 445), 0);
+		screen.render(xx + w * 8, yy - 8, 0 + 13 * 32, Color.get(-1, 1, 5, 445), 1);
+		screen.render(xx - 8, yy + 8, 0 + 13 * 32, Color.get(-1, 1, 5, 445), 2);
+		screen.render(xx + w * 8, yy + 8, 0 + 13 * 32, Color.get(-1, 1, 5, 445), 3);
+		for (var xp = 0; xp < w; xp++)
+		{
+			screen.render(xx + xp * 8, yy - 8, 1 + 13 * 32, Color.get(-1, 1, 5, 445), 0);
+			screen.render(xx + xp * 8, yy + 8, 1 + 13 * 32, Color.get(-1, 1, 5, 445), 2);
+		}
+		for (var yp = 0; yp < h; yp++)
+		{
+			screen.render(xx - 8, yy + yp * 8, 2 + 13 * 32, Color.get(-1, 1, 5, 445), 0);
+			screen.render(xx + w * 8, yy + yp * 8, 2 + 13 * 32, Color.get(-1, 1, 5, 445), 1);
+		}
+
+		if ((tickCount / 20) % 2 <= 1)
+			Font.draw(msg, screen, xx, yy, Color.get(5, 333, 333, 333));
+		else
+			Font.draw(msg, screen, xx, yy, Color.get(5, 555, 555, 555));
+	}
 }
 
 if (surface_exists(screen.surface))

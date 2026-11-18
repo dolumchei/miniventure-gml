@@ -21,9 +21,9 @@ function TitleMenu() : Menu() constructor
 		{ 
 			if (selected == 0)
 			{ 
-				Sound.test.play(); 
-				game.resetGame(); 
-				game.setMenu(undefined); 
+				//Sound.test.play(); 
+				//game.resetGame(); 
+				//game.setMenu(undefined); 
 			}
 			if (selected == 1)
 				game.setMenu(new InstructionsMenu(self)); 

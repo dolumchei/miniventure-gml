@@ -55,7 +55,6 @@ if (global.config_displayInput)
 		draw_sprite_ext(spr_inputDisplay, inputItr + 2, inputDisplayX, inputDisplayY, 1, 1, 0, draw_get_color(), draw_get_alpha());
 		
 		draw_set_color(c_white);
-		draw_text(2, 2 + (inputItr * 12), "");
 	}
 	
 	display_set_gui_size(guiSize.width, guiSize.height);

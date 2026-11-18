@@ -17,6 +17,11 @@ function string_load(fname)
 	return file_content;
 }
 
+function bool_stringify(value)
+{
+	return bool(value) ? "true" : "false";
+}
+
 function keyboard_check_combo(master_key, sub_key)
 {
 	if (!is_array(master_key))
