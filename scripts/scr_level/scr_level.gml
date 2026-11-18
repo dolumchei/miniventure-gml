@@ -259,18 +259,13 @@ function Level(w, h, level, parentLevel) constructor
 	
 	maps = undefined;
 	
-	generation_time = current_time;
-	
 	if (level == 0)
 		maps = LevelGen.createAndValidateTopMap(w, h);
 	else if (level < 0)
 		maps = LevelGen.createAndValidateUndergroundMap(w, h, -level);
 	else
 		maps = LevelGen.createAndValidateSkyMap(w, h);
-		
-	generation_time = (current_time - generation_time) / 1000;
-	print(level, generation_time);
-	
+
 	if (level != 0 || level < 0)
 		monsterDensity = 4;	
 	

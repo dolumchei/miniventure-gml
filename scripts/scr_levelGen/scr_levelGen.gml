@@ -1,11 +1,6 @@
 function LevelGen(w, h, featureSize) constructor
 {
-	static prandom = undefined;
-	if (prandom == undefined)
-	{
-		print("new prandom");
-		prandom = new Random();	
-	}
+	static prandom = new Random();	
 	
 	if (w != undefined)
 	{
