@@ -67,7 +67,7 @@ function SandTile(vid) : Tile(vid, false) constructor
 				{
 					level.setTile(xt, yt, Tile.dirt, 0);
 					
-					level.add(new ItemEntity(new ResourceItem(Resource.sand), xt * 16 + prandom.NextInt(10) + 3, yt * 16 + prandom.NextInt(10) + 3));
+					level.add(new ItemEntity(new ResourceItem(Resource.sand), xt * 16 + prandom.nextInt(10) + 3, yt * 16 + prandom.nextInt(10) + 3));
 					return true;
 				}
 			}

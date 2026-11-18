@@ -21,9 +21,9 @@ function CactusTile(vid) : Tile(vid, false) constructor
 		level.add(new TextParticle(string(dmg), xx * 16 + 8, yy * 16 + 8, Color.get(-1, 500, 500, 500)));
 		if (damage >= 10)
 		{
-			var count = prandom.NextInt(2) + 1;
+			var count = prandom.nextInt(2) + 1;
 			for (var i = 0; i < count; i++)
-				level.add(new ItemEntity(new ResourceItem(Resource.cactusFlower), xx * 16 + prandom.NextInt(10) + 3, yy * 16 + prandom.NextInt(10) + 3));
+				level.add(new ItemEntity(new ResourceItem(Resource.cactusFlower), xx * 16 + prandom.nextInt(10) + 3, yy * 16 + prandom.nextInt(10) + 3));
 			level.setTile(xx, yy, Tile.sand, 0);
 		}
 		else

@@ -16,7 +16,7 @@ function Spark(owner, xa, ya) : Entity() constructor
 	self.xa = xa;
 	self.ya = ya;
 
-	lifeTime = 60 * 10 + prandom.NextInt(30);
+	lifeTime = 60 * 10 + prandom.nextInt(30);
 	
 	tick = function()
 	{
@@ -53,7 +53,7 @@ function Spark(owner, xa, ya) : Entity() constructor
 		var xt = 8;
 		var yt = 13;
 
-		screen.render(x - 4, y - 4 - 2, xt + yt * 32, Color.get(-1, 555, 555, 555), prandom.NextInt(4));
-		screen.render(x - 4, y - 4 + 2, xt + yt * 32, Color.get(-1, 000, 000, 000), prandom.NextInt(4));
+		screen.render(x - 4, y - 4 - 2, xt + yt * 32, Color.get(-1, 555, 555, 555), prandom.nextInt(4));
+		screen.render(x - 4, y - 4 + 2, xt + yt * 32, Color.get(-1, 000, 000, 000), prandom.nextInt(4));
 	}
 }

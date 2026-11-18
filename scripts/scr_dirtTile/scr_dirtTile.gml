@@ -18,7 +18,7 @@ function DirtTile(vid) : Tile(vid, false) constructor
 				if (player.payStamina(4 - tool.level))
 				{
 					level.setTile(xt, yt, Tile.hole, 0);
-					level.add(new ItemEntity(new ResourceItem(Resource.dirt), xt * 16 + prandom.NextInt(10) + 3, yt * 16 + prandom.NextInt(10) + 3));
+					level.add(new ItemEntity(new ResourceItem(Resource.dirt), xt * 16 + prandom.nextInt(10) + 3, yt * 16 + prandom.nextInt(10) + 3));
 					Sound.monsterHurt.play();
 					return true;
 				}

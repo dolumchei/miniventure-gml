@@ -20,7 +20,7 @@ function WheatTile(vid) : Tile(vid, false) constructor
 	}
 	tick = function(level, xt, yt)
 	{
-		if (prandom.NextBoolean() == false)
+		if (prandom.nextBoolean() == false)
 			return;
 
 		var age = level.getData(xt, yt);
@@ -45,7 +45,7 @@ function WheatTile(vid) : Tile(vid, false) constructor
 	}
 	steppedOn = function(level, xt, yt, entity)
 	{
-		if (prandom.NextInt(60) != 0)
+		if (prandom.nextInt(60) != 0)
 			return;
 		if (level.getData(xt, yt) < 2)
 			return;
@@ -59,18 +59,18 @@ function WheatTile(vid) : Tile(vid, false) constructor
 	{
 		var age = level.getData(xx, yy);
 
-		var count = prandom.NextInt(2);
+		var count = prandom.nextInt(2);
 		for (var i = 0; i < count; i++)
-			level.add(new ItemEntity(new ResourceItem(Resource.seeds), xx * 16 + prandom.NextInt(10) + 3, yy * 16 + prandom.NextInt(10) + 3));
+			level.add(new ItemEntity(new ResourceItem(Resource.seeds), xx * 16 + prandom.nextInt(10) + 3, yy * 16 + prandom.nextInt(10) + 3));
 
 		count = 0;
 		if (age == 50)
-			count = prandom.NextInt(3) + 2;
+			count = prandom.nextInt(3) + 2;
 		else if (age >= 40)
-			count = prandom.NextInt(2) + 1;
+			count = prandom.nextInt(2) + 1;
 
 		for (var i = 0; i < count; i++)
-			level.add(new ItemEntity(new ResourceItem(Resource.wheat), xx * 16 + prandom.NextInt(10) + 3, yy * 16 + prandom.NextInt(10) + 3));
+			level.add(new ItemEntity(new ResourceItem(Resource.wheat), xx * 16 + prandom.nextInt(10) + 3, yy * 16 + prandom.nextInt(10) + 3));
 
 		level.setTile(xx, yy, Tile.dirt, 0);
 	}

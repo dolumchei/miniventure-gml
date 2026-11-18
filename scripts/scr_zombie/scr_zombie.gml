@@ -5,8 +5,8 @@ function Zombie(lvl) : Mob() constructor
 	randomWalkTime = 0;
 
 	self.lvl = lvl;
-	x = prandom.NextInt(64 * 16);
-	y = prandom.NextInt(64 * 16);
+	x = prandom.nextInt(64 * 16);
+	y = prandom.nextInt(64 * 16);
 	maxHealth = lvl * lvl * 10;
 	healthValue = maxHealth;
 
@@ -34,11 +34,11 @@ function Zombie(lvl) : Mob() constructor
 		}
 
 		var speedValue = tickTime & 1;
-		if (!move(xa * speedValue, ya * speedValue) || prandom.NextInt(200) == 0)
+		if (!move(xa * speedValue, ya * speedValue) || prandom.nextInt(200) == 0)
 		{
 			randomWalkTime = 60;
-			xa = (prandom.NextInt(3) - 1) * prandom.NextInt(2);
-			ya = (prandom.NextInt(3) - 1) * prandom.NextInt(2);
+			xa = (prandom.nextInt(3) - 1) * prandom.nextInt(2);
+			ya = (prandom.nextInt(3) - 1) * prandom.nextInt(2);
 		}
 		if (randomWalkTime > 0)
 			randomWalkTime--;
@@ -93,9 +93,9 @@ function Zombie(lvl) : Mob() constructor
 	{
 		mob_die();
 
-		var count = prandom.NextInt(2) + 1;
+		var count = prandom.nextInt(2) + 1;
 		for (var i = 0; i < count; i++)
-			level.add(new ItemEntity(new ResourceItem(Resource.cloth), x + prandom.NextInt(11) - 5, y + prandom.NextInt(11) - 5));
+			level.add(new ItemEntity(new ResourceItem(Resource.cloth), x + prandom.nextInt(11) - 5, y + prandom.nextInt(11) - 5));
 
 		if (level.player != undefined)
 			level.player.scoreValue += 50 * lvl;

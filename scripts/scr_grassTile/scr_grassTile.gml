@@ -39,10 +39,10 @@ function GrassTile(vid) : Tile(vid, false) constructor
 		var xn = xt;
 		var yn = yt;
 
-		if (prandom.NextBoolean())
-			xn += prandom.NextInt(2) * 2 - 1;
+		if (prandom.nextBoolean())
+			xn += prandom.nextInt(2) * 2 - 1;
 		else
-			yn += prandom.NextInt(2) * 2 - 1;
+			yn += prandom.nextInt(2) * 2 - 1;
 
 		if (level.getTile(xn, yn) == Tile.dirt)
 			level.setTile(xn, yn, self, 0);
@@ -59,10 +59,10 @@ function GrassTile(vid) : Tile(vid, false) constructor
 				{
 					level.setTile(xt, yt, Tile.dirt, 0);
 					Sound.monsterHurt.play();
-					var seed_chance = prandom.NextInt(5);
+					var seed_chance = prandom.nextInt(5);
 					if (seed_chance == 0)
 					{
-						level.add(new ItemEntity(new ResourceItem(Resource.seeds), xt * 16 + prandom.NextInt(10) + 3, yt * 16 + prandom.NextInt(10) + 3));
+						level.add(new ItemEntity(new ResourceItem(Resource.seeds), xt * 16 + prandom.nextInt(10) + 3, yt * 16 + prandom.nextInt(10) + 3));
 						return true;
 					}
 				}
@@ -73,10 +73,10 @@ function GrassTile(vid) : Tile(vid, false) constructor
 				if (player.payStamina(4 - tool.level))
 				{
 					Sound.monsterHurt.play();
-					var seed_chance = prandom.NextInt(5);
+					var seed_chance = prandom.nextInt(5);
 					if (seed_chance == 0)
 					{
-						level.add(new ItemEntity(new ResourceItem(Resource.seeds), xt * 16 + prandom.NextInt(10) + 3, yt * 16 + prandom.NextInt(10) + 3));
+						level.add(new ItemEntity(new ResourceItem(Resource.seeds), xt * 16 + prandom.nextInt(10) + 3, yt * 16 + prandom.nextInt(10) + 3));
 						return true;
 					}
 					level.setTile(xt, yt, Tile.farmland, 0);

@@ -198,7 +198,7 @@ function Player(game, input) : Mob() constructor
 				xt = (x + r) >> 4; 
 
 			if (xt >= 0 && yt >= 0 && xt < level.w && yt < level.h) 
-				level.getTile(xt, yt).hurt6(level, xt, yt, self, prandom.NextInt(3) + 1, attackDir); 
+				level.getTile(xt, yt).hurt6(level, xt, yt, self, prandom.nextInt(3) + 1, attackDir); 
 		}
 	}
 	use4 = function(x0, y0, x1, y1)
@@ -241,7 +241,7 @@ function Player(game, input) : Mob() constructor
 	}
 	getAttackDamage = function(e)
 	{
-		var dmg = prandom.NextInt(3) + 1; 
+		var dmg = prandom.nextInt(3) + 1; 
 		if (attackItem != undefined)
 			dmg += attackItem.getAttackDamageBonus(e); 
 		return dmg;
@@ -342,8 +342,8 @@ function Player(game, input) : Mob() constructor
 	{
 		while (true)
 		{ 
-			var px = prandom.NextInt(level.w); 
-			var py = prandom.NextInt(level.h); 
+			var px = prandom.nextInt(level.w); 
+			var py = prandom.nextInt(level.h); 
 			if (level.getTile(px, py) == Tile.grass)
 			{ 
 				self.x = px * 16 + 8; 

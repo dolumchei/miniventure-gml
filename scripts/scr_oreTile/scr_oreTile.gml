@@ -43,8 +43,8 @@ function OreTile(vid, toDrop) : Tile(vid, false) constructor
 		level.add(new TextParticle(string(dmg), xx * 16 + 8, yy * 16 + 8, Color.get(-1, 500, 500, 500)));
 		if (dmg > 0)
 		{
-			var count = prandom.NextInt(2);
-			if (damage >= prandom.NextInt(10) + 3)
+			var count = prandom.nextInt(2);
+			if (damage >= prandom.nextInt(10) + 3)
 			{
 				level.setTile(xx, yy, Tile.dirt, 0);
 				count += 2;
@@ -52,7 +52,7 @@ function OreTile(vid, toDrop) : Tile(vid, false) constructor
 			else
 				level.setData(xx, yy, damage);
 			for (var i = 0; i < count; i++)
-				level.add(new ItemEntity(new ResourceItem(toDrop), xx * 16 + prandom.NextInt(10) + 3, yy * 16 + prandom.NextInt(10) + 3));
+				level.add(new ItemEntity(new ResourceItem(toDrop), xx * 16 + prandom.nextInt(10) + 3, yy * 16 + prandom.nextInt(10) + 3));
 		}
 	}
 	bumpedInto = function(level, xx, yy, entity)

@@ -10,6 +10,7 @@
   },
   "defaultScriptType":1,
   "Folders":[
+    {"$GMFolder":"","%Name":"Extensions","folderPath":"folders/Extensions.yy","name":"Extensions","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Fonts","folderPath":"folders/Fonts.yy","name":"Fonts","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Objects","folderPath":"folders/Objects.yy","name":"Objects","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Rooms","folderPath":"folders/Rooms.yy","name":"Rooms","resourceType":"GMFolder","resourceVersion":"2.0",},
@@ -33,7 +34,17 @@
   "ForcedPrefabProjectReferences":[
     {"link":"io.gamemaker.sdfshaders-1.0.0","name":"io.gamemaker.sdfshaders-1.0.0","path":"io.gamemaker.sdfshaders-1.0.0.yyp",},
   ],
-  "IncludedFiles":[],
+  "IncludedFiles":[
+    {"$GMIncludedFile":"","%Name":"gcmt-dll.dll","CopyToMask":-1,"filePath":"datafiles/GMLive","name":"gcmt-dll.dll","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
+    {"$GMIncludedFile":"","%Name":"gmlive-server-alt.exe","CopyToMask":-1,"filePath":"datafiles/GMLive","name":"gmlive-server-alt.exe","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
+    {"$GMIncludedFile":"","%Name":"gmlive-server.exe","CopyToMask":-1,"filePath":"datafiles/GMLive","name":"gmlive-server.exe","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
+    {"$GMIncludedFile":"","%Name":"gmlive-server.n","CopyToMask":-1,"filePath":"datafiles/GMLive","name":"gmlive-server.n","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
+    {"$GMIncludedFile":"","%Name":"gmlive.html","CopyToMask":-1,"filePath":"datafiles/GMLive","name":"gmlive.html","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
+    {"$GMIncludedFile":"","%Name":"neko.dll","CopyToMask":-1,"filePath":"datafiles/GMLive","name":"neko.dll","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
+    {"$GMIncludedFile":"","%Name":"regexp.ndll","CopyToMask":-1,"filePath":"datafiles/GMLive","name":"regexp.ndll","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
+    {"$GMIncludedFile":"","%Name":"std.ndll","CopyToMask":-1,"filePath":"datafiles/GMLive","name":"std.ndll","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
+    {"$GMIncludedFile":"","%Name":"zlib.ndll","CopyToMask":-1,"filePath":"datafiles/GMLive","name":"zlib.ndll","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
+  ],
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
@@ -43,6 +54,7 @@
   "resources":[
     {"id":{"name":"fnt_default","path":"fonts/fnt_default/fnt_default.yy",},},
     {"id":{"name":"obj_gameHandler","path":"objects/obj_gameHandler/obj_gameHandler.yy",},},
+    {"id":{"name":"obj_levelGeneration","path":"objects/obj_levelGeneration/obj_levelGeneration.yy",},},
     {"id":{"name":"rom_game","path":"rooms/rom_game/rom_game.yy",},},
     {"id":{"name":"scr_aboutMenu","path":"scripts/scr_aboutMenu/scr_aboutMenu.yy",},},
     {"id":{"name":"scr_airWizard","path":"scripts/scr_airWizard/scr_airWizard.yy",},},

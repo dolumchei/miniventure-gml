@@ -60,7 +60,7 @@ function TreeTile(vid) : Tile(vid, false) constructor
 			{
 				if (player.payStamina(4 - tool.level))
 				{
-					hurt4(level, xt, yt, prandom.NextInt(10) + (tool.level) * 5 + 10);
+					hurt4(level, xt, yt, prandom.nextInt(10) + (tool.level) * 5 + 10);
 					return true;
 				}
 			}
@@ -69,21 +69,21 @@ function TreeTile(vid) : Tile(vid, false) constructor
 	}
 	hurt4 = function(level, xx, yy, dmg)
 	{
-		var count = prandom.NextInt(10) == 0 ? 1 : 0;
+		var count = prandom.nextInt(10) == 0 ? 1 : 0;
 		for (var i = 0; i < count; i++)
-			level.add(new ItemEntity(new ResourceItem(Resource.apple), xx * 16 + prandom.NextInt(10) + 3, yy * 16 + prandom.NextInt(10) + 3));
+			level.add(new ItemEntity(new ResourceItem(Resource.apple), xx * 16 + prandom.nextInt(10) + 3, yy * 16 + prandom.nextInt(10) + 3));
 
 		var damage = level.getData(xx, yy) + dmg;
 		level.add(new SmashParticle(xx * 16 + 8, yy * 16 + 8));
 		level.add(new TextParticle(string(dmg), xx * 16 + 8, yy * 16 + 8, Color.get(-1, 500, 500, 500)));
 		if (damage >= 20)
 		{
-			var count = prandom.NextInt(2) + 1;
+			var count = prandom.nextInt(2) + 1;
 			for (var i = 0; i < count; i++)
-				level.add(new ItemEntity(new ResourceItem(Resource.wood), xx * 16 + prandom.NextInt(10) + 3, yy * 16 + prandom.NextInt(10) + 3));
-			count = prandom.NextInt(prandom.NextInt(4) + 1);
+				level.add(new ItemEntity(new ResourceItem(Resource.wood), xx * 16 + prandom.nextInt(10) + 3, yy * 16 + prandom.nextInt(10) + 3));
+			count = prandom.nextInt(prandom.nextInt(4) + 1);
 			for (var i = 0; i < count; i++)
-				level.add(new ItemEntity(new ResourceItem(Resource.acorn), xx * 16 + prandom.NextInt(10) + 3, yy * 16 + prandom.NextInt(10) + 3));
+				level.add(new ItemEntity(new ResourceItem(Resource.acorn), xx * 16 + prandom.nextInt(10) + 3, yy * 16 + prandom.nextInt(10) + 3));
 			level.setTile(xx, yy, Tile.grass, 0);
 		} 
 		else

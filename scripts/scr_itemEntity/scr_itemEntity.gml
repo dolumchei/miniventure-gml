@@ -11,11 +11,11 @@ function ItemEntity(item, xv, yv) : Entity() constructor
 	yr = 3; 
 
 	zz = 2; 
-	xa = prandom.NextGaussian() * 0.3; 
-	ya = prandom.NextGaussian() * 0.2; 
-	za = prandom.NextFloat() * 0.7 + 1; 
+	xa = prandom.nextGaussian() * 0.3; 
+	ya = prandom.nextGaussian() * 0.2; 
+	za = prandom.nextFloat() * 0.7 + 1; 
 
-	lifeTime = 60 * 10 + prandom.NextInt(60); 
+	lifeTime = 60 * 10 + prandom.nextInt(60); 
 	time = 0; 
 
 	tick = function()

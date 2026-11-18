@@ -1,0 +1,1 @@
+generate(w, h, m);

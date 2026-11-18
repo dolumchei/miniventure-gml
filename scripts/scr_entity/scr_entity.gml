@@ -1,6 +1,7 @@
 function Entity() constructor
 {
-	prandom = new Random(); 
+	static prandom = new Random(); 
+	
 	x = 0;
 	y = 0;;
 	xr = 6; 

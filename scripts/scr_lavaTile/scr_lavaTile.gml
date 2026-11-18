@@ -13,7 +13,7 @@ function LavaTile(vid) : Tile(vid, false) constructor
 		var wRandom = global.lavaRandom[xx][yy][0];
 		var randValues = global.lavaRandom[xx][yy][1];
 		
-		wRandom.SetSeed((tickCount + (xx / 2 - yy) * 4311) / 10 * 54687121 + xx * 3271612 + yy * 3412987161);
+		wRandom.setSeed((tickCount + (xx / 2 - yy) * 4311) / 10 * 54687121 + xx * 3271612 + yy * 3412987161);
 
 		var col = Color.get(500, 500, 520, 550);
 		var transitionColor1 = Color.get(3, 500, level.dirtColor - 111, level.dirtColor);
@@ -33,23 +33,23 @@ function LavaTile(vid) : Tile(vid, false) constructor
 		{
 			if (!u && !l)
 			{
-				randValues[0] = wRandom.NextInt(4);
-				randValues[1] = wRandom.NextInt(4);
+				randValues[0] = wRandom.nextInt(4);
+				randValues[1] = wRandom.nextInt(4);
 			}
 			if (!u && !r)
 			{
-				randValues[2] = wRandom.NextInt(4);
-				randValues[3] = wRandom.NextInt(4);
+				randValues[2] = wRandom.nextInt(4);
+				randValues[3] = wRandom.nextInt(4);
 			}
 			if (!d && !l)
 			{
-				randValues[4] = wRandom.NextInt(4);
-				randValues[5] = wRandom.NextInt(4);
+				randValues[4] = wRandom.nextInt(4);
+				randValues[5] = wRandom.nextInt(4);
 			}
 			if (!d && !r)
 			{
-				randValues[6] = wRandom.NextInt(4);
-				randValues[7] = wRandom.NextInt(4);
+				randValues[6] = wRandom.nextInt(4);
+				randValues[7] = wRandom.nextInt(4);
 			}
 		}
 
@@ -82,10 +82,10 @@ function LavaTile(vid) : Tile(vid, false) constructor
 		var xn = xt;
 		var yn = yt;
 
-		if (prandom.NextBoolean())
-			xn += prandom.NextInt(2) * 2 - 1;
+		if (prandom.nextBoolean())
+			xn += prandom.nextInt(2) * 2 - 1;
 		else
-			yn += prandom.NextInt(2) * 2 - 1;
+			yn += prandom.nextInt(2) * 2 - 1;
 
 		if (level.getTile(xn, yn) == Tile.hole)
 			level.setTile(xn, yn, self, 0);

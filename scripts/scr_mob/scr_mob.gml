@@ -129,8 +129,8 @@ function Mob() : Entity() constructor
 	}
 	findStartPos = function(level)
 	{
-		var vx = prandom.NextInt(level.w);
-		var vy = prandom.NextInt(level.h);
+		var vx = prandom.nextInt(level.w);
+		var vy = prandom.nextInt(level.h);
 		var xx = vx * 16 + 8;
 		var yy = vy * 16 + 8;
 

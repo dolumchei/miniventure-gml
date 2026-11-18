@@ -1,6 +1,11 @@
 function LevelGen(w, h, featureSize) constructor
 {
-	static prandom = new Random();
+	static prandom = undefined;
+	if (prandom == undefined)
+	{
+		print("new prandom");
+		prandom = new Random(1);	
+	}
 	
 	if (w != undefined)
 	{
@@ -28,17 +33,17 @@ function LevelGen(w, h, featureSize) constructor
 			var count = array_create(256);
 			
 			for (var i = 0; i < w * h; i++)
-				count[result[0][i] & 0xff]++;	
+				count[result[0][i]]++;	
 			
-			if (count[Tile.rock.id & 0xff] < 100)
+			if (count[Tile.rock.id] < 100)
 				continue;
-			if (count[Tile.sand.id & 0xff] < 100)
+			if (count[Tile.sand.id] < 100)
 				continue;
-			if (count[Tile.grass.id & 0xff] < 100)
+			if (count[Tile.grass.id] < 100)
 				continue;
-			if (count[Tile.tree.id & 0xff] < 100)
+			if (count[Tile.tree.id] < 100)
 				continue;
-			if (count[Tile.stairsDown.id & 0xff] < 2) 
+			if (count[Tile.stairsDown.id] < 2) 
 				continue;
 			
 			return result;
@@ -53,17 +58,17 @@ function LevelGen(w, h, featureSize) constructor
 			var count = array_create(256);
 			
 			for (var i = 0; i < w * h; i++)
-				count[result[0][i] & 0xff]++;	
+				count[result[0][i]]++;	
 			
-			if (count[Tile.rock.id & 0xff] < 100)
+			if (count[Tile.rock.id] < 100)
 				continue;
-			if (count[Tile.dirt.id & 0xff] < 100)
+			if (count[Tile.dirt.id] < 100)
 				continue;
-			if (count[(Tile.ironOre.id & 0xff) + vdepth - 1] < 20)
+			if (count[(Tile.ironOre.id) + vdepth - 1] < 20)
 				continue;
 			if (vdepth < 3)
 			{
-				if (count[Tile.stairsDown.id & 0xff] < 2)
+				if (count[Tile.stairsDown.id] < 2)
 					continue;
 			}
 			
@@ -79,11 +84,11 @@ function LevelGen(w, h, featureSize) constructor
 			var count = array_create(256);
 			
 			for (var i = 0; i < w * h; i++)
-				count[result[0][i] & 0xff]++;	
+				count[result[0][i]]++;	
 			
-			if (count[Tile.cloud.id & 0xff] < 2000)
+			if (count[Tile.cloud.id] < 2000)
 				continue;
-			if (count[Tile.stairsDown.id & 0xff] < 2)
+			if (count[Tile.stairsDown.id] < 2)
 				continue;
 			
 			return result;
@@ -91,40 +96,38 @@ function LevelGen(w, h, featureSize) constructor
 	}
 	
 	static createTopMap = function(w, h)
-	{	
-		prandom = new Random();
-		
+	{
 		var mnoise1 = new LevelGen(w, h, 16);
 		var mnoise2 = new LevelGen(w, h, 16);
 		var mnoise3 = new LevelGen(w, h, 16);
-		
+
 		var noise1 = new LevelGen(w, h, 32);
 		var noise2 = new LevelGen(w, h, 32);
 
-		var map = array_create(w * h);
-		var data = array_create(w * h);
-		for (var yy = 0; yy < h; yy++)
+		var map = array_create(w * h, 0);
+		var data = array_create(w * h, 0);
+		for (var yp = 0; yp < h; yp++)
 		{
-			for (var xx = 0; xx < w; xx++)
+			for (var xp = 0; xp < w; xp++)
 			{
-				var i = xx + yy * w;
-				
+				var i = xp + yp * w;
 				var val = abs(noise1.values[i] - noise2.values[i]) * 3 - 2;
+			
 				var mval = abs(mnoise1.values[i] - mnoise2.values[i]);
-				
+			
 				mval = abs(mval - mnoise3.values[i]) * 3 - 2;
-				
-				var xd = xx / (w - 1) * 2 - 1;
-				var yd = yy / (h - 1) * 2 - 1;
+
+				var xd = xp / (w - 1.0) * 2 - 1;
+				var yd = yp / (h - 1.0) * 2 - 1;
 				if (xd < 0)
 					xd = -xd;
-				if (yd < 0)
+				if (yd < 0) 
 					yd = -yd;
 				var dist = xd >= yd ? xd : yd;
 				dist = dist * dist * dist * dist;
 				dist = dist * dist * dist * dist;
 				val = val + 1 - dist * 20;
-				if (val < -0.5) 
+				if (val < -0.5)
 					map[i] = Tile.water.id;
 				else if (val > 0.5 && mval < -1.5)
 					map[i] = Tile.rock.id;
@@ -132,19 +135,19 @@ function LevelGen(w, h, featureSize) constructor
 					map[i] = Tile.grass.id;
 			}
 		}
-		
-		for (var i = 0; i < w * h / 2800; i++)
+	
+		for (var i = 0; i < w * h div 2800; i++)
 		{
-			var xs = prandom.NextInt(w);
-			var ys = prandom.NextInt(h);
+			var xs = prandom.nextInt(w);
+			var ys = prandom.nextInt(h);
 			for (var k = 0; k < 10; k++)
 			{
-				var xx = xs + prandom.NextInt(21) - 10;
-				var yy = ys + prandom.NextInt(21) - 10;
+				var xp = xs + prandom.nextInt(21) - 10;
+				var yp = ys + prandom.nextInt(21) - 10;
 				for (var j = 0; j < 100; j++)
 				{
-					var xo = xx + prandom.NextInt(5) - prandom.NextInt(5);
-					var yo = yy + prandom.NextInt(5) - prandom.NextInt(5);
+					var xo = xp + prandom.nextInt(5) - prandom.nextInt(5);
+					var yo = yp + prandom.nextInt(5) - prandom.nextInt(5);
 					for (var yy = yo - 1; yy <= yo + 1; yy++)
 					{
 						for (var xx = xo - 1; xx <= xo + 1; xx++)
@@ -160,14 +163,14 @@ function LevelGen(w, h, featureSize) constructor
 			}
 		}
 
-		for (var i = 0; i < w * h / 400; i++)
+		for (var i = 0; i < w * h div 400; i++)
 		{
-			var xx = prandom.NextInt(w);
-			var yy = prandom.NextInt(h);
+			var xp = prandom.nextInt(w);
+			var yp = prandom.nextInt(h);
 			for (var j = 0; j < 200; j++)
 			{
-				var xx = xx + prandom.NextInt(15) - prandom.NextInt(15);
-				var yy = yy + prandom.NextInt(15) - prandom.NextInt(15);
+				var xx = xp + prandom.nextInt(15) - prandom.nextInt(15);
+				var yy = yp + prandom.nextInt(15) - prandom.nextInt(15);
 				if (xx >= 0 && yy >= 0 && xx < w && yy < h)
 				{
 					if (map[xx + yy * w] == Tile.grass.id)
@@ -176,30 +179,30 @@ function LevelGen(w, h, featureSize) constructor
 			}
 		}
 
-		for (var i = 0; i < w * h / 400; i++)
+		for (var i = 0; i < w * h div 400; i++)
 		{
-			var xx = prandom.NextInt(w);
-			var yy = prandom.NextInt(h);
-			var col = prandom.NextInt(4);
+			var xp = prandom.nextInt(w);
+			var yp = prandom.nextInt(h);
+			var col = prandom.nextInt(4);
 			for (var j = 0; j < 30; j++)
 			{
-				var xx = xx + prandom.NextInt(5) - prandom.NextInt(5);
-				var yy = yy + prandom.NextInt(5) - prandom.NextInt(5);
+				var xx = xp + prandom.nextInt(5) - prandom.nextInt(5);
+				var yy = yp + prandom.nextInt(5) - prandom.nextInt(5);
 				if (xx >= 0 && yy >= 0 && xx < w && yy < h)
 				{
 					if (map[xx + yy * w] == Tile.grass.id)
 					{
 						map[xx + yy * w] = Tile.flower.id;
-						data[xx + yy * w] = (col + prandom.NextInt(4) * 16);
+						data[xx + yy * w] = (col + prandom.nextInt(4) * 16);
 					}
 				}
 			}
 		}
 
-		for (var i = 0; i < w * h / 100; i++)
+		for (var i = 0; i < w * h div 100; i++)
 		{
-			var xx = prandom.NextInt(w);
-			var yy = prandom.NextInt(h);
+			var xx = prandom.nextInt(w);
+			var yy = prandom.nextInt(h);
 			if (xx >= 0 && yy >= 0 && xx < w && yy < h)
 			{
 				if (map[xx + yy * w] == Tile.sand.id)
@@ -208,83 +211,75 @@ function LevelGen(w, h, featureSize) constructor
 		}
 
 		var count = 0;
-
 		for (var i = 0; i < w * h / 100; i++)
 		{
-		    var xx = prandom.NextInt(w - 3) + 1;
-		    var yy = prandom.NextInt(h - 3) + 1;
+			var xp = prandom.nextInt(w - 2) + 1;
+			var yp = prandom.nextInt(h - 2) + 1;
 
-		    var valid = true; // multi level break workaround
-
-		    for (var y2 = yy - 1; y2 <= yy + 1; y2++)
-		    {
-		        for (var x2 = xx - 1; x2 <= xx + 1; x2++)
-		        {
-		            if (map[x2 + y2 * w] != Tile.rock.id)
-		            {
-		                valid = false;
-		                break;
-		            }
-		        }
-
-		        if (!valid)
-		            break;
-		    }
-
-		    if (!valid)
-		        continue;
-
-		    map[xx + yy * w] = Tile.stairsDown.id;
-		    count++;
-
-		    if (count == 4)
-		        break;
+			var stairsLoop = true;
+			for (var yy = yp - 1; yy <= yp + 1; yy++)
+			{
+				for (var xx = xp - 1; xx <= xp + 1; xx++)
+				{
+					if (map[xx + yy * w] != Tile.rock.id)
+					{
+						stairsLoop = false;
+						break;
+					}
+				}
+				if (!stairsLoop)
+					continue;
+			}
+			
+			map[xp + yp * w] = Tile.stairsDown.id;
+			count++;
+			if (count == 4)
+				break;
 		}
 
 		return [ map, data ];
 	}
+
 	static createUndergroundMap = function(w, h, vdepth)
-	{		
+	{
 		var mnoise1 = new LevelGen(w, h, 16);
-		var mnoise2 = new LevelGen(w, h, 16);  
+		var mnoise2 = new LevelGen(w, h, 16);
 		var mnoise3 = new LevelGen(w, h, 16);
 
 		var nnoise1 = new LevelGen(w, h, 16);
-		var nnoise2 = new LevelGen(w, h, 16);  
+		var nnoise2 = new LevelGen(w, h, 16);
 		var nnoise3 = new LevelGen(w, h, 16);
 
 		var wnoise1 = new LevelGen(w, h, 16);
-		var wnoise2 = new LevelGen(w, h, 16);  
+		var wnoise2 = new LevelGen(w, h, 16);
 		var wnoise3 = new LevelGen(w, h, 16);
 
-		var noise1 = new LevelGen(w, h, 32);  
+		var noise1 = new LevelGen(w, h, 32);
 		var noise2 = new LevelGen(w, h, 32);
 
-		var map = array_create(w * h); 
-		var data = array_create(w * h); 
-		for (var yv = 0; yv < h; yv++)
+		var map = array_create(w * h, 0);
+		var data = array_create(w * h, 0);
+		for (var yp = 0; yp < h; yp++)
 		{
-			for (var xv = 0; xv < w; xv++)
+			for (var xp = 0; xp < w; xp++)
 			{
-				var i = xv + yv * w;
-
+				var i = xp + yp * w;
 				var val = abs(noise1.values[i] - noise2.values[i]) * 3 - 2;
+			
 				var mval = abs(mnoise1.values[i] - mnoise2.values[i]);
-		
 				mval = abs(mval - mnoise3.values[i]) * 3 - 2;
 
 				var nval = abs(nnoise1.values[i] - nnoise2.values[i]);
 				nval = abs(nval - nnoise3.values[i]) * 3 - 2;
 
 				var wval = abs(wnoise1.values[i] - wnoise2.values[i]);
-		
 				wval = abs(nval - wnoise3.values[i]) * 3 - 2;
 
-				var xd = xv / (w - 1.0) * 2 - 1;
-				var yd = yv / (h - 1.0) * 2 - 1;
-				if (xd < 0) 
+				var xd = xp / (w - 1.0) * 2 - 1;
+				var yd = yp / (h - 1.0) * 2 - 1;
+				if (xd < 0)
 					xd = -xd;
-				if (yd < 0)
+				if (yd < 0) 
 					yd = -yd;
 				var dist = xd >= yd ? xd : yd;
 				dist = dist * dist * dist * dist;
@@ -306,14 +301,14 @@ function LevelGen(w, h, featureSize) constructor
 		}
 
 		var r = 2;
-		for (var i = 0; i < w * h / 400; i++)
+		for (var i = 0; i < w * h div 400; i++)
 		{
-			var xv = prandom.NextInt(w); 
-			var yv = prandom.NextInt(h);
+			var xp = prandom.nextInt(w);
+			var yp = prandom.nextInt(h);
 			for (var j = 0; j < 30; j++)
 			{
-				var xx = xv + prandom.NextInt(5) - prandom.NextInt(5);
-				var yy = yv + prandom.NextInt(5) - prandom.NextInt(5);
+				var xx = xp + prandom.nextInt(5) - prandom.nextInt(5);
+				var yy = yp + prandom.nextInt(5) - prandom.nextInt(5);
 				if (xx >= r && yy >= r && xx < w - r && yy < h - r)
 				{
 					if (map[xx + yy * w] == Tile.rock.id)
@@ -322,37 +317,31 @@ function LevelGen(w, h, featureSize) constructor
 			}
 		}
 
-		if (vdepth < 3)
+		if (vdepth < 3) 
 		{
 			var count = 0;
-			for (var i = 0; i < w * h / 100; i++)
+			for (var i = 0; i < w * h div 100; i++)
 			{
-				var xx = prandom.NextInt(w - 3) + 1;
-				var yy = prandom.NextInt(h - 3) + 1;
+				var xp = prandom.nextInt(w - 20) + 10;
+				var yp = prandom.nextInt(h - 20) + 10;
 
-				var valid = true; // multi level break workaround
-
-				for (var y2 = yy - 1; y2 <= yy + 1; y2++)
+				var stairsLoop = true;
+				for (var yy = yp - 1; yy <= yp + 1; yy++)
 				{
-					for (var x2 = xx - 1; x2 <= xx + 1; x2++)
+					for (var xx = xp - 1; xx <= xp + 1; xx++) 
 					{
-						if (map[x2 + y2 * w] != Tile.rock.id)
+						if (map[xx + yy * w] != Tile.rock.id)
 						{
-							valid = false;
+							stairsLoop = false;
 							break;
 						}
 					}
-
-					if (!valid)
-						break;
+					if (!stairsLoop)
+						continue;
 				}
 
-				if (!valid)
-					continue;
-
-				map[xx + yy * w] = Tile.stairsDown.id;
+				map[xp + yp * w] = Tile.stairsDown.id;
 				count++;
-
 				if (count == 4)
 					break;
 			}
@@ -360,25 +349,26 @@ function LevelGen(w, h, featureSize) constructor
 
 		return [ map, data ];
 	}
+	
 	static createSkyMap = function(w, h)
 	{
-		var noise1 = new LevelGen(w, h, 8); 
-		var noise2 = new LevelGen(w, h, 8); 
+		var noise1 = new LevelGen(w, h, 8);
+		var noise2 = new LevelGen(w, h, 8);
 
-		var map = array_create(w * h); 
-		var data = array_create(w * h); 
-		for (var yv = 0; yv < h; yv++)
+		var map = array_create(w * h, 0); 
+		var data = array_create(w * h, 0); 
+		for (var yp = 0; yp < h; yp++)
 		{
-			for (var xv = 0; xv < w; xv++) 
+			for (var xp = 0; xp < w; xp++)
 			{
-				var i = xv + yv * w;
+				var i = xp + yp * w;
 				var val = abs(noise1.values[i] - noise2.values[i]) * 3 - 2;
 
-				var xd = xv / (w - 1.0) * 2 - 1;
-				var yd = yv / (h - 1.0) * 2 - 1;
-				if (xd < 0)
+				var xd = xp / (w - 1.0) * 2 - 1;
+				var yd = yp / (h - 1.0) * 2 - 1;
+				if (xd < 0) 
 					xd = -xd;
-				if (yd < 0) 
+				if (yd < 0)
 					yd = -yd;
 				var dist = xd >= yd ? xd : yd;
 				dist = dist * dist * dist * dist;
@@ -393,64 +383,59 @@ function LevelGen(w, h, featureSize) constructor
 			}
 		}
 
-
+	
 		for (var i = 0; i < w * h / 50; i++)
 		{
-			var xv = prandom.NextInt(w - 2) + 1;
-			var yv = prandom.NextInt(h - 2) + 1;
+			var xp = prandom.nextInt(w - 2) + 1;
+			var yp = prandom.nextInt(h - 2) + 1;
 
-			var valid = true; // multi level break workaround
-
-			for (var yy = yv - 1; yy <= yv + 1; yy++)
+			var cactusLoop = true;
+			for (var yy = yp - 1; yy <= yp + 1; yy++)
 			{
-				for (var xx = xv - 1; xx <= xv + 1; xx++)
+				for (var xx = xp - 1; xx <= xp + 1; xx++)
 				{
 					if (map[xx + yy * w] != Tile.cloud.id)
 					{
-						valid = false;
+						cactusLoop = false;
 						break;
 					}
 				}
-				if (!valid)
+
+				if (!cactusLoop)
 					break;
 			}
 
-			if (!valid)
-				continue;
-
-			map[xv + yv * w] = Tile.cloudCactus.id;
+			map[xp + yp * w] = Tile.cloudCactus.id;
 		}
 
 		var count = 0;
 		for (var i = 0; i < w * h; i++)
 		{
-			var xv = prandom.NextInt(w - 2) + 1;
-			var yv = prandom.NextInt(h - 2) + 1;
+			var xp = prandom.nextInt(w - 2) + 1;
+			var yp = prandom.nextInt(h - 2) + 1;
 
-			var valid = true; // multi level break workaround
-
-			for (var yy = yv - 1; yy <= yv + 1; yy++)
+			var stairsLoop = true;
+			for (var yy = yp - 1; yy <= yp + 1; yy++)
 			{
-				for (var xx = xv - 1; xx <= xv + 1; xx++)
+				for (var xx = xp - 1; xx <= xp + 1; xx++)
 				{
 					if (map[xx + yy * w] != Tile.cloud.id)
 					{
-						valid = false;
+						stairsLoop = false;
 						break;
 					}
 				}
-				if (!valid)
+
+				if (!stairsLoop)
 					break;
 			}
 
-			if (!valid)
-				continue;
-
-			map[xv + yv * w] = Tile.stairsDown.id;
+			map[xp + yp * w] = Tile.stairsDown.id;
 			count++;
 			if (count == 2)
 				break;
 		}
+
 		return [ map, data ];
 	}
 	
@@ -459,7 +444,7 @@ function LevelGen(w, h, featureSize) constructor
 		for (var yy = 0; yy < w; yy += featureSize)
 		{
 			for (var xx = 0; xx < w; xx += featureSize)
-				setSample(xx, yy, prandom.NextFloat(1) * 2 - 1);
+				setSample(xx, yy, prandom.nextFloat(1) * 2 - 1);
 		}
 	
 		var stepSize = featureSize;
@@ -467,7 +452,7 @@ function LevelGen(w, h, featureSize) constructor
 		var scaleMod = 1;
 		while (stepSize > 1)
 		{
-			var halfStep = stepSize / 2;
+			var halfStep = floor(stepSize / 2);
 			for (var yy = 0; yy < w; yy += stepSize)
 			{
 				for (var xx = 0; xx < w; xx += stepSize)
@@ -477,7 +462,7 @@ function LevelGen(w, h, featureSize) constructor
 					var c = sample(xx, yy + stepSize);
 					var d = sample(xx + stepSize, yy + stepSize);
 				
-					var e = (a + b + c + d) / 4 + (prandom.NextFloat(1) * 2 - 1) * stepSize * scale;
+					var e = (a + b + c + d) / 4 + (prandom.nextFloat(1) * 2 - 1) * stepSize * scale;
 					setSample(xx + halfStep, yy + halfStep, e);
 				}
 			}
@@ -492,14 +477,14 @@ function LevelGen(w, h, featureSize) constructor
 					var e = sample(xx + halfStep, yy - halfStep);
 					var f = sample(xx - halfStep, yy - halfStep);
 				
-					var H = (a + b + d + e) / 4 + (prandom.NextFloat(1) * 2 - 1) * stepSize * scale * 0.5;
-					var g = (a + c + d + f) / 4 + (prandom.NextFloat(1) * 2 - 1) * stepSize * scale * 0.5;
+					var H = (a + b + d + e) / 4 + (prandom.nextFloat(1) * 2 - 1) * stepSize * scale * 0.5;
+					var g = (a + c + d + f) / 4 + (prandom.nextFloat(1) * 2 - 1) * stepSize * scale * 0.5;
 				
 					setSample(xx + halfStep, yy, H);
 					setSample(xx, yy + halfStep, g);
 				}
 			}
-			stepSize /= 2;
+			stepSize = floor(stepSize / 2);
 			scale *= (scaleMod + 0.8);
 			scaleMod *= 0.3;
 		}

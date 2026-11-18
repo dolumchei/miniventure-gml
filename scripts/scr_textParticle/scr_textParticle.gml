@@ -7,9 +7,9 @@ function TextParticle(msg, xx, yy, col) : Entity() constructor
 	self.xx = xx; 
 	self.yy = yy; 
 	zz = 2; 
-	xa = prandom.NextGaussian() * 0.3; 
-	ya = prandom.NextGaussian() * 0.2; 
-	za = prandom.NextFloat() * 0.7 + 2; 
+	xa = prandom.nextGaussian() * 0.3;
+	ya = prandom.nextGaussian() * 0.2;
+	za = prandom.nextFloat() * 0.7 + 2; 
 	time = 0; 
 	
 	tick = function()

@@ -17,7 +17,7 @@ function HardRockTile(vid) : RockTile(vid) constructor
 			{
 				if (player.payStamina(4 - tool.level))
 				{
-					hurt4(level, xt, yt, prandom.NextInt(10) + (tool.level) * 5 + 10);
+					hurt4(level, xt, yt, prandom.nextInt(10) + (tool.level) * 5 + 10);
 					return true;
 				}
 			}

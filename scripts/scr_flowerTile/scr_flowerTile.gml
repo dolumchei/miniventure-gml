@@ -28,8 +28,8 @@ function FlowerTile(vid) : GrassTile(vid) constructor
 			{
 				if (player.payStamina(4 - tool.level))
 				{
-					level.add(new ItemEntity(new ResourceItem(Resource.flower), xx * 16 + prandom.NextInt(10) + 3, yy * 16 + prandom.NextInt(10) + 3));
-					level.add(new ItemEntity(new ResourceItem(Resource.flower), xx * 16 + prandom.NextInt(10) + 3, yy * 16 + prandom.NextInt(10) + 3));
+					level.add(new ItemEntity(new ResourceItem(Resource.flower), xx * 16 + prandom.nextInt(10) + 3, yy * 16 + prandom.nextInt(10) + 3));
+					level.add(new ItemEntity(new ResourceItem(Resource.flower), xx * 16 + prandom.nextInt(10) + 3, yy * 16 + prandom.nextInt(10) + 3));
 					level.setTile(xx, yy, Tile.grass, 0);
 					return true;
 				}
@@ -39,9 +39,9 @@ function FlowerTile(vid) : GrassTile(vid) constructor
 	}
 	hurt6 = function(level, xx, yy, source, dmg, attackDir)
 	{
-		var count = prandom.NextInt(2) + 1;
+		var count = prandom.nextInt(2) + 1;
 		for (var i = 0; i < count; i++)
-			level.add(new ItemEntity(new ResourceItem(Resource.flower), xx * 16 + prandom.NextInt(10) + 3, yy * 16 + prandom.NextInt(10) + 3));
+			level.add(new ItemEntity(new ResourceItem(Resource.flower), xx * 16 + prandom.nextInt(10) + 3, yy * 16 + prandom.nextInt(10) + 3));
 		level.setTile(xx, yy, Tile.grass, 0);
 	}
 }

@@ -7,8 +7,8 @@ function AirWizard() : Mob() constructor
 	attackTime = 0;
 	attackType = 0;
 
-	x = prandom.NextInt(64 * 16);
-	y = prandom.NextInt(64 * 16);
+	x = prandom.nextInt(64 * 16);
+	y = prandom.nextInt(64 * 16);
 	maxHealth = 2000;
 	healthValue = maxHealth;
 	
@@ -79,11 +79,11 @@ function AirWizard() : Mob() constructor
 		}
 
 		var speedValue = (tickTime % 4) == 0 ? 0 : 1;
-		if (!move(xa * speedValue, ya * speedValue) || prandom.NextInt(100) == 0)
+		if (!move(xa * speedValue, ya * speedValue) || prandom.nextInt(100) == 0)
 		{
 			randomWalkTime = 30;
-			xa = (prandom.NextInt(3) - 1);
-			ya = (prandom.NextInt(3) - 1);
+			xa = (prandom.nextInt(3) - 1);
+			ya = (prandom.nextInt(3) - 1);
 		}
 		if (randomWalkTime > 0)
 		{
@@ -93,7 +93,7 @@ function AirWizard() : Mob() constructor
 				var xd = level.player.x - x;
 				var yd = level.player.y - y;
 				
-				if (prandom.NextInt(4) == 0 && xd * xd + yd * yd < 50 * 50)
+				if (prandom.nextInt(4) == 0 && xd * xd + yd * yd < 50 * 50)
 				{
 					if (attackDelay == 0 && attackTime == 0)
 						attackDelay = 60 * 2;

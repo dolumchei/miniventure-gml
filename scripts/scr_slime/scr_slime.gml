@@ -5,8 +5,8 @@ function Slime(lvl) : Mob() constructor
 	jumpTime = 0;
 
 	self.lvl = lvl;
-	x = prandom.NextInt(64 * 16);
-	y = prandom.NextInt(64 * 16);
+	x = prandom.nextInt(64 * 16);
+	y = prandom.nextInt(64 * 16);
 	maxHealth = lvl * lvl * 5;
 	healthValue = maxHealth;
 
@@ -15,12 +15,12 @@ function Slime(lvl) : Mob() constructor
 		mob_tick();
 
 		var speedValue = 1;
-		if (!move(xa * speedValue, ya * speedValue) || prandom.NextInt(40) == 0)
+		if (!move(xa * speedValue, ya * speedValue) || prandom.nextInt(40) == 0)
 		{
 			if (jumpTime <= -10)
 			{
-				xa = floor(prandom.NextInt(3) - 1);
-				ya = floor(prandom.NextInt(3) - 1);
+				xa = floor(prandom.nextInt(3) - 1);
+				ya = floor(prandom.nextInt(3) - 1);
 
 				if (level.player != undefined)
 				{
@@ -61,9 +61,9 @@ function Slime(lvl) : Mob() constructor
 	{
 		mob_die();
 
-		var count = prandom.NextInt(2) + 1;
+		var count = prandom.nextInt(2) + 1;
 		for (var i = 0; i < count; i++)
-			level.add(new ItemEntity(new ResourceItem(Resource.slime), x + prandom.NextInt(11) - 5, y + prandom.NextInt(11) - 5));
+			level.add(new ItemEntity(new ResourceItem(Resource.slime), x + prandom.nextInt(11) - 5, y + prandom.nextInt(11) - 5));
 
 		if (level.player != undefined)
 			level.player.scoreValue += 25 * lvl;

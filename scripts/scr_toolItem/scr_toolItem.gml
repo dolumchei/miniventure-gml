@@ -49,9 +49,9 @@ function ToolItem(type, level) : Item() constructor
 	getAttackDamageBonus = function(e)
 	{
 		if (type == ToolType.axe)
-			return (level + 1) * 2 + prandom.NextInt(4);
+			return (level + 1) * 2 + prandom.nextInt(4);
 		if (type == ToolType.sword)
-			return (level + 1) * 3 + prandom.NextInt(2 + level * level * 2);
+			return (level + 1) * 3 + prandom.nextInt(2 + level * level * 2);
 
 		return 1;
 	}

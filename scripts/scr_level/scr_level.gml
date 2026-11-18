@@ -216,8 +216,8 @@ function Level(w, h, level, parentLevel) constructor
 				maxLevel = 4;
 			}
 			
-			var lvl = prandom.NextInt(maxLevel - minLevel + 1) + minLevel;
-			if (prandom.NextInt(2) == 0) 
+			var lvl = prandom.nextInt(maxLevel - minLevel + 1) + minLevel;
+			if (prandom.nextInt(2) == 0) 
 				mob = new Slime(lvl);
 			else 
 				mob = new Zombie(lvl);
@@ -259,12 +259,17 @@ function Level(w, h, level, parentLevel) constructor
 	
 	maps = undefined;
 	
+	generation_time = current_time;
+	
 	if (level == 0)
 		maps = LevelGen.createAndValidateTopMap(w, h);
 	else if (level < 0)
 		maps = LevelGen.createAndValidateUndergroundMap(w, h, -level);
 	else
 		maps = LevelGen.createAndValidateSkyMap(w, h);
+		
+	generation_time = (current_time - generation_time) / 1000;
+	print(level, generation_time);
 	
 	if (level != 0 || level < 0)
 		monsterDensity = 4;	
@@ -286,10 +291,10 @@ function Level(w, h, level, parentLevel) constructor
 	{		
 		trySpawn(1);
 		
-		for (var i = 0; i < w * h / 50; i++)
+		for (var i = 0; i < floor(w * h / 50); i++)
 		{
-			var xt = prandom.NextInt(w);
-			var yt = prandom.NextInt(h);
+			var xt = prandom.nextInt(w);
+			var yt = prandom.nextInt(h);
 			getTile(xt, yt).tick(self, xt, yt);
 		}
 		for (var i = 0; i < array_length(entities); i++)

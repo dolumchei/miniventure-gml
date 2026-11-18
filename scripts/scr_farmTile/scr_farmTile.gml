@@ -32,7 +32,7 @@ function FarmTile(vid) : Tile(vid, false) constructor
 	}
 	steppedOn = function(level, xt, yt, entity)
 	{
-		if (prandom.NextInt(60) != 0)
+		if (prandom.nextInt(60) != 0)
 			return;
 		if (level.getData(xt, yt) < 5)
 			return;
